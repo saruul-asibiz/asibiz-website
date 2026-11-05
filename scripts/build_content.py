@@ -2,10 +2,10 @@
 """Turn content/interviews.txt and content/posts.txt into data/instagram.json for the website.
 
 Runs inside GitHub Actions on every change. Cover pictures from content/images are resized
-and copied to assets/ig/<number>.jpg. Mistakes never stop the website from publishing:
+and copied to assets/ig/<number>.jpg (the number comes from the picture itself). Mistakes never stop the website from publishing:
 a block with a problem is skipped and explained as a warning on the Actions run.
 """
-import json, os, re, shutil
+import hashlib, json, os, re, shutil
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTENT = os.path.join(ROOT, 'content')
@@ -47,9 +47,6 @@ def blocks(name):
     return out
 
 
-counter = [1000]
-
-
 def picture(name, where, long_side):
     if not name:
         return None
@@ -60,8 +57,11 @@ def picture(name, where, long_side):
     if not os.path.exists(src):
         warn(f'{where}: picture "{name}" was not found in content/images. Check the spelling, including capital letters.')
         return None
-    counter[0] += 1
-    dst = os.path.join(OUT_IMG, f'{counter[0]}.jpg')
+    # Name the copy after the picture's content, so a changed picture always gets a new name
+    # and browsers never show an old cached copy.
+    with open(src, 'rb') as fh:
+        num = int(hashlib.sha256(fh.read() + str(long_side).encode()).hexdigest()[:13], 16)
+    dst = os.path.join(OUT_IMG, f'{num}.jpg')
     try:
         from PIL import Image, ImageOps
         im = ImageOps.exif_transpose(Image.open(src)).convert('RGB')
@@ -72,7 +72,7 @@ def picture(name, where, long_side):
     except Exception as e:
         warn(f'{where}: could not read picture "{name}" ({e}).')
         return None
-    return f'assets/ig/{counter[0]}.jpg'
+    return f'assets/ig/{num}.jpg'
 
 
 def main():
