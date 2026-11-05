@@ -22,3 +22,19 @@ link: https://www.instagram.com/reel/DfWNtx6T4o6/
 title: ネパール インタビュー フル版 v3 日字幕 修正済
 subtitle: 建設業で働くスタッフ
 image: Nepal_thumbnail_B_sunny_1080x1920.png
+
+link: https://www.instagram.com/p/DfWmSGMT3fm/
+title: 面接ネパール空港ネパール語日字幕修正済
+image: thumbnail_nepal_airport_interview.png
+
+link: https://www.instagram.com/p/DfWmE1NT8Lq/
+title: ネパール5人富士建設インタビュー
+image: thumbnail_okinawa_sunset_interview_1080x1920.png
+
+link: https://www.instagram.com/p/DfWm01FzFrd/
+title: スリランカ人2名へのインタビュー
+image: SriLanka_2people_thumbnail_sketchbook_bright_1080x1920.png
+
+link: https://www.instagram.com/p/DfWnEYaT4SM/
+title: ムスリムさんへのインタビュー
+image: Muslim_thumbnail_C_skypop_1080x1920.png
