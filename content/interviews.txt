@@ -12,8 +12,7 @@
 
 link: https://www.instagram.com/reel/DfWOQwlziBC/
 title: ウズベキスタン2名
-image: Uzbek_intern_thumbnail_routemap_graded_1080x1920.png
-
+image: Thumbnail_v2.jpg
 link: https://www.instagram.com/reel/DfWNon_z70c/
 title: スリランカ2名
 image: 
