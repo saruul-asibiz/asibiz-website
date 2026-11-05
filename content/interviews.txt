@@ -20,4 +20,4 @@ image:
 link: https://www.instagram.com/reel/DfWNtx6T4o6/
 title: ネパール出身スタッフ4名
 subtitle: 建設業で働くスタッフ
-image: Thumbnail_v2.jpg
+image: Nepal_thumbnail_B_sunny_1080x1920.png
