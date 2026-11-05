@@ -15,7 +15,7 @@ title: ウズベキスタン2名
 image: Thumbnail_v2.jpg
 link: https://www.instagram.com/reel/DfWNon_z70c/
 title: スリランカ2名
-image: 
+image: reel_cover_sri_lanka_v2.png
 
 link: https://www.instagram.com/reel/DfWNtx6T4o6/
 title: ネパール出身スタッフ4名
