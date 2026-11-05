@@ -10,17 +10,17 @@
 #   4. Click "Commit changes". The website updates in about 2 minutes.
 
 link: https://www.instagram.com/p/DeQ-huEk2s3/
-image: post_1
+image: post_1.png
 text: Claude
 
 link: https://www.instagram.com/p/DeQ26K7E9t-/
-image: post_2
+image: post_2.png
 text: Dseek
 
 link: https://www.instagram.com/p/DeQ-huEk2s3/
-image: post_3
+image: post_3.png
 text: 特定技能で働く外国人が
 
 link: https://www.instagram.com/p/DeNz8PtkxYN/
-image: post_4
+image: post_4.png
 text: Gem
