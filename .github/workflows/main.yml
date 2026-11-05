@@ -1,0 +1,50 @@
+# Builds and publishes the website on GitHub Pages.
+# Runs every time a file changes on the main branch (for example when you edit
+# content/interviews.txt), and when you press "Run workflow" on the Actions tab.
+name: Publish website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install image tool
+        run: python3 -m pip install --quiet pillow
+
+      - name: Build interviews and posts from the content folder
+        run: python3 scripts/build_content.py
+
+      - name: Collect the website files
+        run: |
+          mkdir -p _site/data
+          cp -r index.html privacy.html en assets _site/
+          cp data/instagram.json _site/data/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
