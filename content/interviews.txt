@@ -13,6 +13,7 @@
 link: https://www.instagram.com/reel/DfWOQwlziBC/
 title: ウズベキスタン2名
 image: Thumbnail_v2.jpg
+
 link: https://www.instagram.com/reel/DfWNon_z70c/
 title: スリランカ2名
 image: reel_cover_sri_lanka_v2.png
