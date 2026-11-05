@@ -10,9 +10,27 @@
 #   4. Click "Commit changes". The website updates in about 2 minutes.
 
 link: https://www.instagram.com/p/DeQ-huEk2s3/
-image:
+image: post_1
 text: Claude
 
 link: https://www.instagram.com/p/DeQ26K7E9t-/
-image:
+image: post_2
 text: Dseek
+
+link: https://www.instagram.com/p/DeQ-huEk2s3/
+image: post_3
+text: 特定技能で働く外国人が、2026年6月末時点で444,256人と過去最多になりました（半年前から13.8%増）📈 特に「特定技能2号」は18,295人と約2.3倍に増加。長く日本で働き、キャリアを築く道が広がっています。
+
+人手不足に悩む企業さま、特定技能での採用や2号へのステップアップを考えている方へ。アジビズは沖縄から、ウズベキスタン・ネパール・スリランカの人材と日本企業をつないでいます。 採用のご相談はプロフィールのリンクから、またはDMでお気軽にどうぞ。 あとで見返せるよう「保存」もおすすめです！ （出典：時事通信／nippon.com 2026年9月29日）
+
+Japan now has a record 444,256 Specified Skilled Workers as of the end of June 2026, up 13.8% in six months 📈 The number of Specified Skilled Worker (ii) holders rose about 2.3 times to 18,295, so more workers are taking the path to a long-term career in Japan.
+
+Are you an employer facing a labor shortage, or a worker planning your next step? From Okinawa, Ajibiz connects Japanese companies with talent from Uzbekistan, Nepal and Sri Lanka. Send us a DM or tap the link in our bio to talk with our team. Save this post to come back to it later! (Source: Jiji Press / nippon.com, Sept 29, 2026)
+
+Uzbek caption : needs native review before posting 2026-yil iyun oxiriga kelib Yaponiyada “Tokutei Ginou” (Maxsus malakali ishchi) maqomida ishlayotgan chet elliklar soni rekord darajaga, ya’ni 444 256 nafarga yetdi. Bu yarim yil oldingiga nisbatan 13,8% ko’p 📈 “2-toifa” egalari esa taxminan 2,3 barobar oshib, 18 295 nafarni tashkil qildi. Yaponiyada uzoq muddat ishlash va karyera qurish imkoniyati kengaymoqda.
+
+Yaponiyada ishlashni rejalashtiryapsizmi? Ajibiz Okinavadan turib O’zbekiston, Nepal va Shri-Lanka mutaxassislarini yapon kompaniyalari bilan bog’laydi. Savollaringizni izohda yozing yoki bizga DM yuboring. Postni saqlab qo’ying! (Manba: Jiji Press / nippon.com, 2026-yil 29-sentyabr)
+
+link: https://www.instagram.com/p/DeNz8PtkxYN/
+image: post_4
+text: Gem
