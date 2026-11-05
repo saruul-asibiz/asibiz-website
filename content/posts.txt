@@ -1,0 +1,18 @@
+# 最新の投稿 (Latest posts): one block per post. The top block shows first; the website shows the first 6.
+#
+# How to add a new post:
+#   1. Paste a new block at the TOP of the list.
+#   2. Fill it in:
+#        link:   the post's link (in Instagram: open the post > ... > Copy link)
+#        image:  file name of the picture you uploaded to content/images
+#        text:   a short description, for people using screen readers (you can delete this line)
+#   3. Keep one empty line between blocks. Lines starting with # are ignored.
+#   4. Click "Commit changes". The website updates in about 2 minutes.
+
+link: https://www.instagram.com/p/DeQ-huEk2s3/
+image:
+text: Claude
+
+link: https://www.instagram.com/p/DeQ26K7E9t-/
+image:
+text: Dseek

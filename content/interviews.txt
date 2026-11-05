@@ -1,0 +1,24 @@
+# インタビュー (Interviews): one block per reel. The top block shows first on the website.
+#
+# How to add a new interview:
+#   1. Copy the 4 lines of an existing block and paste them at the TOP of the list.
+#   2. Change them to the new reel:
+#        link:      the reel's link (in Instagram: open the reel > ... > Copy link)
+#        title:     big text on the card
+#        subtitle:  small text under it (you can delete this line)
+#        image:     file name of the cover picture you uploaded to content/images (you can delete this line)
+#   3. Keep one empty line between blocks. Lines starting with # are notes and are ignored.
+#   4. Click "Commit changes". The website updates in about 2 minutes.
+
+link: https://www.instagram.com/reel/DfWOQwlziBC/
+title: ウズベキスタン2名
+image:
+
+link: https://www.instagram.com/reel/DfWNon_z70c/
+title: スリランカ2名
+image:
+
+link: https://www.instagram.com/reel/DfWNtx6T4o6/
+title: ネパール出身スタッフ4名
+subtitle: 建設業で働くスタッフ
+image:
