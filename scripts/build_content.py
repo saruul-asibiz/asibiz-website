@@ -4,6 +4,7 @@
 Runs inside GitHub Actions on every change. Cover pictures from content/images are resized
 and copied to assets/ig/<number>.jpg (the number comes from the picture itself). Mistakes never stop the website from publishing:
 a block with a problem is skipped and explained as a warning on the Actions run.
+Interviews and posts are shown newest first automatically, so blocks can be added anywhere.
 """
 import hashlib, json, os, re, shutil
 
@@ -14,6 +15,20 @@ OUT_IMG = os.path.join(ROOT, 'assets', 'ig')
 OUT_JSON = os.path.join(ROOT, 'data', 'instagram.json')
 TAG = 'asibizinterview'
 LINK = re.compile(r'^https://(www\.)?instagram\.com/[A-Za-z0-9_./?=&%-]+$')
+CODE = re.compile(r'instagram\.com/(?:[A-Za-z0-9_.]+/)?(?:p|reel|reels|tv)/([A-Za-z0-9_-]+)')
+ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'
+
+
+def age(link):
+    """Instagram's link code is the post's number, and newer posts have bigger numbers.
+    So sorting by it puts the newest first, whatever order the blocks are written in."""
+    m = CODE.search(link)
+    if not m or len(m.group(1)) > 14:
+        return -1  # unknown: goes to the end, in the order written
+    n = 0
+    for ch in m.group(1):
+        n = n * 64 + ABC.index(ch)
+    return n
 
 
 def warn(msg):
@@ -98,6 +113,8 @@ def main():
             continue
         posts.append({'permalink': link, 'mediaType': 'IMAGE', 'hashtags': [],
                       'prunedCaption': b.get('text', ''), 'image': picture(b.get('image', ''), where, 700)})
+    # Newest first, no matter where a block was pasted in the file.
+    posts.sort(key=lambda p: (p['mediaType'] != 'VIDEO', -age(p['permalink'])))
     with open(OUT_JSON, 'w', encoding='utf-8') as f:
         json.dump({'posts': posts}, f, ensure_ascii=False, indent=1)
     n_iv = sum(1 for p in posts if p['mediaType'] == 'VIDEO')
