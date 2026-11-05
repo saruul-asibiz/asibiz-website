@@ -12,11 +12,11 @@
 
 link: https://www.instagram.com/reel/DfWOQwlziBC/
 title: ウズベキスタン2名
-image:
+image: Uzbek_intern_thumbnail_routemap_graded_1080x1920.png
 
 link: https://www.instagram.com/reel/DfWNon_z70c/
 title: スリランカ2名
-image:
+image: 
 
 link: https://www.instagram.com/reel/DfWNtx6T4o6/
 title: ネパール出身スタッフ4名
