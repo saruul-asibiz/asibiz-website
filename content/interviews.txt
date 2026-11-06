@@ -12,7 +12,7 @@
 
 link: https://www.instagram.com/p/DfWnEYaT4SM/
 title: ムスリムさんへのインタビュー
-title_en: Interview with a Muslim staff member
+title_en: A design staff member from Uzbekistan reviews Japanese-language technical drawings
 image: Muslim_thumbnail_C_skypop_1080x1920.png
 
 link: https://www.instagram.com/p/DfWm01FzFrd/
