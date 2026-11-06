@@ -4,6 +4,7 @@
 Runs inside GitHub Actions on every change. Cover pictures from content/images are resized
 and copied to assets/ig/<number>.jpg (the number comes from the picture itself). Mistakes never stop the website from publishing:
 a block with a problem is skipped and explained as a warning on the Actions run.
+English pages use title_en / subtitle_en / text_en when written, otherwise the Japanese text.
 Interviews and posts are shown newest first automatically, so blocks can be added anywhere.
 """
 import hashlib, json, os, re, shutil
@@ -103,8 +104,9 @@ def main():
         if not b.get('title'):
             warn(f'{where}: add a "title:" line.')
         text = '\n'.join(x for x in [b.get('title', ''), b.get('subtitle', '')] if x)
+        text_en = '\n'.join(x for x in [b.get('title_en', ''), b.get('subtitle_en', '')] if x)
         posts.append({'permalink': link, 'mediaType': 'VIDEO', 'isReel': True, 'hashtags': [TAG],
-                      'prunedCaption': text, 'image': picture(b.get('image', ''), where, 900)})
+                      'prunedCaption': text, 'captionEn': text_en, 'image': picture(b.get('image', ''), where, 900)})
     for line, b in blocks('posts.txt'):
         where = f'content/posts.txt (block starting on line {line})'
         link = b.get('link', '')
@@ -112,7 +114,7 @@ def main():
             warn(f'{where}: the link must be an Instagram link starting with https://www.instagram.com/ . Block skipped.')
             continue
         posts.append({'permalink': link, 'mediaType': 'IMAGE', 'hashtags': [],
-                      'prunedCaption': b.get('text', ''), 'image': picture(b.get('image', ''), where, 700)})
+                      'prunedCaption': b.get('text', ''), 'captionEn': b.get('text_en', ''), 'image': picture(b.get('image', ''), where, 700)})
     # Newest first, no matter where a block was pasted in the file.
     posts.sort(key=lambda p: (p['mediaType'] != 'VIDEO', -age(p['permalink'])))
     with open(OUT_JSON, 'w', encoding='utf-8') as f:
