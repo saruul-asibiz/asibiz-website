@@ -1,40 +1,48 @@
-# インタビュー (Interviews): one block per reel. The top block shows first on the website.
+# インタビュー (Interviews): one block per reel.
+# The newest video shows first automatically, so you can add new blocks anywhere (bottom is easiest).
 #
-# How to add a new interview:
-#   1. Copy the 4 lines of an existing block and paste them at the TOP of the list.
-#   2. Change them to the new reel:
-#        link:      the reel's link (in Instagram: open the reel > ... > Copy link)
-#        title:     big text on the card
-#        subtitle:  small text under it (you can delete this line)
-#        image:     file name of the cover picture you uploaded to content/images (you can delete this line)
-#   3. Keep one empty line between blocks. Lines starting with # are notes and are ignored.
-#   4. Click "Commit changes". The website updates in about 2 minutes.
+# Each block:
+#   link:         the reel's link (in Instagram: open the reel > ... > Copy link)
+#   title:        big text on the card (Japanese page)
+#   title_en:     big text on the card (English page) - optional
+#   subtitle:     small text under it (Japanese page) - optional
+#   subtitle_en:  small text under it (English page) - optional
+#   image:        file name of the cover picture in content/images - optional
+# Keep one empty line between blocks. Lines starting with # are notes and are ignored.
 
 link: https://www.instagram.com/p/DfWnEYaT4SM/
 title: ムスリムさんへのインタビュー
+title_en: Interview with a Muslim staff member
 image: Muslim_thumbnail_C_skypop_1080x1920.png
 
 link: https://www.instagram.com/p/DfWm01FzFrd/
 title: スリランカ人2名へのインタビュー
+title_en: Interview with 2 workers from Sri Lanka
 image: SriLanka_2people_thumbnail_sketchbook_bright_1080x1920.png
 
 link: https://www.instagram.com/p/DfWmE1NT8Lq/
 title: ネパール5人富士建設インタビュー
+title_en: 5 Nepali workers at Fuji Kensetsu
 image: thumbnail_okinawa_sunset_interview_1080x1920.png
 
 link: https://www.instagram.com/p/DfWmSGMT3fm/
 title: 面接ネパール空港ネパール語日字幕修正済
+title_en: Job interview at the airport in Nepal
 image: thumbnail_nepal_airport_interview.png
 
 link: https://www.instagram.com/reel/DfWOQwlziBC/
 title: ウズベキスタン2名
+title_en: 2 workers from Uzbekistan
 image: Thumbnail_v1.jpg
 
 link: https://www.instagram.com/reel/DfWNon_z70c/
 title: スリランカ2名
+title_en: 2 workers from Sri Lanka
 image: reel_cover_sri_lanka_v2.png
 
 link: https://www.instagram.com/reel/DfWNtx6T4o6/
 title: ネパール インタビュー フル版 v3 日字幕 修正済
+title_en: Interview with workers from Nepal
 subtitle: 建設業で働くスタッフ
+subtitle_en: Staff working in construction
 image: Nepal_thumbnail_B_sunny_1080x1920.png
