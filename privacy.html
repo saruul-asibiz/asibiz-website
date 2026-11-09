@@ -914,7 +914,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
 .sc-progress{display:none}
 @supports (animation-timeline: scroll()){
-  .sc-progress{display:block;position:absolute;left:0;right:0;bottom:-7px;height:6px;scale:none;transform:none;z-index:2;pointer-events:none;
+  .sc-progress{display:block;position:absolute;left:0;right:0;top:calc(100% - 1px);bottom:auto;height:6px;scale:none;transform:none;z-index:2;pointer-events:none;
     background:repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 12px) left 50%/100% 2px no-repeat,var(--paper);border-bottom:2px solid var(--ink);
     animation:sc-read linear both;animation-timeline:scroll(root)}
 }
