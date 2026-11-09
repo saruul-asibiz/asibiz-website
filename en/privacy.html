@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy policy | Asibiz Group</title>
-<meta name="description" content="How Asibiz LLC handles personal information.">
+<meta name="description" content="How Asibiz Group handles personal information.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Privacy policy | Asibiz Group">
-<meta property="og:description" content="How Asibiz LLC handles personal information.">
+<meta property="og:description" content="How Asibiz Group handles personal information.">
 <meta property="og:locale" content="en_US">
 <link rel="canonical" href="https://www.asibiz.co.jp/en/privacy.html">
 <meta property="og:url" content="https://www.asibiz.co.jp/en/privacy.html">
@@ -903,6 +903,32 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   :is(button,input,select):disabled{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cpath%20d%3D%22M4%204%20L25.2%2012.6%20C27.3%2013.5%2027.3%2016%2025.4%2016.9%20L18.8%2018.8%20L16.9%2025.4%20C16%2027.3%2013.5%2027.3%2012.6%2025.2%20Z%22%20transform%3D%22translate%282%202%29%20translate%284%203%29%20rotate%2822.1%29%20scale%280.93%29%20translate%28-4%20-4%29%22%20fill%3D%22%230A0A0A%22%20stroke%3D%22%230A0A0A%22%20stroke-width%3D%222%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M4%204%20L25.2%2012.6%20C27.3%2013.5%2027.3%2016%2025.4%2016.9%20L18.8%2018.8%20L16.9%2025.4%20C16%2027.3%2013.5%2027.3%2012.6%2025.2%20Z%22%20transform%3D%22translate%280%200%29%20translate%284%203%29%20rotate%2822.1%29%20scale%280.93%29%20translate%28-4%20-4%29%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%230A0A0A%22%20stroke-width%3D%222%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E") 4 3,default !important}
   input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),textarea{cursor:text !important}
 }
+
+/* play button in the bottom-left corner so it never covers the person's face; lifts and turns yellow on hover like the buttons */
+.reel-play{position:absolute;left:12px;bottom:12px;width:48px;height:48px;transition:transform var(--dur) var(--ease-bounce),box-shadow var(--dur) var(--ease-out),background-color var(--dur)}
+.reel-play .ic{width:20px;height:20px;margin-left:2px}
+.reel:hover .reel-play{transform:translate(-2px,-2px);background:var(--sun-500);box-shadow:var(--shadow-pop)}
+@media (max-width:700px){.reel-play{left:10px;bottom:10px;width:44px;height:44px}.reel-play .ic{width:18px;height:18px}}
+
+/* reading progress: a plane flies along a dashed flight path to the Japan marker as you read */
+@property --rp{syntax:'<number>';inherits:true;initial-value:0}
+.sc-progress{display:none}
+@supports (animation-timeline: scroll()){
+  .sc-progress{display:block;position:absolute;left:0;right:0;bottom:-7px;height:6px;scale:none;transform:none;z-index:2;pointer-events:none;
+    background:repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 12px) left 50%/100% 2px no-repeat,var(--paper);border-bottom:2px solid var(--ink);
+    animation:sc-read linear both;animation-timeline:scroll(root)}
+}
+@keyframes sc-read{from{--rp:0}to{--rp:1}}
+.rp-fill{position:absolute;left:0;top:0;bottom:-2px;width:calc(17px + var(--rp) * (100% - 69px));background:var(--sun-500);border-bottom:2px solid var(--ink)}
+.rp-plane{position:absolute;top:50%;left:calc(17px + var(--rp) * (100% - 69px));width:30px;height:30px;margin:-16px 0 0 -15px;box-sizing:border-box;border:2px solid var(--ink);border-radius:50%;background:var(--sun-500);box-shadow:2px 2px 0 0 var(--ink);display:flex;align-items:center;justify-content:center}
+.rp-plane svg{width:18px;height:18px;fill:var(--ink)}
+.rp-dest{position:absolute;right:10px;top:50%;width:26px;height:18px;margin-top:-10px;box-sizing:border-box;border:2px solid var(--ink);border-radius:4px;background:var(--paper)}
+.rp-dest::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--red-500)}
+@media (max-width:700px){
+  .rp-plane{width:26px;height:26px;margin:-14px 0 0 -13px}
+  .rp-plane svg{width:15px;height:15px}
+  .rp-dest{width:22px;height:16px;margin-top:-9px;right:8px}
+}
 .f-legal-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px}
 .f-legal{font-family:var(--font-sans-jp);font-weight:800;font-size:14px;color:var(--ink)}
 .f-legal-row .copy{margin-top:0}
@@ -922,8 +948,8 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 
 <div class="dc-root oki sc" lang="en" style="width: 100%; display: flex; flex-direction: column; background: #FFFFFF; overflow-x: clip; --go: 0s">
 
-<header class="site-header"><div class="sc-progress" aria-hidden="true"></div>
-  <div class="topbar"><div class="topbar-in"><span class="sns-lbl">Follow us</span><a class="sns-instagram" href="https://www.instagram.com/YOUR_ACCOUNT" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/YOUR_PAGE" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/YOUR_LINE_ID" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></div>
+<header class="site-header"><div class="sc-progress" aria-hidden="true"><span class="rp-fill"></span><span class="rp-dest"></span><span class="rp-plane"><svg viewBox="0 0 24 24" aria-hidden="true"><path transform="rotate(90 12 12)" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z"/></svg></span></div>
+  <div class="topbar"><div class="topbar-in"><span class="sns-lbl">Follow us</span><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></div>
   <div class="bar">
     <a class="brand" href="./" aria-label="Asibiz Group home"><img src="../assets/logo.png" alt="Asibiz Group (アジビズグループ)" width="600" height="221"></a>
     <nav aria-label="Main menu">
@@ -949,7 +975,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
         <a href="./#company">Company <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
       </div>
       <div class="menu-foot">
-        <div class="sns-pills" role="group" aria-label="Follow us"><a class="sns-instagram" href="https://www.instagram.com/YOUR_ACCOUNT" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/YOUR_PAGE" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/YOUR_LINE_ID" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
+        <div class="sns-pills" role="group" aria-label="Follow us"><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
         <div class="lang-switch" role="group" aria-label="言語 / Language"><a lang="ja" hreflang="ja" href="../privacy.html">日本語</a><a class="on" lang="en" hreflang="en" href="privacy.html" aria-current="page">English</a></div>
       </div>
     </div>
@@ -963,7 +989,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     <h2>How we handle personal information.</h2>
   </div>
   <div class="card legal-card">
-      <p>Asibiz LLC (合同会社アジビズ, "we") recognizes the importance of the personal information we handle in placing foreign talent, providing support as a registered support organization, and offering relocation consulting. We comply with the Act on the Protection of Personal Information, the Employment Security Act and other relevant laws, and handle personal information as follows.</p>
+      <p>Asibiz Group (Asibiz LLC and Asibiz International Inc., "we") recognizes the importance of the personal information we handle in placing foreign talent, providing support as a registered support organization, and offering relocation consulting. We comply with the Act on the Protection of Personal Information, the Employment Security Act and other relevant laws, and handle personal information as follows.</p>
       <h3>1. Information we collect</h3>
       <p>Through our contact form, phone, email and meetings, we collect your name, company name, email address, phone number and the details of your inquiry. Where needed for placement and support, we also collect information such as your work history, qualifications and residence status. We collect information only by lawful and fair means.</p>
       <h3>2. How we use it</h3>
@@ -977,13 +1003,13 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
       <h3>3. Sharing with third parties</h3>
       <p>We do not give personal information to third parties unless you agree or the law requires it. Before we share a job seeker's information with an employer, we ask for that person's consent.</p>
       <h3>4. Outsourcing</h3>
-      <p>We may outsource the handling of personal information as far as needed for these purposes. When we do, we choose contractors carefully and supervise them. The contact form on this site is sent using the service of Formspree, a company in the United States.</p>
+      <p>We may outsource the handling of personal information as far as needed for these purposes. When we do, we choose contractors carefully and supervise them. Our contact form is sent through Google Apps Script (Google LLC, U.S.) and Chatwork (kubell Co., Ltd.).</p>
       <h3>5. Security</h3>
       <p>We take appropriate measures to prevent personal information from being leaked, lost or damaged, and we train our staff.</p>
       <h3>6. Your requests</h3>
       <p>If you ask us to tell you how we use your data, or to disclose, correct, add to, delete or stop using it, we will confirm your identity and respond promptly as the law requires.</p>
       <h3>7. Contact</h3>
-      <p>Asibiz LLC, personal information inquiries<br>2-1-7 Ojana, Ginowan, Okinawa 901-2225, Japan<br>Phone +81 98-890-7701 / Email info@japanasia.biz</p>
+      <p>Asibiz Group, personal information inquiries<br>2-1-7 Ojana, Ginowan, Okinawa 901-2225, Japan<br>Phone +81 98-890-7701 / Email info@japanasia.biz</p>
       <h3>8. Changes to this policy</h3>
       <p>We may update this policy when needed. Changes take effect once they are posted on this site.</p>
       <p class="legal-date">Effective date: [Month DD, YYYY]</p>
@@ -1016,7 +1042,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
         <address>2-1-7 Ojana, Ginowan, Okinawa 901-2225, Japan<br>Phone +81 98-890-7701 / Fax +81 98-993-5755 / info@japanasia.biz</address>
       </div>
       <div class="f-side">
-        <div class="sns-pills" role="group" aria-label="Follow us"><a class="sns-instagram" href="https://www.instagram.com/YOUR_ACCOUNT" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/YOUR_PAGE" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/YOUR_LINE_ID" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
+        <div class="sns-pills" role="group" aria-label="Follow us"><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
         <div class="f-legal-row"><a class="f-legal" href="privacy.html">Privacy policy</a><span class="copy">© <span id="year">2026</span> Asibiz Group</span></div>
       </div>
     </div>
@@ -1117,6 +1143,32 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     .then(function (r) { if (!r.ok) throw new Error('feed ' + r.status); return r.json(); })
     .then(function (d) { clearTimeout(timer); render(d); })
     .catch(function () { clearTimeout(timer); });
+})();
+/* Contact form: sends the answers to the Google script, which posts them into Chatwork. */
+(function () {
+  var form = document.getElementById('contact-form');
+  if (!form || !window.fetch || !window.URLSearchParams || !/^https:\/\/script\.google\.com\//.test(form.action)) return;
+  var ja = (document.documentElement.lang || 'ja') === 'ja';
+  var note = form.querySelector('.form-note'), btn = form.querySelector('button[type="submit"]');
+  var T = ja ? { sending: '送信中です…', ok: '送信しました。担当者より折り返しご連絡いたします。',
+                 err: '送信できませんでした。お手数ですが、お電話（098-890-7701）またはメール（info@japanasia.biz）でご連絡ください。' }
+             : { sending: 'Sending…', ok: 'Thank you. Your message has been sent, and we will get back to you soon.',
+                 err: 'Sorry, your message could not be sent. Please call +81 98-890-7701 or email info@japanasia.biz.' };
+  function say(text, cls) { if (!note) return; note.textContent = text; note.className = 'form-note' + (cls ? ' ' + cls : ''); }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (btn && btn.disabled) return;
+    if (btn) btn.disabled = true;
+    say(T.sending, '');
+    var body = new URLSearchParams(new FormData(form));
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
+    fetch(form.action, ctrl ? { method: 'POST', body: body, signal: ctrl.signal } : { method: 'POST', body: body })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (!d || !d.ok) throw new Error((d && d.reason) || 'failed'); form.reset(); say(T.ok, 'ok'); })
+      .catch(function () { say(T.err, 'err'); })
+      .then(function () { clearTimeout(timer); if (btn) btn.disabled = false; });
+  });
 })();
 </script>
 </body>
