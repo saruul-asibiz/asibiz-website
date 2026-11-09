@@ -32,7 +32,7 @@ jobs:
       - name: Collect the website files
         run: |
           mkdir -p _site/data
-          cp -r index.html privacy.html en assets _site/
+          cp -r index.html privacy.html en assets v4 _site/
           cp data/instagram.json _site/data/
 
       - uses: actions/upload-pages-artifact@v3
