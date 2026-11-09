@@ -970,6 +970,10 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .faq{display:flex;flex-direction:column;gap:12px;max-width:960px}
 .faq details{border:var(--border);border-radius:var(--radius-m);background:var(--paper);transition:box-shadow var(--dur) var(--ease-out),transform var(--dur) var(--ease-bounce)}
 .faq details[open]{background:var(--blue-50);box-shadow:var(--shadow-pop-s)}
+.faq details:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-pop-s)}
+.faq summary:hover::after{background:var(--paper)}
+.sub-steps li{transition:transform var(--dur-slow) var(--ease-bounce),box-shadow var(--dur) var(--ease-out)}
+.sub-steps li:hover{transform:translate(-4px,-4px) rotate(-.6deg);box-shadow:var(--shadow-pop)}
 .faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;font-family:var(--font-display-jp);font-weight:800;font-size:18px;line-height:1.5;color:var(--ink)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:var(--border);border-radius:50%;background:var(--sun-500);font-family:var(--font-sans);font-size:22px;line-height:1;transition:transform var(--dur) var(--ease-bounce)}
@@ -977,7 +981,8 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .faq details p{margin:0;padding:0 24px 22px;font-size:16px;line-height:1.85;color:var(--ink-2)}
 .reach .hours{margin:0;font-size:14px;font-weight:700;color:var(--ink-2)}
 .msg-card{margin-bottom:24px;display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:start;padding:36px 40px}
-.msg-photo{aspect-ratio:1;border:var(--border);border-radius:var(--radius-l);background:var(--sun-500);display:flex;align-items:center;justify-content:center;font-family:var(--font-display-jp);font-weight:800;font-size:14px;color:var(--ink);text-align:center;padding:12px}
+.msg-photo{aspect-ratio:4/5;border:var(--border);border-radius:var(--radius-l);overflow:hidden;background:var(--paper-2);box-shadow:var(--shadow-pop-s)}
+.msg-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
 .msg-card h3{margin:6px 0 14px;font-family:var(--font-display-jp);font-weight:800;font-size:24px;line-height:1.45;color:var(--ink)}
 .msg-card p{margin:0 0 12px;font-size:16px;line-height:1.9;color:var(--ink-2)}
 .msg-card .msg-name{margin:16px 0 0;font-weight:800;color:var(--ink)}
@@ -1022,7 +1027,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   .faq summary{font-size:16px;padding:16px 18px}
   .faq details p{padding:0 18px 18px;font-size:15px}
   .msg-card{grid-template-columns:1fr;gap:20px;padding:24px}
-  .msg-photo{width:140px}
+  .msg-photo{width:160px}
   .sub-steps{grid-template-columns:1fr}
 }
 </style>
@@ -1091,7 +1096,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 
 <section id="numbers" class="section container stats-sec" aria-label="数字で見るアジビズ">
   <div class="stats-top"><b>数字で見るアジビズ</b><small>2026年10月時点</small></div>
-  <div class="stats"><div class="card blue stat"><div class="num">320<small>名以上</small></div><div class="lbl">紹介実績</div></div><div class="card sun stat"><div class="num">85<small>社</small></div><div class="lbl">取引企業</div></div><div class="card mint stat"><div class="num">92<small>%</small></div><div class="lbl">1年後の定着率</div></div><div class="card lilac stat"><div class="num">7<small>か国</small></div><div class="lbl">提携国</div></div></div>
+  <div class="stats"><div class="card blue lift stat"><div class="num">320<small>名以上</small></div><div class="lbl">紹介実績</div></div><div class="card sun lift stat"><div class="num">85<small>社</small></div><div class="lbl">取引企業</div></div><div class="card mint lift stat"><div class="num">92<small>%</small></div><div class="lbl">1年後の定着率</div></div><div class="card lilac lift stat"><div class="num">7<small>か国</small></div><div class="lbl">提携国</div></div></div>
 </section>
 
 <section id="clients" class="section clients">
@@ -1114,7 +1119,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     <a class="card coral lift reel" href="https://www.instagram.com/YOUR_ACCOUNT" target="_blank" rel="noopener"><span class="reel-media"><span class="reel-chip">リール</span><span class="reel-play"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"></path></svg></span></span><span class="reel-body"><b>IMI Corporation</b><small>受け入れ企業インタビュー</small></span></a>
   </div>
   <h3 class="voices-title">利用企業・スタッフの声</h3>
-  <div class="voices"><figure class="card paper voice"><blockquote>「入国前研修のおかげで、受け入れる側の不安がなくなりました。現場の雰囲気が明るくなり、今では4名が活躍しています。」</blockquote><figcaption>— 建設会社 代表（沖縄県）</figcaption></figure><figure class="card sun voice"><blockquote>「仕事のことも生活のことも、母国語で相談できるので安心です。日本で長く働きたいと思えるようになりました。」</blockquote><figcaption>— ネパール出身 介護スタッフ</figcaption></figure></div>
+  <div class="voices"><figure class="card paper lift voice"><blockquote>「入国前研修のおかげで、受け入れる側の不安がなくなりました。現場の雰囲気が明るくなり、今では4名が活躍しています。」</blockquote><figcaption>— 建設会社 代表（沖縄県）</figcaption></figure><figure class="card sun lift voice"><blockquote>「仕事のことも生活のことも、母国語で相談できるので安心です。日本で長く働きたいと思えるようになりました。」</blockquote><figcaption>— ネパール出身 介護スタッフ</figcaption></figure></div>
   <h3 class="posts-title">最新の投稿</h3>
   <div class="posts">
     <a class="post t-sun" href="https://www.instagram.com/YOUR_ACCOUNT" target="_blank" rel="noopener" aria-label="Instagramの投稿を見る"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"></path></svg></a>
@@ -1249,8 +1254,8 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     <h2>わかりやすい料金で。</h2>
     <p>料金は職種・人数によって変わります。まずはお気軽にお見積もりをご依頼ください。</p>
   </div>
-  <div class="fees"><div class="card sun fee"><div class="over">特定技能</div><h3>人材紹介手数料</h3><div class="price">30<small>万円〜</small></div><div class="per">お一人あたり（初回のみ）</div></div><div class="card mint fee"><div class="over">特定技能</div><h3>登録支援 委託費</h3><div class="price">2.5<small>万円〜</small></div><div class="per">お一人あたり／月</div></div><div class="card lilac fee"><div class="over">技人国</div><h3>人材紹介手数料</h3><div class="price">年収の20<small>%</small></div><div class="per">お一人あたり（初回のみ）</div></div></div>
-  <div class="card ink guarantee"><div class="disp">早期退職保証</div><p>入社から6か月以内に自己都合で退職した場合、無料で代わりの人材をご紹介するか、手数料の一部を返金します。</p></div>
+  <div class="fees"><div class="card sun lift fee"><div class="over">特定技能</div><h3>人材紹介手数料</h3><div class="price">30<small>万円〜</small></div><div class="per">お一人あたり（初回のみ）</div></div><div class="card mint lift fee"><div class="over">特定技能</div><h3>登録支援 委託費</h3><div class="price">2.5<small>万円〜</small></div><div class="per">お一人あたり／月</div></div><div class="card lilac lift fee"><div class="over">技人国</div><h3>人材紹介手数料</h3><div class="price">年収の20<small>%</small></div><div class="per">お一人あたり（初回のみ）</div></div></div>
+  <div class="card ink lift guarantee"><div class="disp">早期退職保証</div><p>入社から6か月以内に自己都合で退職した場合、無料で代わりの人材をご紹介するか、手数料の一部を返金します。</p></div>
   <p class="fees-foot"><span>※金額は税別の目安です。</span><a href="disclosure.html">職業紹介事業の情報公開（手数料表・返戻金制度） →</a></p>
 </section>
 
@@ -1312,10 +1317,10 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     <div class="disp">会社概要</div>
     <h2>アジビズグループについて。</h2>
   </div>
-  <div class="card msg-card"><div class="msg-photo">代表者の写真</div><div><div class="over">代表挨拶</div><h3>「働く人」と「受け入れる企業」、両方の安心をつくる。</h3><p>アジビズは2017年、沖縄・宜野湾で生まれました。人手不足に悩む企業と、日本で働く夢を持つアジアの若者。その両方の力になりたいという思いから始まった会社です。</p><p>私たちが大切にしているのは、紹介して終わりにしないこと。母国語で相談できる体制と、受け入れる職場への入国前研修で、長く安心して働ける環境を一緒につくります。</p><p class="msg-name">合同会社アジビズ 代表社員　（代表者名）</p></div></div>
+  <div class="card msg-card"><div class="msg-photo"><img src="assets/hiyane.jpg" alt="代表社員 比屋根 拓" width="640" height="800" loading="lazy"></div><div><div class="over">代表挨拶</div><h3>「働く人」と「受け入れる企業」、両方の安心をつくる。</h3><p>アジビズは2017年、沖縄・宜野湾で生まれました。人手不足に悩む企業と、日本で働く夢を持つアジアの若者。その両方の力になりたいという思いから始まった会社です。</p><p>私たちが大切にしているのは、紹介して終わりにしないこと。母国語で相談できる体制と、受け入れる職場への入国前研修で、長く安心して働ける環境を一緒につくります。</p><p class="msg-name">合同会社アジビズ 代表社員　比屋根 拓</p></div></div>
   <div class="card company-card">
     <dl class="specs">
-      <div><dt>会社名</dt><dd>合同会社アジビズ</dd></div><div><dt>代表者</dt><dd>代表社員　（代表者名）</dd></div>
+      <div><dt>会社名</dt><dd>合同会社アジビズ</dd></div><div><dt>代表者</dt><dd>代表社員　比屋根 拓</dd></div>
       <div><dt>設立</dt><dd>2017年（2022年に合同会社Japan &amp; Asia Biz Supportより社名変更）</dd></div>
       <div><dt>所在地</dt><dd><b>合同会社アジビズ</b><br>〒901-2225 沖縄県宜野湾市大謝名2-1-7<br><b>株式会社アジビズインターナショナル</b><br>〒456-0032 愛知県名古屋市熱田区三本松町18番25号 ハイツ紫苑301号</dd></div>
       <div><dt>連絡先</dt><dd>TEL 098-890-7701 ／ FAX 098-993-5755<br>info@japanasia.biz</dd></div>

@@ -970,6 +970,10 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .faq{display:flex;flex-direction:column;gap:12px;max-width:960px}
 .faq details{border:var(--border);border-radius:var(--radius-m);background:var(--paper);transition:box-shadow var(--dur) var(--ease-out),transform var(--dur) var(--ease-bounce)}
 .faq details[open]{background:var(--blue-50);box-shadow:var(--shadow-pop-s)}
+.faq details:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-pop-s)}
+.faq summary:hover::after{background:var(--paper)}
+.sub-steps li{transition:transform var(--dur-slow) var(--ease-bounce),box-shadow var(--dur) var(--ease-out)}
+.sub-steps li:hover{transform:translate(-4px,-4px) rotate(-.6deg);box-shadow:var(--shadow-pop)}
 .faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;font-family:var(--font-display-jp);font-weight:800;font-size:18px;line-height:1.5;color:var(--ink)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:var(--border);border-radius:50%;background:var(--sun-500);font-family:var(--font-sans);font-size:22px;line-height:1;transition:transform var(--dur) var(--ease-bounce)}
@@ -977,7 +981,8 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .faq details p{margin:0;padding:0 24px 22px;font-size:16px;line-height:1.85;color:var(--ink-2)}
 .reach .hours{margin:0;font-size:14px;font-weight:700;color:var(--ink-2)}
 .msg-card{margin-bottom:24px;display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:start;padding:36px 40px}
-.msg-photo{aspect-ratio:1;border:var(--border);border-radius:var(--radius-l);background:var(--sun-500);display:flex;align-items:center;justify-content:center;font-family:var(--font-display-jp);font-weight:800;font-size:14px;color:var(--ink);text-align:center;padding:12px}
+.msg-photo{aspect-ratio:4/5;border:var(--border);border-radius:var(--radius-l);overflow:hidden;background:var(--paper-2);box-shadow:var(--shadow-pop-s)}
+.msg-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
 .msg-card h3{margin:6px 0 14px;font-family:var(--font-display-jp);font-weight:800;font-size:24px;line-height:1.45;color:var(--ink)}
 .msg-card p{margin:0 0 12px;font-size:16px;line-height:1.9;color:var(--ink-2)}
 .msg-card .msg-name{margin:16px 0 0;font-weight:800;color:var(--ink)}
@@ -1022,7 +1027,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   .faq summary{font-size:16px;padding:16px 18px}
   .faq details p{padding:0 18px 18px;font-size:15px}
   .msg-card{grid-template-columns:1fr;gap:20px;padding:24px}
-  .msg-photo{width:140px}
+  .msg-photo{width:160px}
   .sub-steps{grid-template-columns:1fr}
 }
 </style>
@@ -1070,9 +1075,9 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 <div class="hello"><span>नमस्ते</span><span>Salom</span><span>ආයුබෝවන්</span><span>Xin chào</span><span>Halo</span><span>Hello</span><span>こんにちは</span></div>
 <p class="sub-lead">アジビズは、日本で働きたいアジアのみなさんと、沖縄・日本の企業をつなぐ会社です。仕事探しから入国、日本での生活まで、あなたの言葉でサポートします。</p>
 <div class="sub-grid">
-<div class="card sun sub-card"><h3>仕事を見つける</h3><p>介護・外食・建設・ホテル・自動車整備など、あなたに合う仕事を一緒に探します。</p></div>
-<div class="card mint sub-card"><h3>ビザと入国</h3><p>在留資格の申請、空港への出迎え、住まいや銀行口座の準備までお手伝いします。</p></div>
-<div class="card lilac sub-card"><h3>日本での生活</h3><p>仕事や生活で困ったときは、ネパール語・ウズベク語・シンハラ語などで相談できます。</p></div>
+<div class="card sun lift sub-card"><h3>仕事を見つける</h3><p>介護・外食・建設・ホテル・自動車整備など、あなたに合う仕事を一緒に探します。</p></div>
+<div class="card mint lift sub-card"><h3>ビザと入国</h3><p>在留資格の申請、空港への出迎え、住まいや銀行口座の準備までお手伝いします。</p></div>
+<div class="card lilac lift sub-card"><h3>日本での生活</h3><p>仕事や生活で困ったときは、ネパール語・ウズベク語・シンハラ語などで相談できます。</p></div>
 </div>
 <ol class="sub-steps">
 <li><span class="n">01</span><b>相談・登録</b><small>LINEかフォームで連絡</small></li>
