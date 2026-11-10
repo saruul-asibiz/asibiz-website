@@ -896,6 +896,27 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .posts{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .post{aspect-ratio:4/5}
 @media (max-width:700px){.posts{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+/* latest posts with text (2026-11-10): photo on top, white text area under it like the interview cards,
+   a white label with the Facebook or Instagram logo, and an arrow that turns yellow on hover */
+.post.has-text{aspect-ratio:auto;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;background:var(--paper);text-decoration:none}
+.post-media{position:relative;aspect-ratio:4/5;border-bottom:var(--border);overflow:hidden;border-radius:calc(var(--radius-m) - 2px) calc(var(--radius-m) - 2px) 0 0;display:flex;align-items:center;justify-content:center}
+.post.has-text .post-media img{border-radius:0}
+.post-body{flex:1;display:flex;flex-direction:column;gap:12px;padding:14px 16px 16px}
+.post-body b{font-family:var(--font-display-jp);font-weight:800;font-size:17px;line-height:1.4;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.post-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
+.post-pill{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px 0 8px;border:var(--border);border-radius:var(--radius-pill);background:var(--paper);font-family:var(--font-sans);font-weight:800;font-size:12px;color:var(--ink);white-space:nowrap}
+.post-pill svg{width:16px;height:16px;flex:none}
+.post-go{width:36px;height:36px;flex:none;border-radius:50%;border:var(--border);background:var(--paper);display:inline-flex;align-items:center;justify-content:center;transition:background var(--dur) var(--ease-out),box-shadow var(--dur) var(--ease-out)}
+.post-go svg{width:18px;height:18px;fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.post.has-text:hover .post-go{background:var(--sun-500);box-shadow:var(--shadow-pop-s)}
+@media (max-width:700px){
+  .post-body{padding:10px 12px 12px;gap:8px}
+  .post-body b{font-size:14px}
+  .post-pill{height:24px;font-size:11px;padding:0 8px 0 6px;gap:4px}
+  .post-pill svg{width:14px;height:14px}
+  .post-go{width:30px;height:30px}
+  .post-go svg{width:15px;height:15px}
+}
 /* custom mouse pointer (computers only): white at rest, lifts and turns yellow over clickable things, presses down while clicking */
 @media (hover:hover) and (pointer:fine){
   html{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cpath%20d%3D%22M4%204%20L25.2%2012.6%20C27.3%2013.5%2027.3%2016%2025.4%2016.9%20L18.8%2018.8%20L16.9%2025.4%20C16%2027.3%2013.5%2027.3%2012.6%2025.2%20Z%22%20transform%3D%22translate%282%202%29%20translate%284%203%29%20rotate%2822.1%29%20scale%280.93%29%20translate%28-4%20-4%29%22%20fill%3D%22%230A0A0A%22%20stroke%3D%22%230A0A0A%22%20stroke-width%3D%222%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M4%204%20L25.2%2012.6%20C27.3%2013.5%2027.3%2016%2025.4%2016.9%20L18.8%2018.8%20L16.9%2025.4%20C16%2027.3%2013.5%2027.3%2012.6%2025.2%20Z%22%20transform%3D%22translate%280%200%29%20translate%284%203%29%20rotate%2822.1%29%20scale%280.93%29%20translate%28-4%20-4%29%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%230A0A0A%22%20stroke-width%3D%222%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E") 4 3,auto}
@@ -1441,6 +1462,10 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   var TILE = ['sun', 'mint', 'lilac', 'coral', 'blue', 'sun'];
   var PLAY = reels.querySelector('.reel-play svg'), PIC = posts.querySelector('svg');
   function insta(u) { return typeof u === 'string' && /^https:\/\/((www|m)\.)?(instagram\.com|facebook\.com|fb\.com|fb\.watch)\//.test(u); }
+  /* platform logos for the label under each post (fixed markup, no user text) */
+  var FB_MARK = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#0866FF"/><path d="M15.1 15.4l.5-3.3h-3.1V10c0-.9.4-1.8 1.9-1.8h1.4V5.4s-1.3-.2-2.5-.2c-2.6 0-4.2 1.5-4.2 4.3v2.6H6.3v3.3h2.8V24h3.4v-8.6Z" fill="#fff"/></svg>';
+  var IG_MARK = '<svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="ig-mark" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset=".35" stop-color="#FA7E1E"/><stop offset=".6" stop-color="#D62976"/><stop offset=".8" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#ig-mark)"/><rect x="5" y="5" width="14" height="14" rx="4.2" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="16.3" cy="7.7" r="1.1" fill="#fff"/></svg>';
+  var GO_ARROW = '<svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
   function isFb(u) { return /^https:\/\/((www|m)\.)?(facebook\.com|fb\.com|fb\.watch)\//.test(u); }
   function pic(p) { return typeof p.image === 'string' && /^assets\/ig\/\d+\.jpg$/.test(p.image) ? BASE + p.image : null; }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -1468,12 +1493,20 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     if (ps.length) {
       var g = document.createDocumentFragment();
       ps.slice(0, ps.length >= 4 ? Math.min(8, ps.length - ps.length % 4) : ps.length).forEach(function (p, i) {
-        var a = el('a', 'post t-' + TILE[i % TILE.length]), first = lines(p)[0];
+        var t = lines(p), first = t[0], fb = isFb(p.permalink);
+        var a = el('a', 'post has-text');
         a.href = p.permalink; a.target = '_blank'; a.rel = 'noopener';
-        a.setAttribute('aria-label', (isFb(p.permalink) ? (ja ? 'Facebookの投稿を見る' : 'View post on Facebook') : (ja ? 'Instagramの投稿を見る' : 'View post on Instagram')) + (first ? (ja ? '：' : ': ') + first.slice(0, 40) : ''));
-        var src = pic(p);
-        if (src) { var im = el('img'); im.src = src; im.alt = p.altText || ''; im.loading = 'lazy'; im.decoding = 'async'; a.appendChild(im); }
-        else if (PIC) a.appendChild(PIC.cloneNode(true));
+        a.setAttribute('aria-label', (fb ? (ja ? 'Facebookの投稿を見る' : 'View post on Facebook') : (ja ? 'Instagramの投稿を見る' : 'View post on Instagram')) + (first ? (ja ? '：' : ': ') + t.join(' ').slice(0, 60) : ''));
+        var media = el('div', 'post-media'), src = pic(p);
+        if (src) { var im = el('img'); im.src = src; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; media.appendChild(im); }
+        else { media.className += ' t-' + TILE[i % TILE.length]; if (PIC) media.appendChild(PIC.cloneNode(true)); }
+        a.appendChild(media);
+        var body = el('div', 'post-body');
+        if (first) body.appendChild(el('b', null, t.join(' ')));
+        var foot = el('div', 'post-foot'), pill = el('span', 'post-pill');
+        pill.innerHTML = fb ? FB_MARK : IG_MARK; pill.appendChild(document.createTextNode(fb ? 'Facebook' : 'Instagram'));
+        var go = el('span', 'post-go'); go.innerHTML = GO_ARROW; go.setAttribute('aria-hidden', 'true');
+        foot.appendChild(pill); foot.appendChild(go); body.appendChild(foot); a.appendChild(body);
         g.appendChild(a);
       });
       posts.textContent = ''; posts.appendChild(g);

@@ -114,7 +114,8 @@ def main():
             warn(f'{where}: the link must be an Instagram or Facebook link (https://www.instagram.com/... or https://www.facebook.com/...). Block skipped.')
             continue
         posts.append({'permalink': link, 'mediaType': 'IMAGE', 'hashtags': [],
-                      'prunedCaption': b.get('text', ''), 'captionEn': b.get('text_en', ''), 'image': picture(b.get('image', ''), where, 700)})
+                      'prunedCaption': b.get('title') or b.get('text', ''), 'captionEn': b.get('title_en') or b.get('text_en', ''),
+                      'image': picture(b.get('image', ''), where, 700)})
     # Instagram links carry their date, so those are put newest first automatically.
     # Facebook links don't, so if any post is from Facebook the posts keep the order written in the file (top first).
     iv = [p for p in posts if p['mediaType'] == 'VIDEO']

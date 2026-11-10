@@ -1,29 +1,32 @@
-# 最新の投稿 (Latest posts): one block per post. The top block shows first; the website shows the first 6.
+# 最新の投稿 (Latest posts): one block per post. Posts show in the order written here (top first).
+# The website shows them in full rows of 4 (up to 8).
 #
 # How to add a new post:
 #   1. Paste a new block at the TOP of the list.
 #   2. Fill it in:
-#        link:   the post's link. Instagram: open the post > ... > Copy link.
-#                Facebook: open the photo and copy the address from the browser bar.
-#        image:  file name of the picture you uploaded to content/images
-#        text:   a short description, for people using screen readers (you can delete this line)
+#        link:      the post's link. Both Instagram and Facebook work:
+#                     Instagram: open the post > ... > Copy link
+#                     Facebook:  open the photo and copy the address from the browser bar
+#        image:     file name of the picture you uploaded to content/images
+#        title:     1 short line in Japanese, shown under the picture (up to 2 lines show, the rest is cut with …)
+#        title_en:  the same in English, for the English page (if left out, the Japanese is shown)
 #   3. Keep one empty line between blocks. Lines starting with # are ignored.
 #   4. Click "Commit changes". The website updates in about 2 minutes.
 #
-# Instagram and Facebook links both work. Posts are shown in the order written here (top first).
+# The label under each picture (Facebook or Instagram) is chosen automatically from the link.
 
 link: https://www.facebook.com/photo.php?fbid=122130156344322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz1.jpg
-text: Claude
+title: Claude
 
 link: https://www.facebook.com/photo.php?fbid=122187462032322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz2.jpg
-text: Dseek
+title: Dseek
 
 link: https://www.facebook.com/photo.php?fbid=122185860506322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz3.jpg
-text: 特定技能で働く外国人が
+title: 特定技能で働く外国人が
 
 link: https://www.facebook.com/photo.php?fbid=122211711410322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz4.jpg
-text: Gem
+title: Gem
