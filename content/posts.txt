@@ -9,18 +9,18 @@
 #   3. Keep one empty line between blocks. Lines starting with # are ignored.
 #   4. Click "Commit changes". The website updates in about 2 minutes.
 
-link: https://www.instagram.com/p/DeQ-huEk2s3/
+link: https://www.facebook.com/photo.php?fbid=122130156344322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz1.jpg
 text: Claude
 
-link: https://www.instagram.com/p/DeQ26K7E9t-/
+link: https://www.facebook.com/photo.php?fbid=122187462032322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz2.jpg
 text: Dseek
 
-link: https://www.instagram.com/p/DeQ-huEk2s3/
+link: https://www.facebook.com/photo.php?fbid=122185860506322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz3.jpg
 text: 特定技能で働く外国人が
 
-link: https://www.instagram.com/p/DeNz8PtkxYN/
+link: https://www.facebook.com/photo.php?fbid=122211711410322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz4.jpg
 text: Gem
