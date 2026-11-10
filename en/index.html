@@ -931,12 +931,12 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .reel:hover .reel-play{transform:translate(-2px,-2px);background:var(--sun-500);box-shadow:var(--shadow-pop)}
 @media (max-width:700px){.reel-play{left:10px;bottom:10px;width:44px;height:44px}.reel-play .ic{width:18px;height:18px}}
 
-/* reading progress: a plane flies along a dashed flight path to the Japan marker as you read */
+/* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
 .sc-progress{display:none}
 @supports (animation-timeline: scroll()){
   .sc-progress{display:block;position:absolute;left:0;right:0;top:calc(100% - 1px);bottom:auto;height:6px;scale:none;transform:none;z-index:2;pointer-events:none;
-    background:repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 12px) left 50%/100% 2px no-repeat,var(--paper);border-bottom:2px solid var(--ink);
+    background:var(--paper);border-bottom:2px solid var(--ink);
     animation:sc-read linear both;animation-timeline:scroll(root)}
 }
 @keyframes sc-read{from{--rp:0}to{--rp:1}}
@@ -974,10 +974,10 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   <div class="bar">
     <a class="brand" href="#top" aria-label="Asibiz Group home"><img src="../assets/logo.png" alt="Asibiz Group (アジビズグループ)" width="600" height="221"></a>
     <nav aria-label="Main menu">
+      <a class="btn s paper" href="#interviews">Interviews</a>
       <a class="btn s paper" href="#services">Services</a>
       <a class="btn s paper" href="#tokutei">Skilled Workers</a>
       <a class="btn s paper" href="#careers">Specialists &amp; Relocation</a>
-      <a class="btn s paper" href="#interviews">Interviews</a>
       <a class="btn s paper" href="#flow">How it works</a>
       <a class="btn s paper" href="#company">Company</a>
       <a class="btn s cta" href="#contact">Contact <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
@@ -988,10 +988,10 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   <div class="menu-panel" id="menu-panel">
     <div class="menu-in">
       <div class="menu-links" role="navigation" aria-label="Menu">
+        <a href="#interviews">Interviews <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
         <a href="#services">Services <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
         <a href="#tokutei">Skilled Workers <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
         <a href="#careers">Specialists &amp; Relocation <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
-        <a href="#interviews">Interviews <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
         <a href="#flow">How it works <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
         <a href="#company">Company <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
       </div>
@@ -1316,10 +1316,10 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
       <div style="margin-top:28px"><a class="btn l" href="#contact">Free consultation <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
     </div>
     <nav aria-label="Footer menu">
+      <a href="#interviews">Interviews</a>
       <a href="#services">Services</a>
       <a href="#tokutei">Skilled Workers</a>
       <a href="#careers">Specialists &amp; Relocation</a>
-      <a href="#interviews">Interviews</a>
       <a href="#flow">How it works</a>
       <a href="#company">Company</a>
       <a href="#contact">Contact</a>

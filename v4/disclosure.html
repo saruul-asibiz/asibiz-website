@@ -932,12 +932,12 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .reel:hover .reel-play{transform:translate(-2px,-2px);background:var(--sun-500);box-shadow:var(--shadow-pop)}
 @media (max-width:700px){.reel-play{left:10px;bottom:10px;width:44px;height:44px}.reel-play .ic{width:18px;height:18px}}
 
-/* reading progress: a plane flies along a dashed flight path to the Japan marker as you read */
+/* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
 .sc-progress{display:none}
 @supports (animation-timeline: scroll()){
   .sc-progress{display:block;position:absolute;left:0;right:0;top:calc(100% - 1px);bottom:auto;height:6px;scale:none;transform:none;z-index:2;pointer-events:none;
-    background:repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 12px) left 50%/100% 2px no-repeat,var(--paper);border-bottom:2px solid var(--ink);
+    background:var(--paper);border-bottom:2px solid var(--ink);
     animation:sc-read linear both;animation-timeline:scroll(root)}
 }
 @keyframes sc-read{from{--rp:0}to{--rp:1}}
@@ -1084,9 +1084,9 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   <div class="bar">
     <a class="brand" href="./" aria-label="アジビズグループ ホーム"><img src="assets/logo.png" alt="アジビズグループ" width="600" height="221"></a>
     <nav aria-label="メインメニュー">
-      <a class="btn s paper" href="./#services">サービス</a>
+      <a class="btn s paper" href="./#interviews">インタビュー</a>
+        <a class="btn s paper" href="./#services">サービス</a>
         <a class="btn s paper" href="./#tokutei">特定技能</a>
-        <a class="btn s paper" href="./#interviews">インタビュー</a>
         <a class="btn s paper" href="./#flow">ご依頼の流れ</a>
         <a class="btn s paper" href="./#fees">料金</a>
         <a class="btn s paper" href="./#faq">よくある質問</a>
@@ -1098,7 +1098,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   </div>
   <div class="menu-panel" id="menu-panel">
     <div class="menu-in">
-      <div class="menu-links" role="navigation" aria-label="メニュー"><a href="./#services">サービス <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#tokutei">特定技能 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#interviews">インタビュー <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#flow">ご依頼の流れ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#fees">料金 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#faq">よくある質問 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#company">会社概要 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="workers.html">日本で働きたい方へ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="relocation.html">日本移住コンサル <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="disclosure.html">職業紹介事業の情報公開 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
+      <div class="menu-links" role="navigation" aria-label="メニュー"><a href="./#interviews">インタビュー <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#services">サービス <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#tokutei">特定技能 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#flow">ご依頼の流れ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#fees">料金 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#faq">よくある質問 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#company">会社概要 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="workers.html">日本で働きたい方へ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="relocation.html">日本移住コンサル <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="disclosure.html">職業紹介事業の情報公開 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
       <div class="menu-foot">
         <div class="sns-pills" role="group" aria-label="公式SNS"><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
         <div class="lang-switch" role="group" aria-label="言語 / Language"><a class="on" lang="ja" hreflang="ja" href="disclosure.html" aria-current="page">日本語</a><a lang="en" hreflang="en" href="en/disclosure.html">English</a></div>
@@ -1143,9 +1143,9 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
       <div style="margin-top:28px"><a class="btn l" href="./#contact">無料相談・お問い合わせ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
     </div>
     <nav aria-label="フッターメニュー">
+          <a href="./#interviews">インタビュー</a>
           <a href="./#services">サービス</a>
           <a href="./#tokutei">特定技能</a>
-          <a href="./#interviews">インタビュー</a>
           <a href="./#flow">ご依頼の流れ</a>
           <a href="./#fees">料金</a>
           <a href="./#faq">よくある質問</a>

@@ -932,12 +932,12 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .reel:hover .reel-play{transform:translate(-2px,-2px);background:var(--sun-500);box-shadow:var(--shadow-pop)}
 @media (max-width:700px){.reel-play{left:10px;bottom:10px;width:44px;height:44px}.reel-play .ic{width:18px;height:18px}}
 
-/* reading progress: a plane flies along a dashed flight path to the Japan marker as you read */
+/* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
 .sc-progress{display:none}
 @supports (animation-timeline: scroll()){
   .sc-progress{display:block;position:absolute;left:0;right:0;top:calc(100% - 1px);bottom:auto;height:6px;scale:none;transform:none;z-index:2;pointer-events:none;
-    background:repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 12px) left 50%/100% 2px no-repeat,var(--paper);border-bottom:2px solid var(--ink);
+    background:var(--paper);border-bottom:2px solid var(--ink);
     animation:sc-read linear both;animation-timeline:scroll(root)}
 }
 @keyframes sc-read{from{--rp:0}to{--rp:1}}
@@ -1084,9 +1084,9 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   <div class="bar">
     <a class="brand" href="./" aria-label="Asibiz Group home"><img src="../assets/logo.png" alt="Asibiz Group (アジビズグループ)" width="600" height="221"></a>
     <nav aria-label="Main menu">
-      <a class="btn s paper" href="./#services">Services</a>
+      <a class="btn s paper" href="./#interviews">Interviews</a>
+        <a class="btn s paper" href="./#services">Services</a>
         <a class="btn s paper" href="./#tokutei">Skilled workers</a>
-        <a class="btn s paper" href="./#interviews">Interviews</a>
         <a class="btn s paper" href="./#flow">How it works</a>
         <a class="btn s paper" href="./#fees">Fees</a>
         <a class="btn s paper" href="./#faq">FAQ</a>
@@ -1098,7 +1098,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   </div>
   <div class="menu-panel" id="menu-panel">
     <div class="menu-in">
-      <div class="menu-links" role="navigation" aria-label="Menu"><a href="./#services">Services <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#tokutei">Skilled workers <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#interviews">Interviews <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#flow">How it works <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#fees">Fees <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#faq">FAQ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#company">Company <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="workers.html">Work in Japan <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="relocation.html">Relocation consulting <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="disclosure.html">Job placement disclosure <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
+      <div class="menu-links" role="navigation" aria-label="Menu"><a href="./#interviews">Interviews <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#services">Services <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#tokutei">Skilled workers <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#flow">How it works <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#fees">Fees <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#faq">FAQ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#company">Company <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="workers.html">Work in Japan <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="relocation.html">Relocation consulting <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="disclosure.html">Job placement disclosure <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
       <div class="menu-foot">
         <div class="sns-pills" role="group" aria-label="Follow us"><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
         <div class="lang-switch" role="group" aria-label="言語 / Language"><a lang="ja" hreflang="ja" href="../workers.html">日本語</a><a class="on" lang="en" hreflang="en" href="workers.html" aria-current="page">English</a></div>
@@ -1143,9 +1143,9 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
       <div style="margin-top:28px"><a class="btn l" href="./#contact">Free consultation <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
     </div>
     <nav aria-label="Footer menu">
+          <a href="./#interviews">Interviews</a>
           <a href="./#services">Services</a>
           <a href="./#tokutei">Skilled workers</a>
-          <a href="./#interviews">Interviews</a>
           <a href="./#flow">How it works</a>
           <a href="./#fees">Fees</a>
           <a href="./#faq">FAQ</a>
