@@ -945,6 +945,9 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .rp-plane svg{width:18px;height:18px;fill:var(--ink)}
 .rp-dest{position:absolute;right:10px;top:50%;width:26px;height:18px;margin-top:-10px;box-sizing:border-box;border:2px solid var(--ink);border-radius:4px;background:var(--paper)}
 .rp-dest::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--red-500)}
+/* the progress bar hangs 5 px below the header, so give the first section room under it (was 8 px / 4 px before the bar) */
+.hero{padding-top:30px}
+@media (max-width:700px){.hero{padding-top:20px}}
 @media (max-width:700px){
   .rp-plane{width:26px;height:26px;margin-top:-13px;right:-13px}
   .rp-plane svg{width:15px;height:15px}
