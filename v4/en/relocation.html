@@ -932,6 +932,23 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .reel:hover .reel-play{transform:translate(-2px,-2px);background:var(--sun-500);box-shadow:var(--shadow-pop)}
 @media (max-width:700px){.reel-play{left:10px;bottom:10px;width:44px;height:44px}.reel-play .ic{width:18px;height:18px}}
 
+/* hero mascot: drawn as parts (eyes, brows, mouth, cheeks) and already facing straight, so the old 28 degree turn is gone.
+   Every few seconds he does two little hops and squints on landing; hover or tap = he spins once with happy eyes. */
+.oki .hero-art .sticker{transform:none}
+@keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.mascot .mz{display:block;width:100%;height:auto;overflow:visible;cursor:pointer}
+.mz .mz-all > g{transform-box:fill-box;transform-origin:50% 50%}
+.mz .mz-all{transform-box:fill-box;transform-origin:50% 100%;animation:m-hop 4.2s ease-in-out infinite}
+.mz .mz-eye-l,.mz .mz-eye-r{animation:m-eyes 4.2s ease-in-out infinite}
+.mz .mz-brow-l,.mz .mz-brow-r{animation:m-brow 4.2s ease-in-out infinite}
+@keyframes m-hop{0%,58%,100%{transform:none}62%{transform:scale(1.08,.9)}68%{transform:translateY(-14%) scale(.95,1.06)}74%{transform:scale(1.07,.92)}79%{transform:translateY(-8%) scale(.97,1.03)}85%{transform:scale(1.04,.95)}91%{transform:none}}
+@keyframes m-eyes{0%,26%,34%,72%,88%,100%{transform:scaleY(1)}30%{transform:scaleY(.1)}74%,85%{transform:scaleY(.3)}}
+@keyframes m-brow{0%,62%,91%,100%{transform:none}68%,79%{transform:translateY(-36px)}}
+.mascot:hover .mz-all,.mascot.is-spin .mz-all{animation:m-spin .9s cubic-bezier(.34,1.56,.64,1)}
+.mascot:hover .mz-eye-l,.mascot:hover .mz-eye-r,.mascot.is-spin .mz-eye-l,.mascot.is-spin .mz-eye-r{animation:none;transform:scaleY(.3)}
+@keyframes m-spin{0%{transform:none}30%{transform:translateY(-10%) scale(.95,1.05)}100%{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.mz *{animation:none!important}}
+
 /* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
 .sc-progress{display:none}
@@ -1300,6 +1317,13 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
       .catch(function () { say(T.err, 'err'); })
       .then(function () { clearTimeout(timer); if (btn) btn.disabled = false; });
   });
+})();
+/* hero mascot: tap or click makes him spin once, the same as hovering */
+(function () {
+  var m = document.querySelector('.hero-art .mascot');
+  if (!m) return;
+  m.addEventListener('click', function () { m.classList.remove('is-spin'); void m.offsetWidth; m.classList.add('is-spin'); });
+  m.addEventListener('animationend', function (e) { if (e.animationName === 'm-spin') m.classList.remove('is-spin'); });
 })();
 </script>
 </body>
