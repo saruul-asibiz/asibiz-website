@@ -933,21 +933,28 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 @media (max-width:700px){.reel-play{left:10px;bottom:10px;width:44px;height:44px}.reel-play .ic{width:18px;height:18px}}
 
 /* hero mascot: drawn as parts (eyes, brows, mouth, cheeks) and already facing straight, so the old 28 degree turn is gone.
-   Every few seconds he does two little hops and squints on landing; hover or tap = he spins once with happy eyes. */
+   Idle: blinks now and then; two little hops about every 10 seconds, squinting on landing.
+   Mouse over or tap: one spin with happy eyes, played once. On computers his eyes follow the mouse. */
 .oki .hero-art .sticker{transform:none}
 @keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .mascot .mz{display:block;width:100%;height:auto;overflow:visible;cursor:pointer}
 .mz .mz-all > g{transform-box:fill-box;transform-origin:50% 50%}
-.mz .mz-all{transform-box:fill-box;transform-origin:50% 100%;animation:m-hop 4.2s ease-in-out infinite}
-.mz .mz-eye-l,.mz .mz-eye-r{animation:m-eyes 4.2s ease-in-out infinite}
-.mz .mz-brow-l,.mz .mz-brow-r{animation:m-brow 4.2s ease-in-out infinite}
-@keyframes m-hop{0%,58%,100%{transform:none}62%{transform:scale(1.08,.9)}68%{transform:translateY(-14%) scale(.95,1.06)}74%{transform:scale(1.07,.92)}79%{transform:translateY(-8%) scale(.97,1.03)}85%{transform:scale(1.04,.95)}91%{transform:none}}
-@keyframes m-eyes{0%,26%,34%,72%,88%,100%{transform:scaleY(1)}30%{transform:scaleY(.1)}74%,85%{transform:scaleY(.3)}}
-@keyframes m-brow{0%,62%,91%,100%{transform:none}68%,79%{transform:translateY(-36px)}}
-.mascot:hover .mz-all,.mascot.is-spin .mz-all{animation:m-spin .9s cubic-bezier(.34,1.56,.64,1)}
-.mascot:hover .mz-eye-l,.mascot:hover .mz-eye-r,.mascot.is-spin .mz-eye-l,.mascot.is-spin .mz-eye-r{animation:none;transform:scaleY(.3)}
+.mz .mz-all{transform-box:fill-box;transform-origin:50% 100%;animation:m-hop 10s ease-in-out infinite}
+.mz .mz-eye-l,.mz .mz-eye-r{animation:m-eyes 10s ease-in-out infinite}
+.mz .mz-brow-l,.mz .mz-brow-r{animation:m-brow 10s ease-in-out infinite}
+@keyframes m-hop{0%,84%,100%{transform:none}86%{transform:scale(1.06,.92)}88.5%{transform:translateY(-10%) scale(.96,1.05)}91%{transform:scale(1.05,.94)}93%{transform:translateY(-6%) scale(.98,1.02)}95.5%{transform:scale(1.03,.96)}98%{transform:none}}
+@keyframes m-eyes{0%,24%,28%,56%,60%,90%,97%,100%{transform:scaleY(1)}26%,58%{transform:scaleY(.1)}91%,95.5%{transform:scaleY(.3)}}
+@keyframes m-brow{0%,86%,98%,100%{transform:none}88.5%,93%{transform:translateY(-30px)}}
+/* follow the mouse: the script sets --ex/--ey (in drawing units) on the mascot */
+.mz .mz-look{transform:translate(var(--ex,0px),var(--ey,0px));transition:transform .18s ease-out}
+.mz .mz-brow-l .mz-look,.mz .mz-brow-r .mz-look{transform:translate(calc(var(--ex,0px) * .55),calc(var(--ey,0px) * .55))}
+/* the spin plays once (class added by the script on mouse over, click or tap, removed when it ends) */
+.mascot.is-spin .mz-all{animation:m-spin .9s cubic-bezier(.34,1.56,.64,1)}
+.mascot.is-spin .mz-eye-l,.mascot.is-spin .mz-eye-r{animation:m-happy .9s ease-in-out}
+.mascot.is-spin .mz-brow-l,.mascot.is-spin .mz-brow-r{animation:none}
 @keyframes m-spin{0%{transform:none}30%{transform:translateY(-10%) scale(.95,1.05)}100%{transform:rotate(360deg)}}
-@media (prefers-reduced-motion: reduce){.mz *{animation:none!important}}
+@keyframes m-happy{0%,100%{transform:scaleY(1)}15%,80%{transform:scaleY(.3)}}
+@media (prefers-reduced-motion: reduce){.mz *{animation:none!important;transition:none!important}}
 
 /* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
@@ -1322,12 +1329,25 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
       .then(function () { clearTimeout(timer); if (btn) btn.disabled = false; });
   });
 })();
-/* hero mascot: tap or click makes him spin once, the same as hovering */
+/* hero mascot: one spin on mouse over, click or tap; on computers his eyes follow the mouse */
 (function () {
   var m = document.querySelector('.hero-art .mascot');
   if (!m) return;
-  m.addEventListener('click', function () { m.classList.remove('is-spin'); void m.offsetWidth; m.classList.add('is-spin'); });
+  function spin() { if (m.classList.contains('is-spin')) return; m.classList.add('is-spin'); }
+  m.addEventListener('mouseenter', spin);
+  m.addEventListener('click', function () { m.classList.remove('is-spin'); void m.offsetWidth; spin(); });
   m.addEventListener('animationend', function (e) { if (e.animationName === 'm-spin') m.classList.remove('is-spin'); });
+  if (!window.matchMedia || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  var MAX = 70, mx = 0, my = 0, queued = false;
+  function look() {
+    queued = false;
+    var r = m.getBoundingClientRect(), dx = mx - (r.left + r.width / 2), dy = my - (r.top + r.height / 2);
+    var d = Math.sqrt(dx * dx + dy * dy) || 1, k = Math.min(1, d / 250) * MAX / d;
+    m.style.setProperty('--ex', (dx * k).toFixed(1) + 'px');
+    m.style.setProperty('--ey', (dy * k).toFixed(1) + 'px');
+  }
+  document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; if (!queued) { queued = true; requestAnimationFrame(look); } }, { passive: true });
+  document.addEventListener('mouseleave', function () { m.style.setProperty('--ex', '0px'); m.style.setProperty('--ey', '0px'); });
 })();
 </script>
 </body>
