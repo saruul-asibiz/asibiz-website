@@ -5,7 +5,7 @@ Runs inside GitHub Actions on every change. Cover pictures from content/images a
 and copied to assets/ig/<number>.jpg (the number comes from the picture itself). Mistakes never stop the website from publishing:
 a block with a problem is skipped and explained as a warning on the Actions run.
 English pages use title_en / subtitle_en / text_en when written, otherwise the Japanese text.
-Interviews and posts are shown newest first automatically, so blocks can be added anywhere.
+Instagram links are shown newest first automatically. Posts with a Facebook link keep the order written in the file.
 """
 import hashlib, json, os, re, shutil
 
@@ -15,7 +15,7 @@ IMAGES = os.path.join(CONTENT, 'images')
 OUT_IMG = os.path.join(ROOT, 'assets', 'ig')
 OUT_JSON = os.path.join(ROOT, 'data', 'instagram.json')
 TAG = 'asibizinterview'
-LINK = re.compile(r'^https://(www\.)?instagram\.com/[A-Za-z0-9_./?=&%-]+$')
+LINK = re.compile(r'^https://((www|m)\.)?(instagram\.com|facebook\.com|fb\.com|fb\.watch)/[A-Za-z0-9_./?=&%-]+$')
 CODE = re.compile(r'instagram\.com/(?:[A-Za-z0-9_.]+/)?(?:p|reel|reels|tv)/([A-Za-z0-9_-]+)')
 ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'
 
@@ -99,7 +99,7 @@ def main():
         where = f'content/interviews.txt (block starting on line {line})'
         link = b.get('link', '')
         if not LINK.match(link):
-            warn(f'{where}: the link must be an Instagram link starting with https://www.instagram.com/ . Block skipped.')
+            warn(f'{where}: the link must be an Instagram or Facebook link (https://www.instagram.com/... or https://www.facebook.com/...). Block skipped.')
             continue
         if not b.get('title'):
             warn(f'{where}: add a "title:" line.')
@@ -111,12 +111,18 @@ def main():
         where = f'content/posts.txt (block starting on line {line})'
         link = b.get('link', '')
         if not LINK.match(link):
-            warn(f'{where}: the link must be an Instagram link starting with https://www.instagram.com/ . Block skipped.')
+            warn(f'{where}: the link must be an Instagram or Facebook link (https://www.instagram.com/... or https://www.facebook.com/...). Block skipped.')
             continue
         posts.append({'permalink': link, 'mediaType': 'IMAGE', 'hashtags': [],
                       'prunedCaption': b.get('text', ''), 'captionEn': b.get('text_en', ''), 'image': picture(b.get('image', ''), where, 700)})
-    # Newest first, no matter where a block was pasted in the file.
-    posts.sort(key=lambda p: (p['mediaType'] != 'VIDEO', -age(p['permalink'])))
+    # Instagram links carry their date, so those are put newest first automatically.
+    # Facebook links don't, so if any post is from Facebook the posts keep the order written in the file (top first).
+    iv = [p for p in posts if p['mediaType'] == 'VIDEO']
+    ps = [p for p in posts if p['mediaType'] != 'VIDEO']
+    iv.sort(key=lambda p: -age(p['permalink']))
+    if all(CODE.search(p['permalink']) for p in ps):
+        ps.sort(key=lambda p: -age(p['permalink']))
+    posts = iv + ps
     with open(OUT_JSON, 'w', encoding='utf-8') as f:
         json.dump({'posts': posts}, f, ensure_ascii=False, indent=1)
     n_iv = sum(1 for p in posts if p['mediaType'] == 'VIDEO')

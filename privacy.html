@@ -1099,7 +1099,8 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   var COLORS = ['blue', 'sun', 'mint', 'lilac', 'coral'];
   var TILE = ['sun', 'mint', 'lilac', 'coral', 'blue', 'sun'];
   var PLAY = reels.querySelector('.reel-play svg'), PIC = posts.querySelector('svg');
-  function insta(u) { return typeof u === 'string' && /^https:\/\/(www\.)?instagram\.com\//.test(u); }
+  function insta(u) { return typeof u === 'string' && /^https:\/\/((www|m)\.)?(instagram\.com|facebook\.com|fb\.com|fb\.watch)\//.test(u); }
+  function isFb(u) { return /^https:\/\/((www|m)\.)?(facebook\.com|fb\.com|fb\.watch)\//.test(u); }
   function pic(p) { return typeof p.image === 'string' && /^assets\/ig\/\d+\.jpg$/.test(p.image) ? BASE + p.image : null; }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   function isInterview(p) { return (p.mediaType === 'VIDEO') && (p.hashtags || []).some(function (h) { return String(h).toLowerCase() === TAG; }); }
@@ -1128,7 +1129,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
       ps.slice(0, ps.length >= 4 ? Math.min(8, ps.length - ps.length % 4) : ps.length).forEach(function (p, i) {
         var a = el('a', 'post t-' + TILE[i % TILE.length]), first = lines(p)[0];
         a.href = p.permalink; a.target = '_blank'; a.rel = 'noopener';
-        a.setAttribute('aria-label', (ja ? 'Instagramの投稿を見る' : 'View post on Instagram') + (first ? (ja ? '：' : ': ') + first.slice(0, 40) : ''));
+        a.setAttribute('aria-label', (isFb(p.permalink) ? (ja ? 'Facebookの投稿を見る' : 'View post on Facebook') : (ja ? 'Instagramの投稿を見る' : 'View post on Instagram')) + (first ? (ja ? '：' : ': ') + first.slice(0, 40) : ''));
         var src = pic(p);
         if (src) { var im = el('img'); im.src = src; im.alt = p.altText || ''; im.loading = 'lazy'; im.decoding = 'async'; a.appendChild(im); }
         else if (PIC) a.appendChild(PIC.cloneNode(true));

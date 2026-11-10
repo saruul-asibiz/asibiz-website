@@ -3,11 +3,14 @@
 # How to add a new post:
 #   1. Paste a new block at the TOP of the list.
 #   2. Fill it in:
-#        link:   the post's link (in Instagram: open the post > ... > Copy link)
+#        link:   the post's link. Instagram: open the post > ... > Copy link.
+#                Facebook: open the photo and copy the address from the browser bar.
 #        image:  file name of the picture you uploaded to content/images
 #        text:   a short description, for people using screen readers (you can delete this line)
 #   3. Keep one empty line between blocks. Lines starting with # are ignored.
 #   4. Click "Commit changes". The website updates in about 2 minutes.
+#
+# Instagram and Facebook links both work. Posts are shown in the order written here (top first).
 
 link: https://www.facebook.com/photo.php?fbid=122130156344322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz1.jpg
