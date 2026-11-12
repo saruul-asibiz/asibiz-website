@@ -965,6 +965,52 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .lt-row .logo-tile:hover{background:var(--sun-500);transform:translate(-2px,-2px);box-shadow:var(--shadow-pop-s)}
 .lt-row .logo-tile:hover small{color:var(--ink-2)}
 
+/* scroll-locked steps (2026-11-12): the support list and "How it works" pin in place while their items switch on one by one.
+   Without JS, with reduce-motion, or when the block is taller than the screen, everything simply shows. */
+.pill-list.pin-steps{grid-template-columns:1fr;position:relative;gap:12px}
+.pin-steps::before,.pin-steps::after{content:"";position:absolute;left:28px;top:24px;bottom:24px;width:4px;border-radius:4px}
+.pin-steps::before{background:var(--blue-100)}
+.pin-steps::after{background:var(--ink);transform-origin:50% 0;transform:scaleY(var(--fill,1));transition:transform .45s var(--ease-out)}
+.pin-steps li{position:relative;z-index:1}
+.pin-count{display:flex;align-items:baseline;gap:8px;font-family:var(--font-display);font-weight:800;font-style:italic;color:var(--ink)}
+.pin-count .pc-n{font-size:72px;line-height:.8}
+.pin-count .pc-of{font-size:28px}
+.pin-count small{font-family:var(--font-sans-jp);font-style:normal;font-weight:700;font-size:13px;margin-left:4px}
+.feature .pin-count{margin-top:4px}
+.flow-meter{display:flex;align-items:center;gap:28px;margin:-20px 0 22px}
+.fm-dots{position:relative;flex:1;display:flex;justify-content:space-between;padding:0 4px}
+.fm-dots::before,.fm-dots::after{content:"";position:absolute;left:12px;right:12px;top:50%;height:4px;margin-top:-2px;border-radius:4px}
+.fm-dots::before{background:var(--blue-100)}
+.fm-dots::after{background:var(--ink);transform-origin:0 50%;transform:scaleX(var(--fill,1));transition:transform .45s var(--ease-out)}
+.fm-dots i{position:relative;z-index:1;width:22px;height:22px;border-radius:50%;border:var(--border);background:var(--sun-500);transition:background .25s}
+.flow-meter .pin-count .pc-n{font-size:60px}
+.pin-track{position:relative}
+.pin-stage{position:relative}
+.pin-on .pin-stage{position:sticky;top:var(--pin-top,80px)}
+/* waiting state (only once the script is running): pale, shifted and a little smaller; "on" = normal card with a pop */
+.pin-ready .pin-steps li{transition:transform .5s var(--ease-bounce),background-color .25s,border-color .25s,box-shadow .25s,color .25s}
+.pin-ready .pin-steps li .disc{transition:transform .5s var(--ease-bounce),filter .25s}
+.pin-ready .pin-steps li:not(.on){transform:translateX(18px);background:var(--paper-2);border-color:var(--blue-100);color:var(--ink-3)}
+.pin-ready .pin-steps li:not(.on) .disc{transform:scale(.85);filter:grayscale(1);border-color:var(--blue-100)}
+.pin-ready .pin-steps li.on{box-shadow:var(--shadow-pop-s)}
+.pin-ready .fm-dots i:not(.on){background:var(--paper)}
+.pin-ready .steps li{transition:transform .55s var(--ease-bounce),background-color .25s,border-color .25s,box-shadow .25s}
+.pin-ready .steps li .step-art svg{transition:transform .55s var(--ease-bounce),filter .25s}
+.pin-ready .steps li:not(.on){transform:translateY(34px) scale(.94);background:var(--paper-2);border-color:var(--blue-100);box-shadow:none}
+.pin-ready .steps li:not(.on) .n{background:var(--paper-2);border-color:var(--blue-100);color:var(--ink-4)}
+.pin-ready .steps li:not(.on) .step-art svg{transform:scale(.6) rotate(-8deg);filter:grayscale(1)}
+.pin-ready .steps li.on{box-shadow:var(--shadow-pop-s)}
+/* when "How it works" is pinned, the cards get a little shorter so all 8 fit on one screen */
+#flow .pin-on .steps li{min-height:0;padding:16px 18px;gap:8px}
+#flow .pin-on .steps .n{font-size:34px}
+#flow .pin-on .steps .step-art{min-height:0}
+#flow .pin-on .steps .step-art svg{width:112px}
+#flow .pin-on .steps h3{font-size:17px}
+#flow .pin-on .flow-total{margin-top:14px;padding:12px 20px}
+#flow .pin-on .head{margin-bottom:34px}
+@media (max-width:700px){.flow-meter{margin:-8px 0 16px;gap:14px}.fm-dots i{width:16px;height:16px}.flow-meter .pin-count .pc-n,.pin-count .pc-n{font-size:44px}.pin-count .pc-of{font-size:20px}.pin-steps::before,.pin-steps::after{left:28px}}
+@media (prefers-reduced-motion: reduce){.pin-steps li,.steps li,.pin-steps::after,.fm-dots::after{transition:none!important}}
+
 /* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
 .sc-progress{display:none}
@@ -1240,6 +1286,65 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
       .catch(function () { say(T.err, 'err'); })
       .then(function () { clearTimeout(timer); if (btn) btn.disabled = false; });
   });
+})();
+/* scroll-locked steps: the block pins under the header and its items switch on one by one as you scroll */
+(function () {
+  var tracks = [].slice.call(document.querySelectorAll('.pin-track'));
+  if (!tracks.length) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var STEP = 0.42;   /* scroll distance per item, as a share of the screen height */
+  var hdr = document.querySelector('.site-header');
+  var blocks = tracks.map(function (t) {
+    var stage = t.querySelector('.pin-stage');
+    var items = [].slice.call(stage.querySelectorAll(t.getAttribute('data-pin') === 'flow' ? '.steps > li' : '.pin-steps > li'));
+    return { t: t, stage: stage, items: items, dots: [].slice.call(stage.querySelectorAll('.fm-dots i')),
+             line: stage.querySelector('.pin-steps') || stage.querySelector('.fm-dots'), num: stage.querySelector('.pc-n'), n: items.length, on: -1 };
+  });
+  document.documentElement.classList.add('pin-ready');
+  var topPx = 80;
+  function layout() {
+    /* the header is sticky with a negative top (its top bar scrolls away), so its resting height is offsetHeight + top */
+    var hs = hdr ? hdr.offsetHeight + (parseFloat(getComputedStyle(hdr).top) || 0) : 0;
+    topPx = Math.max(0, hs) + 16;
+    document.documentElement.style.setProperty('--pin-top', topPx + 'px');
+    blocks.forEach(function (b) {
+      /* measure in the compact pinned layout, then keep it only if the whole block fits on screen */
+      b.t.style.height = ''; b.t.classList.add('pin-on');
+      var fits = b.stage.offsetHeight <= window.innerHeight - topPx - 12 && window.innerWidth > 700;
+      b.pin = fits;
+      if (fits) { b.dist = window.innerHeight * STEP * b.n; b.t.style.height = (b.stage.offsetHeight + b.dist) + 'px'; }
+      else b.t.classList.remove('pin-on');
+    });
+    update();
+  }
+  function set(b, k) {
+    if (k === b.on) return; b.on = k;
+    b.items.forEach(function (li, i) { li.classList.toggle('on', i < k); });
+    b.dots.forEach(function (d, i) { d.classList.toggle('on', i < k); });
+    if (b.line) b.line.style.setProperty('--fill', b.n > 1 ? Math.max(0, (k - 1) / (b.n - 1)) : 1);
+    if (b.num) b.num.textContent = (k < 10 ? '0' : '') + Math.max(1, k);
+  }
+  function update() {
+    blocks.forEach(function (b) {
+      var k;
+      if (b.pin) {
+        var p = (topPx - b.t.getBoundingClientRect().top) / b.dist;
+        k = Math.max(1, Math.min(b.n, Math.floor(p * b.n) + 1));
+      } else {
+        /* not pinned (phones, short screens): each item switches on as it comes up the screen */
+        k = 0; b.items.forEach(function (li, i) { if (li.getBoundingClientRect().top < window.innerHeight * 0.82) k = i + 1; });
+        k = Math.max(k, 0);
+      }
+      set(b, k);
+    });
+  }
+  var queued = false;
+  window.addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(function () { queued = false; update(); }); } }, { passive: true });
+  window.addEventListener('resize', layout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+  window.addEventListener('load', layout);
+  layout();
 })();
 /* hero mascot: one spin on mouse over, click or tap; on computers his eyes follow the mouse */
 (function () {
