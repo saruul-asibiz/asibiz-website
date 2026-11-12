@@ -956,6 +956,16 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 @keyframes m-happy{0%,100%{transform:scaleY(1)}15%,80%{transform:scaleY(.3)}}
 @media (prefers-reduced-motion: reduce){.mz *{animation:none!important;transition:none!important}}
 
+/* client tiles (2026-11-12): soft brand tints so the row is not only black and white,
+   and on hover the tile turns sun yellow with the usual black hard shadow, like every other hover */
+.logo-tile{transition:transform var(--dur) var(--ease-bounce),box-shadow var(--dur) var(--ease-out),background-color var(--dur) var(--ease-out)}
+.lt-row .logo-tile:nth-child(4n+1){background:var(--blue-50)}
+.lt-row .logo-tile:nth-child(4n+2){background:var(--sun-100)}
+.lt-row .logo-tile:nth-child(4n+3){background:var(--mint-100)}
+.lt-row .logo-tile:nth-child(4n+4){background:var(--lilac-300)}
+.lt-row .logo-tile:hover{background:var(--sun-500);transform:translate(-2px,-2px);box-shadow:var(--shadow-pop-s)}
+.lt-row .logo-tile:hover small{color:var(--ink-2)}
+
 /* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
 .sc-progress{display:none}
