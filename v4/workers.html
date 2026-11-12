@@ -1006,8 +1006,9 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .pin-ready .steps li:not(.on) .step-art svg{transform:scale(.72) rotate(-6deg)}
 .pin-ready .steps li.on{background:var(--paper);box-shadow:var(--shadow-pop-s);animation:step-pop .55s var(--ease-bounce)}
 @keyframes step-pop{0%{transform:scale(.97)}50%{transform:translateY(-8px) scale(1.03)}100%{transform:none}}
-/* For employers: the blue card takes the colour of the support item that is switched on */
-.pin-ready .split .feature{transition:background-color .35s var(--ease-out)}
+/* For employers: the card stays white; only the big step number takes the colour of the support item that is switched on */
+.split .feature{background:var(--paper)}
+.feature .pin-count .pc-n{color:var(--pc,var(--blue-500));-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;transition:color .35s var(--ease-out)}
 /* when "How it works" is pinned, the cards get a little shorter so all 8 fit on one screen */
 #flow .pin-on .steps li{min-height:0;padding:16px 18px;gap:8px}
 #flow .pin-on .steps .n{font-size:34px}
@@ -1067,6 +1068,15 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 a,button,summary,label,[role="button"]{-webkit-tap-highlight-color:transparent}
 .faq summary:active::after{transform:scale(.9)}
 .faq details[open] summary:active::after{transform:rotate(45deg) scale(.9)}
+
+/* phone menu: language switch at the top, ready the moment the menu opens
+   (it used to replay the page-load drop-in animation, with its delay, every time the menu opened) */
+.menu-lang{display:none}
+@media (max-width:700px){.menu-lang{display:flex}}
+.menu-lang{align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:2px solid var(--ink)}
+.menu-lang > span{font-family:var(--font-sans-jp);font-weight:800;font-size:13px;color:var(--ink-3)}
+.menu-panel .lang-switch,.sc .site-header .menu-panel .lang-switch{display:inline-flex;animation:none}
+.menu-panel .lang-switch a{height:44px;padding:0 18px;font-size:14px}
 
 /* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
@@ -1237,10 +1247,10 @@ a,button,summary,label,[role="button"]{-webkit-tap-highlight-color:transparent}
   </div>
   <div class="menu-panel" id="menu-panel">
     <div class="menu-in">
+      <div class="menu-lang"><span>言語 / Language</span><div class="lang-switch" role="group" aria-label="言語 / Language"><a class="on" lang="ja" hreflang="ja" href="workers.html" aria-current="page">日本語</a><a lang="en" hreflang="en" href="en/workers.html">English</a></div></div>
       <div class="menu-links" role="navigation" aria-label="メニュー"><a href="./#interviews">インタビュー <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#services">サービス <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#tokutei">特定技能 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#flow">ご依頼の流れ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#fees">料金 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#faq">よくある質問 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#company">会社概要 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="workers.html">日本で働きたい方へ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="relocation.html">日本移住コンサル <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="disclosure.html">職業紹介事業の情報公開 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
       <div class="menu-foot">
         <div class="sns-pills" role="group" aria-label="公式SNS"><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
-        <div class="lang-switch" role="group" aria-label="言語 / Language"><a class="on" lang="ja" hreflang="ja" href="workers.html" aria-current="page">日本語</a><a lang="en" hreflang="en" href="en/workers.html">English</a></div>
       </div>
     </div>
   </div>
@@ -1482,7 +1492,7 @@ a,button,summary,label,[role="button"]{-webkit-tap-highlight-color:transparent}
     if (b.feat) {
       var li = b.items[Math.max(0, k - 1)], d = li && li.querySelector('.disc');
       var c = d && ['sun', 'blue', 'mint', 'lilac', 'coral'].filter(function (x) { return d.classList.contains(x); })[0];
-      b.feat.style.backgroundColor = c ? 'var(--' + c + (c === 'lilac' ? '-300' : '-500') + ')' : '';
+      b.feat.style.setProperty('--pc', c ? 'var(--' + c + (c === 'lilac' ? '-300' : '-500') + ')' : '');
     }
   }
   function update() {
