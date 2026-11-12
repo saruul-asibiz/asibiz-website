@@ -995,12 +995,19 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .pin-ready .pin-steps li:not(.on) .disc{transform:scale(.85);filter:grayscale(1);border-color:var(--blue-100)}
 .pin-ready .pin-steps li.on{box-shadow:var(--shadow-pop-s)}
 .pin-ready .fm-dots i:not(.on){background:var(--paper)}
-.pin-ready .steps li{transition:transform .55s var(--ease-bounce),background-color .25s,border-color .25s,box-shadow .25s}
-.pin-ready .steps li .step-art svg{transition:transform .55s var(--ease-bounce),filter .25s}
-.pin-ready .steps li:not(.on){transform:translateY(34px) scale(.94);background:var(--paper-2);border-color:var(--blue-100);box-shadow:none}
-.pin-ready .steps li:not(.on) .n{background:var(--paper-2);border-color:var(--blue-100);color:var(--ink-4)}
-.pin-ready .steps li:not(.on) .step-art svg{transform:scale(.6) rotate(-8deg);filter:grayscale(1)}
-.pin-ready .steps li.on{box-shadow:var(--shadow-pop-s)}
+/* How it works: waiting cards keep a soft tint of their own colour (not grey), stay in place (no overlap with the line below),
+   and their picture waits small; "on" = white card that pops with a hard shadow and a full-size picture */
+.steps li:has(.n.t-sun){--tint:var(--sun-100)}.steps li:has(.n.t-blue){--tint:var(--blue-50)}.steps li:has(.n.t-mint){--tint:var(--mint-100)}
+.steps li:has(.n.t-lilac){--tint:var(--lilac-300)}.steps li:has(.n.t-coral){--tint:var(--paper-2)}
+.pin-ready .steps li{transition:transform .55s var(--ease-bounce),background-color .3s,box-shadow .25s}
+.pin-ready .steps li .step-art svg{transition:transform .55s var(--ease-bounce)}
+.pin-ready .steps li:not(.on){transform:scale(.97);background:var(--tint,var(--paper-2));box-shadow:none}
+.pin-ready .steps li:not(.on) h3,.pin-ready .steps li:not(.on) .dur{color:var(--ink-3)}
+.pin-ready .steps li:not(.on) .step-art svg{transform:scale(.72) rotate(-6deg)}
+.pin-ready .steps li.on{background:var(--paper);box-shadow:var(--shadow-pop-s);animation:step-pop .55s var(--ease-bounce)}
+@keyframes step-pop{0%{transform:scale(.97)}50%{transform:translateY(-8px) scale(1.03)}100%{transform:none}}
+/* For employers: the blue card takes the colour of the support item that is switched on */
+.pin-ready .split .feature{transition:background-color .35s var(--ease-out)}
 /* when "How it works" is pinned, the cards get a little shorter so all 8 fit on one screen */
 #flow .pin-on .steps li{min-height:0;padding:16px 18px;gap:8px}
 #flow .pin-on .steps .n{font-size:34px}
@@ -1011,6 +1018,50 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 #flow .pin-on .head{margin-bottom:34px}
 @media (max-width:700px){.flow-meter{margin:-8px 0 16px;gap:14px}.fm-dots i{width:16px;height:16px}.flow-meter .pin-count .pc-n,.pin-count .pc-n{font-size:44px}.pin-count .pc-of{font-size:20px}.pin-steps::before,.pin-steps::after{left:28px}}
 @media (prefers-reduced-motion: reduce){.pin-steps li,.steps li,.pin-steps::after,.fm-dots::after{transition:none!important}}
+
+.shisa-svg g[class^="sh-"]{transform-box:fill-box;transform-origin:50% 50%}
+.shisa-svg .sh-tail{transform-origin:18% 100%}
+.shisa-svg .sh-body,.shisa-svg .sh-ear-l,.shisa-svg .sh-ear-r{transform-origin:50% 100%}
+.shisa-svg .sh-head{transform-origin:50% 92%}
+.shisa-svg .sh-mouth{transform-origin:50% 0%}
+
+/* shisa pair on the contact form (2026-11-12): idle = breathing, head bob, wagging tail, blinks and an ear twitch (option 01);
+   hover = mane shake, happy squint, puffed cheeks, quick tail wag (option 03). The old whole-body tilt on hover is gone. */
+.shisa-svg,.shisa-svg:hover{transform:none}
+.shisa-svg{overflow:visible}
+.shisa-svg .sh-body{animation:sh-breathe 3s ease-in-out infinite}
+.shisa-svg .sh-head{animation:sh-bob 3s ease-in-out infinite}
+.shisa-svg .sh-tail{animation:sh-wag 1.4s ease-in-out infinite}
+.shisa-svg .sh-eye-l,.shisa-svg .sh-eye-r{animation:sh-blink 4.6s ease-in-out infinite}
+.shisa-svg .sh-ear-l{animation:sh-ear 6s ease-in-out infinite}
+.shisa-svg + .shisa-svg .sh-head{animation-delay:-1.2s}.shisa-svg + .shisa-svg .sh-tail{animation-delay:-.5s}
+.shisa-svg + .shisa-svg .sh-eye-l,.shisa-svg + .shisa-svg .sh-eye-r{animation-delay:-2s}
+@keyframes sh-breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.04) scaleX(.985)}}
+@keyframes sh-bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(2deg)}}
+@keyframes sh-wag{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
+@keyframes sh-blink{0%,90%,100%{transform:scaleY(1)}93%{transform:scaleY(.1)}96%{transform:scaleY(1)}}
+@keyframes sh-ear{0%,88%,100%{transform:none}91%{transform:rotate(-14deg)}94%{transform:none}97%{transform:rotate(-10deg)}}
+.shisa-svg:hover .sh-head{animation:sh-shake .7s ease-in-out}
+.shisa-svg:hover .sh-mane{animation:sh-puff .7s cubic-bezier(.34,1.56,.64,1)}
+.shisa-svg:hover .sh-eye-l,.shisa-svg:hover .sh-eye-r{animation:sh-happy .9s ease-in-out}
+.shisa-svg:hover .sh-cheeks{animation:sh-cheek .9s cubic-bezier(.34,1.56,.64,1)}
+.shisa-svg:hover .sh-tail{animation:sh-wag .22s ease-in-out 4}
+@keyframes sh-shake{0%,100%{transform:none}20%{transform:rotate(-10deg)}40%{transform:rotate(9deg)}60%{transform:rotate(-6deg)}80%{transform:rotate(4deg)}}
+@keyframes sh-puff{0%,100%{transform:none}45%{transform:scale(1.12)}}
+@keyframes sh-happy{0%,100%{transform:none}15%,80%{transform:scaleY(.3)}}
+@keyframes sh-cheek{0%,100%{transform:none}40%,75%{transform:scale(1.35)}}
+/* feet stand exactly on the form's top outline (the drawing has a little empty space under the feet) */
+.form-shisa{margin-bottom:-7px}
+@media (max-width:700px){.form-shisa{margin-bottom:-5px}}
+@media (prefers-reduced-motion: reduce){.shisa-svg *{animation:none!important}}
+
+/* arrow buttons (2026-11-12): on hover the arrow's line stretches and the arrow moves a little to the right (replaces the diagonal nudge) */
+.btn .ic path[d="M5 12h14"]{transform-box:fill-box;transform-origin:100% 50%;transition:transform .35s var(--ease-bounce)}
+.btn:hover .ic path[d="M5 12h14"]{transform:scaleX(1.9)}
+.btn .ic:has(path[d="M5 12h14"]){overflow:visible;transition:transform .35s var(--ease-bounce)}
+.btn:hover .ic:has(path[d="M5 12h14"]){transform:translateX(5px);animation:none}
+.oki .btn.l:hover .ic:has(path[d="M5 12h14"]){animation:none}
+@media (prefers-reduced-motion: reduce){.btn .ic,.btn .ic path{transition:none}}
 
 /* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
@@ -1154,6 +1205,31 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   .msg-photo{width:160px}
   .sub-steps{grid-template-columns:1fr}
 }
+
+/* testimonials: white by default, own colour on hover; typed-out quote */
+.voice{background:var(--paper);transition:transform var(--dur-slow) var(--ease-bounce),box-shadow var(--dur) var(--ease-out),background-color .3s var(--ease-out)}
+.voice[data-hover="sun"]:hover{background:var(--sun-500)}
+.voice[data-hover="mint"]:hover{background:var(--mint-500)}
+.voice blockquote{position:relative}
+.vt-type{display:none}
+.vt-on .vt-src{color:transparent}
+.vt-on .vt-type{display:block;position:absolute;inset:0}
+.vt-type.typing::after{content:"";display:inline-block;width:3px;height:1.05em;margin-left:2px;vertical-align:-.15em;background:var(--ink);animation:vt-caret .8s steps(1) infinite}
+@keyframes vt-caret{50%{background:transparent}}
+
+/* numbers count up, fees drop in with a stamped refund badge, FAQ answers slide, company headline gets a highlighter (2026-11-12) */
+.guarantee .disp{display:inline-block;padding:4px 12px 2px;border:2px solid var(--sun-500);border-radius:12px;transform:rotate(-6deg)}
+.m-wait{visibility:hidden}
+.m-drop{animation:m-drop .7s both}
+@keyframes m-drop{0%{transform:translateY(-60px) rotate(-4deg);animation-timing-function:cubic-bezier(.5,0,.75,0)}
+  55%{transform:translateY(0) rotate(0) scale(1.03,.94);animation-timing-function:var(--ease-bounce)}100%{transform:none}}
+.guarantee.m-drop .disp{animation:m-stamp .5s .45s both}
+@keyframes m-stamp{0%{transform:scale(0) rotate(-30deg)}45%{transform:scale(1.7) rotate(-14deg)}100%{transform:rotate(-6deg)}}
+.faq details[open] p{animation:faq-in .5s var(--ease-out)}
+@keyframes faq-in{from{transform:translateY(-12px)}}
+.msg-card h3 .mk{background:linear-gradient(transparent 58%,var(--sun-500) 58%,var(--sun-500) 92%,transparent 92%) no-repeat 0 0/0% 100%;transition:background-size 1.3s cubic-bezier(.6,0,.3,1) .2s}
+.msg-card.m-go h3 .mk{background-size:100% 100%}
+@media (prefers-reduced-motion: reduce){.m-drop,.guarantee.m-drop .disp,.faq details[open] p{animation:none}.msg-card h3 .mk{transition:none}}
 </style>
 <style>.v4-ribbon{position:relative;z-index:60;display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;padding:8px 16px;background:var(--sun-500);border-bottom:var(--border);font-family:var(--font-sans-jp);font-weight:800;font-size:13px;color:var(--ink)}.v4-ribbon a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}</style>
 </head>
@@ -1243,7 +1319,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     <a class="card coral lift reel" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener"><span class="reel-media"><span class="reel-chip">リール</span><span class="reel-play"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"></path></svg></span></span><span class="reel-body"><b>IMI Corporation</b><small>受け入れ企業インタビュー</small></span></a>
   </div>
   <h3 class="voices-title">利用企業・スタッフの声</h3>
-  <div class="voices"><figure class="card paper lift voice"><blockquote>「入国前研修のおかげで、受け入れる側の不安がなくなりました。現場の雰囲気が明るくなり、今では4名が活躍しています。」</blockquote><figcaption>— 建設会社 代表（沖縄県）</figcaption></figure><figure class="card sun lift voice"><blockquote>「仕事のことも生活のことも、母国語で相談できるので安心です。日本で長く働きたいと思えるようになりました。」</blockquote><figcaption>— ネパール出身 介護スタッフ</figcaption></figure></div>
+  <div class="voices"><figure class="card paper lift voice" data-hover="sun"><blockquote><span class="vt-src">「入国前研修のおかげで、受け入れる側の不安がなくなりました。現場の雰囲気が明るくなり、今では4名が活躍しています。」</span><span class="vt-type" aria-hidden="true"></span></blockquote><figcaption>— 建設会社 代表（沖縄県）</figcaption></figure><figure class="card paper lift voice" data-hover="mint"><blockquote><span class="vt-src">「仕事のことも生活のことも、母国語で相談できるので安心です。日本で長く働きたいと思えるようになりました。」</span><span class="vt-type" aria-hidden="true"></span></blockquote><figcaption>— ネパール出身 介護スタッフ</figcaption></figure></div>
   <h3 class="posts-title">最新の投稿</h3>
   <div class="posts">
     <a class="post t-sun" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener" aria-label="Instagramの投稿を見る"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"></path></svg></a>
@@ -1410,7 +1486,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
       </div>
     </div>
 
-    <form id="contact-form" action="https://script.google.com/macros/s/AKfycbymM-eZywY8-wwXY9Il3Yqjor0-3S9nEEoCJRzCwgwy-c3-GugNDQaH6F2QPhGuueu5PA/exec" method="POST"><div class="form-shisa" aria-hidden="true"><div class="pair-row"><svg class="shisa-svg" viewBox="0 0 200 230" width="128" aria-hidden="true"><g><path d="M150 170 C190 170 196 120 170 112 C150 106 140 126 156 134 C166 138 172 126 164 122" fill="none" stroke="#0A0A0A" stroke-width="16" stroke-linecap="round"></path><path d="M150 170 C190 170 196 120 170 112 C150 106 140 126 156 134 C166 138 172 126 164 122" fill="none" stroke="#FF6B3D" stroke-width="10" stroke-linecap="round"></path><path d="M52 204 C44 160 62 132 100 132 C138 132 156 160 148 204 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><path d="M80 150 Q100 160 120 150" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><ellipse cx="78" cy="204" rx="20" ry="12" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse><ellipse cx="122" cy="204" rx="20" ry="12" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse><path d="M72 202 V210 M84 202 V210 M116 202 V210 M128 202 V210" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><circle cx="156.0" cy="88.0" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="150.5" cy="112.3" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="134.9" cy="131.8" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="112.5" cy="142.6" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="87.5" cy="142.6" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="65.1" cy="131.8" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="49.5" cy="112.3" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="44.0" cy="88.0" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="49.5" cy="63.7" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="65.1" cy="44.2" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="87.5" cy="33.4" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="112.5" cy="33.4" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="134.9" cy="44.2" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="150.5" cy="63.7" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="100" cy="88" r="58" fill="#FF6B3D"></circle><path d="M58 44 Q50 22 70 26 Q74 38 68 48 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><path d="M142 44 Q150 22 130 26 Q126 38 132 48 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><circle cx="100" cy="92" r="44" fill="#FFE7A3" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><path d="M66 70 q8 -12 22 -4" fill="none" stroke="#FF6B3D" stroke-width="7" stroke-linecap="round"></path><path d="M134 70 q-8 -12 -22 -4" fill="none" stroke="#FF6B3D" stroke-width="7" stroke-linecap="round"></path><circle cx="80" cy="84" r="9" fill="#0A0A0A"></circle><circle cx="120" cy="84" r="9" fill="#0A0A0A"></circle><circle cx="83" cy="81" r="3" fill="#fff"></circle><circle cx="123" cy="81" r="3" fill="#fff"></circle><ellipse cx="66" cy="102" rx="8" ry="5" fill="#FF8A80"></ellipse><ellipse cx="134" cy="102" rx="8" ry="5" fill="#FF8A80"></ellipse><ellipse cx="100" cy="96" rx="9" ry="6" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse><path d="M82 108 Q100 104 118 108 Q116 130 100 130 Q84 130 82 108 Z" fill="#E60012" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><path d="M86 108 L90 116 L94 108 Z M106 108 L110 116 L114 108 Z" fill="#fff" stroke="#0A0A0A" stroke-width="2" stroke-linejoin="round"></path></g></svg><svg class="shisa-svg" viewBox="0 0 200 230" width="128" aria-hidden="true"><g transform="translate(200 0) scale(-1 1)"><path d="M150 170 C190 170 196 120 170 112 C150 106 140 126 156 134 C166 138 172 126 164 122" fill="none" stroke="#0A0A0A" stroke-width="16" stroke-linecap="round"></path><path d="M150 170 C190 170 196 120 170 112 C150 106 140 126 156 134 C166 138 172 126 164 122" fill="none" stroke="#FF6B3D" stroke-width="10" stroke-linecap="round"></path><path d="M52 204 C44 160 62 132 100 132 C138 132 156 160 148 204 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><path d="M80 150 Q100 160 120 150" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><ellipse cx="78" cy="204" rx="20" ry="12" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse><ellipse cx="122" cy="204" rx="20" ry="12" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse><path d="M72 202 V210 M84 202 V210 M116 202 V210 M128 202 V210" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><circle cx="156.0" cy="88.0" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="150.5" cy="112.3" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="134.9" cy="131.8" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="112.5" cy="142.6" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="87.5" cy="142.6" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="65.1" cy="131.8" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="49.5" cy="112.3" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="44.0" cy="88.0" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="49.5" cy="63.7" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="65.1" cy="44.2" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="87.5" cy="33.4" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="112.5" cy="33.4" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="134.9" cy="44.2" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="150.5" cy="63.7" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="100" cy="88" r="58" fill="#FF6B3D"></circle><path d="M58 44 Q50 22 70 26 Q74 38 68 48 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><path d="M142 44 Q150 22 130 26 Q126 38 132 48 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><circle cx="100" cy="92" r="44" fill="#FFE7A3" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><path d="M66 70 q8 -12 22 -4" fill="none" stroke="#FF6B3D" stroke-width="7" stroke-linecap="round"></path><path d="M134 70 q-8 -12 -22 -4" fill="none" stroke="#FF6B3D" stroke-width="7" stroke-linecap="round"></path><circle cx="80" cy="84" r="9" fill="#0A0A0A"></circle><circle cx="120" cy="84" r="9" fill="#0A0A0A"></circle><circle cx="83" cy="81" r="3" fill="#fff"></circle><circle cx="123" cy="81" r="3" fill="#fff"></circle><ellipse cx="66" cy="102" rx="8" ry="5" fill="#FF8A80"></ellipse><ellipse cx="134" cy="102" rx="8" ry="5" fill="#FF8A80"></ellipse><ellipse cx="100" cy="96" rx="9" ry="6" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse><path d="M84 110 Q92 120 100 110 Q108 120 116 110" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path></g></svg></div></div>
+    <form id="contact-form" action="https://script.google.com/macros/s/AKfycbymM-eZywY8-wwXY9Il3Yqjor0-3S9nEEoCJRzCwgwy-c3-GugNDQaH6F2QPhGuueu5PA/exec" method="POST"><div class="form-shisa" aria-hidden="true"><div class="pair-row"><svg class="shisa-svg" viewBox="0 0 200 230" width="128" aria-hidden="true"><g><g class="sh-tail"><path d="M150 170 C190 170 196 120 170 112 C150 106 140 126 156 134 C166 138 172 126 164 122" fill="none" stroke="#0A0A0A" stroke-width="16" stroke-linecap="round"></path><path d="M150 170 C190 170 196 120 170 112 C150 106 140 126 156 134 C166 138 172 126 164 122" fill="none" stroke="#FF6B3D" stroke-width="10" stroke-linecap="round"></path></g><g class="sh-body"><path d="M52 204 C44 160 62 132 100 132 C138 132 156 160 148 204 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><path d="M80 150 Q100 160 120 150" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path></g><g class="sh-feet"><ellipse cx="78" cy="204" rx="20" ry="12" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse><ellipse cx="122" cy="204" rx="20" ry="12" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse><path d="M72 202 V210 M84 202 V210 M116 202 V210 M128 202 V210" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path></g><g class="sh-head"><g class="sh-mane"><circle cx="156.0" cy="88.0" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="150.5" cy="112.3" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="134.9" cy="131.8" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="112.5" cy="142.6" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="87.5" cy="142.6" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="65.1" cy="131.8" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="49.5" cy="112.3" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="44.0" cy="88.0" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="49.5" cy="63.7" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="65.1" cy="44.2" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="87.5" cy="33.4" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="112.5" cy="33.4" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="134.9" cy="44.2" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="150.5" cy="63.7" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="100" cy="88" r="58" fill="#FF6B3D"></circle></g><g class="sh-ear-l"><path d="M58 44 Q50 22 70 26 Q74 38 68 48 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path></g><g class="sh-ear-r"><path d="M142 44 Q150 22 130 26 Q126 38 132 48 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path></g><g class="sh-face"><circle cx="100" cy="92" r="44" fill="#FFE7A3" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle></g><g class="sh-brow-l"><path d="M66 70 q8 -12 22 -4" fill="none" stroke="#FF6B3D" stroke-width="7" stroke-linecap="round"></path></g><g class="sh-brow-r"><path d="M134 70 q-8 -12 -22 -4" fill="none" stroke="#FF6B3D" stroke-width="7" stroke-linecap="round"></path></g><g class="sh-eye-l"><circle cx="80" cy="84" r="9" fill="#0A0A0A"></circle><circle cx="83" cy="81" r="3" fill="#fff"></circle></g><g class="sh-eye-r"><circle cx="120" cy="84" r="9" fill="#0A0A0A"></circle><circle cx="123" cy="81" r="3" fill="#fff"></circle></g><g class="sh-cheeks"><ellipse cx="66" cy="102" rx="8" ry="5" fill="#FF8A80"></ellipse><ellipse cx="134" cy="102" rx="8" ry="5" fill="#FF8A80"></ellipse></g><g class="sh-nose"><ellipse cx="100" cy="96" rx="9" ry="6" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse></g><g class="sh-mouth"><path d="M82 108 Q100 104 118 108 Q116 130 100 130 Q84 130 82 108 Z" fill="#E60012" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><path d="M86 108 L90 116 L94 108 Z M106 108 L110 116 L114 108 Z" fill="#fff" stroke="#0A0A0A" stroke-width="2" stroke-linejoin="round"></path></g></g></g></svg><svg class="shisa-svg" viewBox="0 0 200 230" width="128" aria-hidden="true"><g transform="translate(200 0) scale(-1 1)"><g class="sh-tail"><path d="M150 170 C190 170 196 120 170 112 C150 106 140 126 156 134 C166 138 172 126 164 122" fill="none" stroke="#0A0A0A" stroke-width="16" stroke-linecap="round"></path><path d="M150 170 C190 170 196 120 170 112 C150 106 140 126 156 134 C166 138 172 126 164 122" fill="none" stroke="#FF6B3D" stroke-width="10" stroke-linecap="round"></path></g><g class="sh-body"><path d="M52 204 C44 160 62 132 100 132 C138 132 156 160 148 204 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><path d="M80 150 Q100 160 120 150" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path></g><g class="sh-feet"><ellipse cx="78" cy="204" rx="20" ry="12" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse><ellipse cx="122" cy="204" rx="20" ry="12" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse><path d="M72 202 V210 M84 202 V210 M116 202 V210 M128 202 V210" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path></g><g class="sh-head"><g class="sh-mane"><circle cx="156.0" cy="88.0" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="150.5" cy="112.3" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="134.9" cy="131.8" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="112.5" cy="142.6" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="87.5" cy="142.6" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="65.1" cy="131.8" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="49.5" cy="112.3" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="44.0" cy="88.0" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="49.5" cy="63.7" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="65.1" cy="44.2" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="87.5" cy="33.4" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="112.5" cy="33.4" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="134.9" cy="44.2" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="150.5" cy="63.7" r="17" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle><circle cx="100" cy="88" r="58" fill="#FF6B3D"></circle></g><g class="sh-ear-l"><path d="M58 44 Q50 22 70 26 Q74 38 68 48 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path></g><g class="sh-ear-r"><path d="M142 44 Q150 22 130 26 Q126 38 132 48 Z" fill="#FFD52E" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path></g><g class="sh-face"><circle cx="100" cy="92" r="44" fill="#FFE7A3" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></circle></g><g class="sh-brow-l"><path d="M66 70 q8 -12 22 -4" fill="none" stroke="#FF6B3D" stroke-width="7" stroke-linecap="round"></path></g><g class="sh-brow-r"><path d="M134 70 q-8 -12 -22 -4" fill="none" stroke="#FF6B3D" stroke-width="7" stroke-linecap="round"></path></g><g class="sh-eye-l"><circle cx="80" cy="84" r="9" fill="#0A0A0A"></circle><circle cx="83" cy="81" r="3" fill="#fff"></circle></g><g class="sh-eye-r"><circle cx="120" cy="84" r="9" fill="#0A0A0A"></circle><circle cx="123" cy="81" r="3" fill="#fff"></circle></g><g class="sh-cheeks"><ellipse cx="66" cy="102" rx="8" ry="5" fill="#FF8A80"></ellipse><ellipse cx="134" cy="102" rx="8" ry="5" fill="#FF8A80"></ellipse></g><g class="sh-nose"><ellipse cx="100" cy="96" rx="9" ry="6" fill="#FF6B3D" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></ellipse></g><g class="sh-mouth"><path d="M84 110 Q92 120 100 110 Q108 120 116 110" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path></g></g></g></svg></div></div>
       <div class="two-fields">
         <div class="field"><label for="f-company">会社名 <span class="opt">任意</span></label><input id="f-company" name="会社名" type="text" autocomplete="organization" placeholder="個人の方は空欄で構いません"></div>
         <div class="field"><label for="f-name">お名前 <span class="req">必須</span></label><input id="f-name" name="お名前" type="text" autocomplete="name" required=""></div>
@@ -1443,7 +1519,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     <div class="disp">会社概要</div>
     <h2>アジビズグループについて。</h2>
   </div>
-  <div class="card msg-card"><div class="msg-photo"><img src="assets/hiyane.jpg" alt="代表社員 比屋根 拓" width="640" height="800" loading="lazy"></div><div><div class="over">代表挨拶</div><h3>「働く人」と「受け入れる企業」、両方の安心をつくる。</h3><p>アジビズは2017年、沖縄・宜野湾で生まれました。人手不足に悩む企業と、日本で働く夢を持つアジアの若者。その両方の力になりたいという思いから始まった会社です。</p><p>私たちが大切にしているのは、紹介して終わりにしないこと。母国語で相談できる体制と、受け入れる職場への入国前研修で、長く安心して働ける環境を一緒につくります。</p><p class="msg-name">合同会社アジビズ 代表社員　比屋根 拓</p></div></div>
+  <div class="card msg-card"><div class="msg-photo"><img src="assets/hiyane.jpg" alt="代表社員 比屋根 拓" width="640" height="800" loading="lazy"></div><div><div class="over">代表挨拶</div><h3><span class="mk">「働く人」と「受け入れる企業」、両方の安心をつくる。</span></h3><p>アジビズは2017年、沖縄・宜野湾で生まれました。人手不足に悩む企業と、日本で働く夢を持つアジアの若者。その両方の力になりたいという思いから始まった会社です。</p><p>私たちが大切にしているのは、紹介して終わりにしないこと。母国語で相談できる体制と、受け入れる職場への入国前研修で、長く安心して働ける環境を一緒につくります。</p><p class="msg-name">合同会社アジビズ 代表社員　比屋根 拓</p></div></div>
   <div class="card company-card">
     <dl class="specs">
       <div><dt>会社名</dt><dd>合同会社アジビズ</dd></div><div><dt>代表者</dt><dd>代表社員　比屋根 拓</dd></div>
@@ -1642,7 +1718,8 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     var stage = t.querySelector('.pin-stage');
     var items = [].slice.call(stage.querySelectorAll(t.getAttribute('data-pin') === 'flow' ? '.steps > li' : '.pin-steps > li'));
     return { t: t, stage: stage, items: items, dots: [].slice.call(stage.querySelectorAll('.fm-dots i')),
-             line: stage.querySelector('.pin-steps') || stage.querySelector('.fm-dots'), num: stage.querySelector('.pc-n'), n: items.length, on: -1 };
+             line: stage.querySelector('.pin-steps') || stage.querySelector('.fm-dots'), num: stage.querySelector('.pc-n'), n: items.length, on: -1,
+             feat: stage.querySelector('.split .feature') };
   });
   document.documentElement.classList.add('pin-ready');
   var topPx = 80;
@@ -1667,6 +1744,11 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     b.dots.forEach(function (d, i) { d.classList.toggle('on', i < k); });
     if (b.line) b.line.style.setProperty('--fill', b.n > 1 ? Math.max(0, (k - 1) / (b.n - 1)) : 1);
     if (b.num) b.num.textContent = (k < 10 ? '0' : '') + Math.max(1, k);
+    if (b.feat) {
+      var li = b.items[Math.max(0, k - 1)], d = li && li.querySelector('.disc');
+      var c = d && ['sun', 'blue', 'mint', 'lilac', 'coral'].filter(function (x) { return d.classList.contains(x); })[0];
+      b.feat.style.backgroundColor = c ? 'var(--' + c + (c === 'lilac' ? '-300' : '-500') + ')' : '';
+    }
   }
   function update() {
     blocks.forEach(function (b) {
@@ -1708,6 +1790,92 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
   }
   document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; if (!queued) { queued = true; requestAnimationFrame(look); } }, { passive: true });
   document.addEventListener('mouseleave', function () { m.style.setProperty('--ex', '0px'); m.style.setProperty('--ey', '0px'); });
+})();
+</script><script>
+/* testimonials: each quote is typed out once, letter by letter, when it scrolls into view (the full text stays in the page for screen readers) */
+(function () {
+  var cards = [].slice.call(document.querySelectorAll('.voice'));
+  if (!cards.length || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var queue = [], busy = false;
+  cards.forEach(function (c) { c.classList.add('vt-on'); });
+  function next() {
+    if (busy || !queue.length) return;
+    busy = true;
+    var c = queue.shift(), src = c.querySelector('.vt-src').textContent, out = c.querySelector('.vt-type'), i = 0;
+    var jp = /[\u3040-\u30ff\u4e00-\u9fff]/.test(src), speed = jp ? 55 : 24;
+    out.classList.add('typing');
+    (function tick() {
+      i++; out.textContent = src.slice(0, i);
+      if (i < src.length) setTimeout(tick, /[、。,.!?！？]/.test(src.charAt(i - 1)) ? speed * 5 : speed);
+      else setTimeout(function () { out.classList.remove('typing'); busy = false; next(); }, 500);
+    })();
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); queue.push(e.target); next(); } });
+  }, { threshold: 0.5 });
+  cards.forEach(function (c) { io.observe(c); });
+})();
+</script><script>
+/* plays each effect once, when its block scrolls into view */
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+  function once(el, th, fn) {
+    if (!el) return;
+    if (reduce || !hasIO) { fn(true); return; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { io.disconnect(); fn(false); } }); }, { threshold: th });
+    io.observe(el);
+  }
+  /* numbers: count from 0, the four cards one after another */
+  var stats = document.querySelector('.stats');
+  once(stats, 0.4, function (still) {
+    if (still) return;
+    [].forEach.call(stats.querySelectorAll('.num'), function (num, k) {
+      var t = num.firstChild; if (!t || t.nodeType !== 3) return;
+      var to = parseInt(t.nodeValue, 10); if (isNaN(to)) return;
+      t.nodeValue = '0';
+      setTimeout(function () {
+        var t0 = performance.now(), dur = 1400;
+        (function step(now) {
+          var x = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - x, 3);
+          t.nodeValue = String(Math.round(to * e));
+          if (x < 1) requestAnimationFrame(step);
+        })(t0);
+      }, k * 150);
+    });
+  });
+  /* fees: cards drop in and land, then the refund badge is stamped */
+  var fees = [].slice.call(document.querySelectorAll('.fees > .fee, .guarantee'));
+  if (fees.length && !reduce && hasIO) {
+    fees.forEach(function (f) { f.classList.add('m-wait'); });
+    once(document.querySelector('.fees'), 0.3, function () {
+      fees.forEach(function (f, k) {
+        f.style.animationDelay = (k * 0.18) + 's'; f.classList.remove('m-wait'); f.classList.add('m-drop');
+        /* hand the card back to its normal hover lift once it has landed */
+        if (f.classList.contains('fee')) f.addEventListener('animationend', function h(e) { if (e.target === f) { f.classList.remove('m-drop'); f.style.animationDelay = ''; f.removeEventListener('animationend', h); } });
+      });
+    });
+  }
+  /* company message: the highlighter sweeps under the headline */
+  var msg = document.querySelector('.msg-card');
+  once(msg, 0.5, function () { msg.classList.add('m-go'); });
+  /* FAQ: answers slide open and closed instead of snapping */
+  if (!reduce) [].forEach.call(document.querySelectorAll('.faq details'), function (d) {
+    var s = d.querySelector('summary'), anim = null;
+    s.addEventListener('click', function (ev) {
+      if (!d.animate) return;
+      ev.preventDefault();
+      var closed = s.offsetHeight + (d.offsetHeight - d.clientHeight);
+      var from = d.offsetHeight, to, open = !d.open || d.classList.contains('m-closing');
+      if (anim) anim.cancel();
+      d.style.overflow = 'hidden';
+      if (open) { d.classList.remove('m-closing'); d.open = true; to = d.offsetHeight; }
+      else { d.classList.add('m-closing'); to = closed; }
+      anim = d.animate({ height: [from + 'px', to + 'px'] }, { duration: 450, easing: 'cubic-bezier(.22,1,.36,1)' });
+      anim.onfinish = function () { anim = null; d.style.overflow = ''; if (!open) { d.open = false; d.classList.remove('m-closing'); } };
+    });
+  });
 })();
 </script>
 </body>

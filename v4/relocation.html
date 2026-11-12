@@ -995,12 +995,19 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .pin-ready .pin-steps li:not(.on) .disc{transform:scale(.85);filter:grayscale(1);border-color:var(--blue-100)}
 .pin-ready .pin-steps li.on{box-shadow:var(--shadow-pop-s)}
 .pin-ready .fm-dots i:not(.on){background:var(--paper)}
-.pin-ready .steps li{transition:transform .55s var(--ease-bounce),background-color .25s,border-color .25s,box-shadow .25s}
-.pin-ready .steps li .step-art svg{transition:transform .55s var(--ease-bounce),filter .25s}
-.pin-ready .steps li:not(.on){transform:translateY(34px) scale(.94);background:var(--paper-2);border-color:var(--blue-100);box-shadow:none}
-.pin-ready .steps li:not(.on) .n{background:var(--paper-2);border-color:var(--blue-100);color:var(--ink-4)}
-.pin-ready .steps li:not(.on) .step-art svg{transform:scale(.6) rotate(-8deg);filter:grayscale(1)}
-.pin-ready .steps li.on{box-shadow:var(--shadow-pop-s)}
+/* How it works: waiting cards keep a soft tint of their own colour (not grey), stay in place (no overlap with the line below),
+   and their picture waits small; "on" = white card that pops with a hard shadow and a full-size picture */
+.steps li:has(.n.t-sun){--tint:var(--sun-100)}.steps li:has(.n.t-blue){--tint:var(--blue-50)}.steps li:has(.n.t-mint){--tint:var(--mint-100)}
+.steps li:has(.n.t-lilac){--tint:var(--lilac-300)}.steps li:has(.n.t-coral){--tint:var(--paper-2)}
+.pin-ready .steps li{transition:transform .55s var(--ease-bounce),background-color .3s,box-shadow .25s}
+.pin-ready .steps li .step-art svg{transition:transform .55s var(--ease-bounce)}
+.pin-ready .steps li:not(.on){transform:scale(.97);background:var(--tint,var(--paper-2));box-shadow:none}
+.pin-ready .steps li:not(.on) h3,.pin-ready .steps li:not(.on) .dur{color:var(--ink-3)}
+.pin-ready .steps li:not(.on) .step-art svg{transform:scale(.72) rotate(-6deg)}
+.pin-ready .steps li.on{background:var(--paper);box-shadow:var(--shadow-pop-s);animation:step-pop .55s var(--ease-bounce)}
+@keyframes step-pop{0%{transform:scale(.97)}50%{transform:translateY(-8px) scale(1.03)}100%{transform:none}}
+/* For employers: the blue card takes the colour of the support item that is switched on */
+.pin-ready .split .feature{transition:background-color .35s var(--ease-out)}
 /* when "How it works" is pinned, the cards get a little shorter so all 8 fit on one screen */
 #flow .pin-on .steps li{min-height:0;padding:16px 18px;gap:8px}
 #flow .pin-on .steps .n{font-size:34px}
@@ -1011,6 +1018,50 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 #flow .pin-on .head{margin-bottom:34px}
 @media (max-width:700px){.flow-meter{margin:-8px 0 16px;gap:14px}.fm-dots i{width:16px;height:16px}.flow-meter .pin-count .pc-n,.pin-count .pc-n{font-size:44px}.pin-count .pc-of{font-size:20px}.pin-steps::before,.pin-steps::after{left:28px}}
 @media (prefers-reduced-motion: reduce){.pin-steps li,.steps li,.pin-steps::after,.fm-dots::after{transition:none!important}}
+
+.shisa-svg g[class^="sh-"]{transform-box:fill-box;transform-origin:50% 50%}
+.shisa-svg .sh-tail{transform-origin:18% 100%}
+.shisa-svg .sh-body,.shisa-svg .sh-ear-l,.shisa-svg .sh-ear-r{transform-origin:50% 100%}
+.shisa-svg .sh-head{transform-origin:50% 92%}
+.shisa-svg .sh-mouth{transform-origin:50% 0%}
+
+/* shisa pair on the contact form (2026-11-12): idle = breathing, head bob, wagging tail, blinks and an ear twitch (option 01);
+   hover = mane shake, happy squint, puffed cheeks, quick tail wag (option 03). The old whole-body tilt on hover is gone. */
+.shisa-svg,.shisa-svg:hover{transform:none}
+.shisa-svg{overflow:visible}
+.shisa-svg .sh-body{animation:sh-breathe 3s ease-in-out infinite}
+.shisa-svg .sh-head{animation:sh-bob 3s ease-in-out infinite}
+.shisa-svg .sh-tail{animation:sh-wag 1.4s ease-in-out infinite}
+.shisa-svg .sh-eye-l,.shisa-svg .sh-eye-r{animation:sh-blink 4.6s ease-in-out infinite}
+.shisa-svg .sh-ear-l{animation:sh-ear 6s ease-in-out infinite}
+.shisa-svg + .shisa-svg .sh-head{animation-delay:-1.2s}.shisa-svg + .shisa-svg .sh-tail{animation-delay:-.5s}
+.shisa-svg + .shisa-svg .sh-eye-l,.shisa-svg + .shisa-svg .sh-eye-r{animation-delay:-2s}
+@keyframes sh-breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.04) scaleX(.985)}}
+@keyframes sh-bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(2deg)}}
+@keyframes sh-wag{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
+@keyframes sh-blink{0%,90%,100%{transform:scaleY(1)}93%{transform:scaleY(.1)}96%{transform:scaleY(1)}}
+@keyframes sh-ear{0%,88%,100%{transform:none}91%{transform:rotate(-14deg)}94%{transform:none}97%{transform:rotate(-10deg)}}
+.shisa-svg:hover .sh-head{animation:sh-shake .7s ease-in-out}
+.shisa-svg:hover .sh-mane{animation:sh-puff .7s cubic-bezier(.34,1.56,.64,1)}
+.shisa-svg:hover .sh-eye-l,.shisa-svg:hover .sh-eye-r{animation:sh-happy .9s ease-in-out}
+.shisa-svg:hover .sh-cheeks{animation:sh-cheek .9s cubic-bezier(.34,1.56,.64,1)}
+.shisa-svg:hover .sh-tail{animation:sh-wag .22s ease-in-out 4}
+@keyframes sh-shake{0%,100%{transform:none}20%{transform:rotate(-10deg)}40%{transform:rotate(9deg)}60%{transform:rotate(-6deg)}80%{transform:rotate(4deg)}}
+@keyframes sh-puff{0%,100%{transform:none}45%{transform:scale(1.12)}}
+@keyframes sh-happy{0%,100%{transform:none}15%,80%{transform:scaleY(.3)}}
+@keyframes sh-cheek{0%,100%{transform:none}40%,75%{transform:scale(1.35)}}
+/* feet stand exactly on the form's top outline (the drawing has a little empty space under the feet) */
+.form-shisa{margin-bottom:-7px}
+@media (max-width:700px){.form-shisa{margin-bottom:-5px}}
+@media (prefers-reduced-motion: reduce){.shisa-svg *{animation:none!important}}
+
+/* arrow buttons (2026-11-12): on hover the arrow's line stretches and the arrow moves a little to the right (replaces the diagonal nudge) */
+.btn .ic path[d="M5 12h14"]{transform-box:fill-box;transform-origin:100% 50%;transition:transform .35s var(--ease-bounce)}
+.btn:hover .ic path[d="M5 12h14"]{transform:scaleX(1.9)}
+.btn .ic:has(path[d="M5 12h14"]){overflow:visible;transition:transform .35s var(--ease-bounce)}
+.btn:hover .ic:has(path[d="M5 12h14"]){transform:translateX(5px);animation:none}
+.oki .btn.l:hover .ic:has(path[d="M5 12h14"]){animation:none}
+@media (prefers-reduced-motion: reduce){.btn .ic,.btn .ic path{transition:none}}
 
 /* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
@@ -1393,7 +1444,8 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     var stage = t.querySelector('.pin-stage');
     var items = [].slice.call(stage.querySelectorAll(t.getAttribute('data-pin') === 'flow' ? '.steps > li' : '.pin-steps > li'));
     return { t: t, stage: stage, items: items, dots: [].slice.call(stage.querySelectorAll('.fm-dots i')),
-             line: stage.querySelector('.pin-steps') || stage.querySelector('.fm-dots'), num: stage.querySelector('.pc-n'), n: items.length, on: -1 };
+             line: stage.querySelector('.pin-steps') || stage.querySelector('.fm-dots'), num: stage.querySelector('.pc-n'), n: items.length, on: -1,
+             feat: stage.querySelector('.split .feature') };
   });
   document.documentElement.classList.add('pin-ready');
   var topPx = 80;
@@ -1418,6 +1470,11 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
     b.dots.forEach(function (d, i) { d.classList.toggle('on', i < k); });
     if (b.line) b.line.style.setProperty('--fill', b.n > 1 ? Math.max(0, (k - 1) / (b.n - 1)) : 1);
     if (b.num) b.num.textContent = (k < 10 ? '0' : '') + Math.max(1, k);
+    if (b.feat) {
+      var li = b.items[Math.max(0, k - 1)], d = li && li.querySelector('.disc');
+      var c = d && ['sun', 'blue', 'mint', 'lilac', 'coral'].filter(function (x) { return d.classList.contains(x); })[0];
+      b.feat.style.backgroundColor = c ? 'var(--' + c + (c === 'lilac' ? '-300' : '-500') + ')' : '';
+    }
   }
   function update() {
     blocks.forEach(function (b) {
