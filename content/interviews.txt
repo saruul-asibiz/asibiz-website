@@ -23,7 +23,7 @@ image: SriLanka_2people_thumbnail_sketchbook_bright_1080x1920.png
 link: https://www.instagram.com/p/DfWmE1NT8Lq/
 title: ネパール5人富士建設インタビュー
 title_en: 5 Nepali workers at Fuji Kensetsu
-image: thumbnail_okinawa_sunset_interview_1080x1920.png
+image: thumbnail_interview_group_daytime.png
 
 link: https://www.instagram.com/p/DfWmSGMT3fm/
 title: 面接ネパール空港ネパール語日字幕修正済
@@ -38,7 +38,7 @@ image: Thumbnail_v1.jpg
 link: https://www.instagram.com/reel/DfWNon_z70c/
 title: スリランカ2名
 title_en: 2 workers from Sri Lanka
-image: reel_cover_sri_lanka_v2.png
+image: thumbnail_srilanka_caregiver_papercut.png
 
 link: https://www.instagram.com/reel/DfWNtx6T4o6/
 title: ネパール インタビュー フル版 v3 日字幕 修正済
