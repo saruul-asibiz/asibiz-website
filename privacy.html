@@ -1049,9 +1049,9 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 @keyframes sh-puff{0%,100%{transform:none}45%{transform:scale(1.12)}}
 @keyframes sh-happy{0%,100%{transform:none}15%,80%{transform:scaleY(.3)}}
 @keyframes sh-cheek{0%,100%{transform:none}40%,75%{transform:scale(1.35)}}
-/* feet stand exactly on the form's top outline (the drawing has a little empty space under the feet) */
-.form-shisa{margin-bottom:-7px}
-@media (max-width:700px){.form-shisa{margin-bottom:-5px}}
+/* paws overlap the form's top outline a little, so the shisa stand on the card (no gap at the sides of the paws) (the drawing has a little empty space under the feet) */
+.form-shisa{margin-bottom:-13px}
+@media (max-width:700px){.form-shisa{margin-bottom:-9px}}
 @media (prefers-reduced-motion: reduce){.shisa-svg *{animation:none!important}}
 
 /* arrow buttons (2026-11-12): on hover the arrow's line stretches and the arrow moves a little to the right (replaces the diagonal nudge) */
@@ -1061,6 +1061,11 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .btn:hover .ic:has(path[d="M5 12h14"]){transform:translateX(5px);animation:none}
 .oki .btn.l:hover .ic:has(path[d="M5 12h14"]){animation:none}
 @media (prefers-reduced-motion: reduce){.btn .ic,.btn .ic path{transition:none}}
+
+/* phones: no grey flash when tapping links, buttons or FAQ questions (our own hover/press styles already give feedback) */
+a,button,summary,label,[role="button"]{-webkit-tap-highlight-color:transparent}
+.faq summary:active::after{transform:scale(.9)}
+.faq details[open] summary:active::after{transform:rotate(45deg) scale(.9)}
 
 /* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
