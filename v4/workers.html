@@ -577,7 +577,7 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .reef{position:absolute;inset:0;pointer-events:none;z-index:1}
 .cr{position:absolute;left:0}
 .cr .w{animation:fin 1.6s ease-in-out infinite;transform-origin:60% 50%}
-.cr svg{display:block;width:100%;height:auto}
+.cr svg{display:block;width:100%;height:auto;overflow:visible}  /* flippers and fins may swing past the drawing box without being cut off */
 .cr.rv svg{transform:scaleX(-1)}
 .clown{width:84px}
 .clown.c1{top:12%;animation:swimL 34s linear -8.3s infinite}
