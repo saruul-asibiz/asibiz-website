@@ -21,13 +21,13 @@ title_en: Interview with 2 workers from Sri Lanka
 image: SriLanka_2people_thumbnail_sketchbook_bright_1080x1920.png
 
 link: https://www.instagram.com/p/DfWmE1NT8Lq/
-title: ネパール5人富士建設インタビュー
-title_en: 5 Nepali workers at Fuji Kensetsu
+title: 富士建設（ビルクリーニング・ネパール5名）
+title_en: Fuji Construction (Building cleaning - 5 personnel from Nepal)
 image: thumbnail_interview_group_daytime.png
 
 link: https://www.instagram.com/p/DfWmSGMT3fm/
-title: 面接ネパール空港ネパール語日字幕修正済
-title_en: Job interview at the airport in Nepal
+title: 富士建設（ビルクリーニング・空港インタビュー）
+title_en: Fuji Kensetsu (Building Cleaning – Airport Interview)
 image: thumbnail_nepal_airport_interview.png
 
 link: https://www.instagram.com/reel/DfWOQwlziBC/
@@ -36,8 +36,8 @@ title_en: 2 workers from Uzbekistan
 image: Thumbnail_v1.jpg
 
 link: https://www.instagram.com/reel/DfWNon_z70c/
-title: スリランカ2名
-title_en: 2 workers from Sri Lanka
+title: 薬正堂ヴィラ北谷（介護・スリランカ）
+title_en: Yakuseido Villa Chatan (Nursing Care / Sri Lanka)
 image: thumbnail_srilanka_caregiver_papercut.png
 
 link: https://www.instagram.com/reel/DfWNtx6T4o6/
