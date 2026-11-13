@@ -1235,6 +1235,19 @@ html.menu-lock,html.menu-lock body{overflow:hidden}
 .vt-on .vt-type{display:block;position:absolute;inset:0}
 .vt-type.typing::after{content:"";display:inline-block;width:3px;height:1.05em;margin-left:2px;vertical-align:-.15em;background:var(--ink);animation:vt-caret .8s steps(1) infinite}
 @keyframes vt-caret{50%{background:transparent}}
+/* label tag and big quote mark (2026-11-13) */
+.voice{position:relative;overflow:visible}
+.voice .v-tag{position:absolute;right:20px;top:-15px;display:inline-flex;align-items:center;height:28px;padding:0 12px;border:var(--border);border-radius:var(--radius-pill);background:var(--paper);font-family:var(--font-sans-jp);font-weight:800;font-size:12px;color:var(--ink)}
+.voice .v-qm{display:block;height:28px;margin-bottom:-6px;font-family:var(--font-display);font-style:italic;font-weight:900;font-size:68px;line-height:.75;color:var(--ink)}
+/* phones and tablets have no mouse: the card in the middle of the screen takes its colour instead (no tilt) */
+@media (hover:none){
+  .card.lift.voice:hover{transform:none;box-shadow:none}
+  .voice.lit.lit{transform:translate(-3px,-3px);box-shadow:var(--shadow-pop)}
+  .voice.lit[data-hover="sun"]{background:var(--sun-500)}
+  .voice.lit[data-hover="mint"]{background:var(--mint-500)}
+  .voice.lit figcaption{color:var(--ink)}
+}
+@media (prefers-reduced-motion: reduce){.voice{transition:none}}
 
 /* numbers count up, fees drop in with a stamped refund badge, FAQ answers slide, company headline gets a highlighter (2026-11-12) */
 .guarantee .disp{display:inline-block;padding:4px 12px 2px;border:2px solid var(--sun-500);border-radius:12px;transform:rotate(-6deg)}
@@ -1364,7 +1377,7 @@ html.menu-lock,html.menu-lock body{overflow:hidden}
     <a class="card coral lift reel" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener"><span class="reel-media"><span class="reel-chip">リール</span><span class="reel-play"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"></path></svg></span></span><span class="reel-body"><b>IMI Corporation</b><small>受け入れ企業インタビュー</small></span></a>
   </div>
   <h3 class="voices-title">利用企業・スタッフの声</h3>
-  <div class="voices"><figure class="card paper lift voice" data-hover="sun"><blockquote><span class="vt-src">「入国前研修のおかげで、受け入れる側の不安がなくなりました。現場の雰囲気が明るくなり、今では4名が活躍しています。」</span><span class="vt-type" aria-hidden="true"></span></blockquote><figcaption>— 建設会社 代表（沖縄県）</figcaption></figure><figure class="card paper lift voice" data-hover="mint"><blockquote><span class="vt-src">「仕事のことも生活のことも、母国語で相談できるので安心です。日本で長く働きたいと思えるようになりました。」</span><span class="vt-type" aria-hidden="true"></span></blockquote><figcaption>— ネパール出身 介護スタッフ</figcaption></figure></div>
+  <div class="voices"><figure class="card paper lift voice" data-hover="sun"><span class="v-tag">企業の声</span><span class="v-qm" aria-hidden="true">“</span><blockquote><span class="vt-src">「入国前研修のおかげで、受け入れる側の不安がなくなりました。現場の雰囲気が明るくなり、今では4名が活躍しています。」</span><span class="vt-type" aria-hidden="true"></span></blockquote><figcaption>— 建設会社 代表（沖縄県）</figcaption></figure><figure class="card paper lift voice" data-hover="mint"><span class="v-tag">スタッフの声</span><span class="v-qm" aria-hidden="true">“</span><blockquote><span class="vt-src">「仕事のことも生活のことも、母国語で相談できるので安心です。日本で長く働きたいと思えるようになりました。」</span><span class="vt-type" aria-hidden="true"></span></blockquote><figcaption>— ネパール出身 介護スタッフ</figcaption></figure></div>
   <h3 class="posts-title">最新の投稿</h3>
   <div class="posts">
     <a class="post t-sun" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener" aria-label="Instagramの投稿を見る"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"></path></svg></a>
@@ -1872,6 +1885,20 @@ html.menu-lock,html.menu-lock body{overflow:hidden}
     });
   }, { threshold: 0.5 });
   cards.forEach(function (c) { io.observe(c); });
+})();
+/* touch screens: light up the testimonial nearest the middle of the screen */
+(function () {
+  if (!window.matchMedia || !matchMedia('(hover: none)').matches) return;
+  var cards = [].slice.call(document.querySelectorAll('.voice')), raf = 0;
+  if (!cards.length) return;
+  function pick() {
+    raf = 0;
+    var mid = window.innerHeight / 2, best = null, bd = window.innerHeight * 0.32;
+    cards.forEach(function (c) { var r = c.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - mid); if (d < bd) { bd = d; best = c; } });
+    cards.forEach(function (c) { c.classList.toggle('lit', c === best); });
+  }
+  function q() { if (!raf) raf = requestAnimationFrame(pick); }
+  window.addEventListener('scroll', q, { passive: true }); window.addEventListener('resize', q); pick();
 })();
 </script><script>
 /* plays each effect once, when its block scrolls into view */
