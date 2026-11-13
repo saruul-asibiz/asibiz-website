@@ -1077,9 +1077,11 @@ a,button,summary,label,[role="button"]{-webkit-tap-highlight-color:transparent}
 .menu-panel .lang-switch,.sc .site-header .menu-panel .lang-switch{display:inline-flex;animation:none}
 .menu-panel .lang-switch a{height:44px;padding:0 18px;font-size:14px}
 
-/* phone menu: scrolls on its own; the page behind does not move while it is open */
+/* phone menu: scrolls on its own, and reaching its end does not pass the scroll on to the page.
+   (2026-11-13: no overflow:hidden lock any more; on phones it unstuck the sticky header, so the open menu slid off screen and the page froze) */
 .menu-panel{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-html.menu-lock,html.menu-lock body{overflow:hidden}
+/* no rubber-band bounce past the top or bottom of the page (it showed a white gap under the black footer on iPhone) */
+html,body{overscroll-behavior-y:none}
 
 /* sea band (2026-11-13)
    1. fish keep to a lane above the heading and a lane below the language chips, so they never pass behind the text
