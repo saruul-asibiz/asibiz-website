@@ -1077,6 +1077,10 @@ a,button,summary,label,[role="button"]{-webkit-tap-highlight-color:transparent}
 .menu-panel .lang-switch,.sc .site-header .menu-panel .lang-switch{display:inline-flex;animation:none}
 .menu-panel .lang-switch a{height:44px;padding:0 18px;font-size:14px}
 
+/* phone menu: scrolls on its own; the page behind does not move while it is open */
+.menu-panel{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+html.menu-lock,html.menu-lock body{overflow:hidden}
+
 /* reading progress: a plane flies along a plain track to the Japan marker as you read (dashes removed 2026-11-10) */
 @property --rp{syntax:'<number>';inherits:true;initial-value:0}
 .sc-progress{display:none}
@@ -1494,7 +1498,12 @@ a,button,summary,label,[role="button"]{-webkit-tap-highlight-color:transparent}
 <script>
 (function(){
   var h=document.querySelector('.site-header'), b=h&&h.querySelector('.menu-btn');
-  function setMenu(open){ h.classList.toggle('menu-open',open); b.setAttribute('aria-expanded',open?'true':'false'); }
+  var p=h&&h.querySelector('.menu-panel');
+  /* the panel is exactly as tall as the visible screen below it, so its last row (social links) can always be reached,
+     and the page behind stays still while the menu is open */
+  function fit(){ if(p&&h.classList.contains('menu-open')){ var vh=(window.visualViewport?window.visualViewport.height:window.innerHeight); p.style.maxHeight=Math.max(200,Math.floor(vh-p.getBoundingClientRect().top))+'px'; } }
+  function setMenu(open){ h.classList.toggle('menu-open',open); b.setAttribute('aria-expanded',open?'true':'false'); document.documentElement.classList.toggle('menu-lock',open); if(open){ fit(); requestAnimationFrame(fit); setTimeout(fit,300); } else if(p){ p.style.maxHeight=''; } }
+  window.addEventListener('resize',fit); if(window.visualViewport) window.visualViewport.addEventListener('resize',fit);
   if(b){
     b.addEventListener('click',function(){ setMenu(!h.classList.contains('menu-open')); });
     h.querySelectorAll('.menu-panel a[href^="#"]').forEach(function(a){ a.addEventListener('click',function(){ setMenu(false); }); });
