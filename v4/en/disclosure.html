@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;0,900;1,800;1,900&amp;family=Figtree:wght@400;500;700;800&amp;family=M+PLUS+Rounded+1c:wght@800;900&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@700&amp;family=Noto+Sans+Sinhala:wght@700&amp;family=Noto+Sans+Myanmar:wght@700&amp;text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%E0%B6%86%E0%B6%BA%E0%B7%94%E0%B6%B6%E0%B7%9D%E0%B7%80%E0%B6%B1%E0%B7%8A%E1%80%99%E1%80%84%E1%80%BA%E1%80%B9%E1%80%82%E1%80%9C%E1%80%AC%E1%80%95%E1%80%AB&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@700&amp;family=Noto+Sans+Sinhala:wght@700&amp;family=Noto+Sans+Myanmar:wght@700&amp;family=Noto+Sans+Khmer:wght@700&amp;family=Noto+Sans+Bengali:wght@700&amp;family=Noto+Sans+Thai:wght@700&amp;text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%E0%B6%86%E0%B6%BA%E0%B7%94%E0%B6%B6%E0%B7%9D%E0%B7%80%E0%B6%B1%E0%B7%8A%E1%80%99%E1%80%84%E1%80%BA%E1%80%B9%E1%80%82%E1%80%9C%E1%80%AC%E1%80%95%E1%80%AB%E1%9E%9F%E1%9E%BD%E1%9E%9F%E1%9F%92%E1%9E%8F%E1%9E%B8%E0%A6%A8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%B8%AA%E0%B8%A7%E0%B8%B1%E0%B8%AA%E0%B8%94%E0%B8%B5&amp;display=swap">
 <style>
 /* ===== Asibiz design system tokens (from Azibiz_Design_System/tokens) ===== */
 :root{
@@ -1246,6 +1246,33 @@ html,body{overscroll-behavior-y:none}
   .msg-photo{width:160px}
   .sub-steps{grid-template-columns:1fr}
 }
+/* ===== Hiyane-san feedback (2026-11-13) ===== */
+.facts-row span small{font-family:var(--font-sans-jp);font-weight:700;font-size:11.5px;color:var(--ink-3);margin-left:2px}
+.facts-row > :nth-child(3){animation-delay:calc(var(--go) + 1.55s)}
+.hi-cell.hi-x .hi-word{font-family:'Noto Sans Khmer','Noto Sans Bengali','Noto Sans Thai','Figtree',sans-serif;font-weight:700}
+/* fees: just a quote request now */
+.quote-card{position:relative;overflow:visible;display:flex;align-items:center;justify-content:space-between;gap:24px 40px;flex-wrap:wrap;padding:48px 44px 40px;background:var(--coral-500);box-shadow:var(--shadow-pop-l)}
+.quote-card .q-free{position:absolute;left:28px;top:-18px;transform:rotate(-5deg);display:inline-flex;align-items:center;height:36px;padding:0 16px;border:var(--border);border-radius:var(--radius-pill);background:var(--sun-500);font-family:var(--font-display-jp);font-weight:900;font-size:15px;color:var(--ink);box-shadow:var(--shadow-pop-s)}
+.quote-card .q-mz{position:absolute;right:26px;top:-58px;width:92px;transform:rotate(10deg);animation:mascot-float 4s ease-in-out infinite}
+.quote-card .q-mz svg{display:block;width:100%;height:auto;overflow:visible}
+.quote-card .btn.sun{box-shadow:var(--shadow-pop-s)}
+.quote-card .btn.sun:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-pop)}
+.quote-card p{margin:0;font-family:var(--font-display-jp);font-weight:800;font-size:20px;line-height:1.6;color:var(--ink);max-width:620px}
+.quote-card .btn{flex:none}
+.quote-note{margin:14px 0 0;font-size:14px;color:var(--ink-2)}
+.quote-note a{font-weight:800;color:var(--ink)}
+@media (max-width:700px){.quote-card{padding:36px 22px 24px}.quote-card p{font-size:17px}.quote-card .btn{width:100%}.quote-card .q-mz{width:64px;top:-44px;right:16px}}
+/* company: related companies under the main table */
+.rel-title{margin:36px 0 14px;font-family:var(--font-display-jp);font-weight:800;font-size:22px;color:var(--ink)}
+.rel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.rel-card{padding:24px 28px 26px}
+.rel-card h4{margin:0 0 4px;font-family:var(--font-display-jp);font-weight:800;font-size:19px;color:var(--ink)}
+.rel-card .specs div{grid-template-columns:110px 1fr;gap:14px;padding:14px 0}
+.rel-card .specs dt{font-size:15px}.rel-card .specs dd{font-size:15px}
+.rel-card .ghost{margin-top:12px}
+@media (max-width:900px){.rel-grid{grid-template-columns:1fr}.rel-card .specs div{grid-template-columns:1fr;gap:2px}}
+.faq details p a,.disclosure-card a{font-weight:800;color:var(--ink)}
+.buoys{max-width:900px;margin-left:auto;margin-right:auto}
 </style>
 </head>
 <body>
@@ -1272,7 +1299,7 @@ html,body{overscroll-behavior-y:none}
   <div class="menu-panel" id="menu-panel">
     <div class="menu-in">
       <div class="menu-lang"><span>言語 / Language</span><div class="lang-switch" role="group" aria-label="言語 / Language"><a lang="ja" hreflang="ja" href="../disclosure.html">日本語</a><a class="on" lang="en" hreflang="en" href="disclosure.html" aria-current="page">English</a></div></div>
-      <div class="menu-links" role="navigation" aria-label="Menu"><a href="./#interviews">Interviews <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#services">Services <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#tokutei">Skilled workers <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#flow">How it works <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#fees">Fees <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#faq">FAQ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#company">Company <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="workers.html">Work in Japan <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="relocation.html">Relocation consulting <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="disclosure.html">Job placement disclosure <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
+      <div class="menu-links" role="navigation" aria-label="Menu"><a href="./#interviews">Interviews <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#services">Services <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#tokutei">Skilled workers <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#flow">How it works <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#fees">Fees <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#faq">FAQ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#company">Company <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="workers.html">Work in Japan <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="disclosure.html">Job placement disclosure <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
       <div class="menu-foot">
         <div class="sns-pills" role="group" aria-label="Follow us"><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
       </div>
@@ -1289,18 +1316,9 @@ html,body{overscroll-behavior-y:none}
 <div class="card legal-card disclosure-card">
 <p>As required by the Employment Security Act, we publish the following information on the fee-charging job placement business of Asibiz International Inc.</p>
 <div class="card company-card" style="margin:24px 0"><dl class="specs">
-<div><dt>Business name</dt><dd>Asibiz International Inc. (株式会社アジビズインターナショナル)</dd></div>
-<div><dt>License no.</dt><dd>23-ユ-303330 (granted Oct 1, 2026, valid until Sep 30, 2029)</dd></div>
-<div><dt>Address</dt><dd>Heights Shion 301, 18-25 Sanbonmatsu-cho, Atsuta-ku, Nagoya, Aichi 456-0032, Japan</dd></div>
-<div><dt>Scope</dt><dd>All occupations, within Japan</dd></div>
-<div><dt>Fees (employers)</dt><dd>Job order handling: ¥1,000<br>Placement (on success): 35% of the wages paid in the first year, or ¥600,000, whichever is higher<br>Fixed-term contracts: 35% of the wages for the contract period (up to 1 year), or ¥600,000, whichever is higher<br>All prices exclude tax</dd></div>
-<div><dt>Fees (job seekers)</dt><dd>Job seekers pay no fee</dd></div>
-<div><dt>Refund policy</dt><dd>Yes. If the person leaves for their own reasons, we refund 90% of the placement fee within 1 month of starting, or 50% between 1 and 3 months (no refund after 3 months).</dd></div>
-<div><dt>Placements</dt><dd>Licensed on Oct 1, 2026. Placement and 6-month retention figures will be published from FY2026.</dd></div>
-<div><dt>Complaints</dt><dd>Placement manager: MADAMINOV MANZURJON MADAMINOVICH<br>Phone +81 98-890-7701</dd></div>
-<div><dt>Personal information</dt><dd>See our <a href="privacy.html">privacy policy</a>.</dd></div>
+<div><dt>Business name</dt><dd>Asibiz International Inc. (株式会社アジビズインターナショナル)</dd></div><div><dt>License no.</dt><dd>23-ユ-303330</dd></div><div><dt>Address</dt><dd>Heights Shion 301, 18-25 Sanbonmatsu-cho, Atsuta-ku, Nagoya, Aichi 456-0032, Japan</dd></div><div><dt>Scope</dt><dd>All occupations, within Japan</dd></div><div><dt>Fees</dt><dd>As shown in the <a href="../docs/%E2%97%8F04.%E5%B1%8A%E5%87%BA%E5%88%B6%E6%89%8B%E6%95%B0%E6%96%99%E8%A1%A8.pdf" target="_blank" rel="noopener">fee table (PDF, Japanese)</a></dd></div><div><dt>Refund policy</dt><dd>If the person we introduced leaves for their own reasons, we refund 90% of the placement fee within 1 month of starting, or 50% after 1 month and within 3 months.</dd></div><div><dt>Operating rules</dt><dd>As set out in the <a href="../docs/%E2%97%8F07.%E6%A5%AD%E5%8B%99%E9%81%8B%E5%96%B6%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%A6%8F%E7%A8%8B.pdf" target="_blank" rel="noopener">rules on business operation (PDF, Japanese)</a></dd></div><div><dt>Personal information</dt><dd>As set out in the <a href="../docs/%E2%97%8F06.%E5%80%8B%E4%BA%BA%E6%83%85%E5%A0%B1%E9%81%A9%E6%80%A7%E7%AE%A1%E7%90%86%E8%A6%8F%E7%A8%8B.pdf" target="_blank" rel="noopener">rules on proper management of personal information (PDF, Japanese)</a></dd></div><div><dt>Complaints and questions</dt><dd>Placement manager: MADAMINOV MANZURJON MADAMINOVICH<br>Phone <a href="tel:+819095865446">+81 90-9586-5446</a></dd></div>
 </dl></div>
-<p class="legal-date">Updated: November 9, 2026</p>
+<p class="legal-date">Updated: November 13, 2026</p>
 </div>
 </section>
 </main>
@@ -1325,7 +1343,6 @@ html,body{overscroll-behavior-y:none}
           <a href="./#company">Company</a>
           <a href="./#contact">Contact us</a>
           <a href="workers.html">Work in Japan</a>
-          <a href="relocation.html">Relocation consulting</a>
           <a href="disclosure.html">Job placement disclosure</a>
         </nav>
     <div class="f-base">
