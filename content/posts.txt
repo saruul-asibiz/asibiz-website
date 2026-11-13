@@ -28,5 +28,5 @@ image: asibiz3.jpg
 title: ミナミホールディングスと連携！特定技能「自動車運送業」のドライバー育成・紹介体制を構築しました
 
 link: https://www.facebook.com/photo.php?fbid=122211711410322283&set=pb.61559668501570.-2207520000&type=3
-image: asibiz4.jpg
-title: ウズベキスタン国立世界言語大学を訪問！日本でのインターンシップ＆日本語教育の協力へ
+image: nepal.jpg
+title: 留学時代の街・糸満におかえりなさい！インドネシア出身の介護人材が特定技能で再来日
