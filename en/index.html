@@ -994,16 +994,16 @@ body:lang(en),.dc-root:lang(en){font-family:var(--font-sans);line-height:1.65}
 .pin-ready .pin-steps li:not(.on) .disc{transform:scale(.85);filter:grayscale(1);border-color:var(--blue-100)}
 .pin-ready .pin-steps li.on{box-shadow:var(--shadow-pop-s)}
 .pin-ready .fm-dots i:not(.on){background:var(--paper)}
-/* How it works: waiting cards keep a soft tint of their own colour (not grey), stay in place (no overlap with the line below),
-   and their picture waits small; "on" = white card that pops with a hard shadow and a full-size picture */
+/* How it works (2026-11-16, reversed at the user's request): waiting cards are plain white with a small picture;
+   each card fills with its own soft colour when it switches on, pops with a hard shadow and shows the full-size picture */
 .steps li:has(.n.t-sun){--tint:var(--sun-100)}.steps li:has(.n.t-blue){--tint:var(--blue-50)}.steps li:has(.n.t-mint){--tint:var(--mint-100)}
-.steps li:has(.n.t-lilac){--tint:var(--lilac-300)}.steps li:has(.n.t-coral){--tint:var(--paper-2)}
+.steps li:has(.n.t-lilac){--tint:var(--lilac-300)}.steps li:has(.n.t-coral){--tint:#FFDCCF}
 .pin-ready .steps li{transition:transform .55s var(--ease-bounce),background-color .3s,box-shadow .25s}
 .pin-ready .steps li .step-art svg{transition:transform .55s var(--ease-bounce)}
-.pin-ready .steps li:not(.on){transform:scale(.97);background:var(--tint,var(--paper-2));box-shadow:none}
+.pin-ready .steps li:not(.on){transform:scale(.97);background:var(--paper);box-shadow:none}
 .pin-ready .steps li:not(.on) h3,.pin-ready .steps li:not(.on) .dur{color:var(--ink-3)}
 .pin-ready .steps li:not(.on) .step-art svg{transform:scale(.72) rotate(-6deg)}
-.pin-ready .steps li.on{background:var(--paper);box-shadow:var(--shadow-pop-s);animation:step-pop .55s var(--ease-bounce)}
+.pin-ready .steps li.on{background:var(--tint,var(--paper));box-shadow:var(--shadow-pop-s);animation:step-pop .55s var(--ease-bounce)}
 @keyframes step-pop{0%{transform:scale(.97)}50%{transform:translateY(-8px) scale(1.03)}100%{transform:none}}
 /* For employers: the card stays white; only the big step number takes the colour of the support item that is switched on */
 .split .feature{background:var(--paper)}
