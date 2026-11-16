@@ -1339,6 +1339,10 @@ html,body{overscroll-behavior-y:none}
 @media (max-width:900px){.rel-grid{grid-template-columns:1fr}.rel-card .specs div{grid-template-columns:1fr;gap:2px}}
 .faq details p a,.disclosure-card a{font-weight:800;color:var(--ink)}
 .buoys{max-width:900px;margin-left:auto;margin-right:auto}
+/* the For Employers card is white now. Every pill colour is already used nearby (white tags, black button,
+   coloured support items), so 'Main fields' is plain heading text instead of a pill: it reads as a title for the tags */
+.feature > .tags-lbl{background:none;border:0;padding:0;height:auto;border-radius:0;color:var(--ink);font-size:13px;letter-spacing:.1em}
+.feature > .tags-lbl + .tags{margin-top:-10px}
 /* 2026-11-16 phone fixes: (1) the hero cards no longer drift at different speeds while scrolling, so the
    yellow 2017 card is never covered by the ようこそ pill or the mascot; the mascot sits beside the lilac card.
    (2) the licence chips stack, and the number and the label never break in the middle. */
