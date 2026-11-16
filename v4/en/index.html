@@ -1344,6 +1344,9 @@ html,body{overscroll-behavior-y:none}
    (2) the licence chips stack, and the number and the label never break in the middle. */
 @media (max-width:700px){
   .hero-art .card,.hero-art .sticker{translate:none!important}
+  /* no scroll-linked animation left running on the cards: a running animation keeps the card as a flat picture,
+     which looks rough when you pinch-zoom; a finished one is redrawn sharp at any zoom */
+  .sc .hero-art .card{animation:ld-card .9s var(--pop) both;animation-timeline:auto;animation-range:normal}
   .hero-art .sticker{bottom:0!important}
   .facts-row{flex-direction:column;align-items:flex-start;gap:8px}
   .facts-row span{flex-wrap:wrap;white-space:nowrap;border-radius:18px;row-gap:3px;padding:6px 14px 7px 6px}
