@@ -1339,6 +1339,16 @@ html,body{overscroll-behavior-y:none}
 @media (max-width:900px){.rel-grid{grid-template-columns:1fr}.rel-card .specs div{grid-template-columns:1fr;gap:2px}}
 .faq details p a,.disclosure-card a{font-weight:800;color:var(--ink)}
 .buoys{max-width:900px;margin-left:auto;margin-right:auto}
+/* 2026-11-16 phone fixes: (1) the hero cards no longer drift at different speeds while scrolling, so the
+   yellow 2017 card is never covered by the ようこそ pill or the mascot; the mascot sits beside the lilac card.
+   (2) the licence chips stack, and the number and the label never break in the middle. */
+@media (max-width:700px){
+  .hero-art .card,.hero-art .sticker{translate:none!important}
+  .hero-art .sticker{bottom:0!important}
+  .facts-row{flex-direction:column;align-items:flex-start;gap:8px}
+  .facts-row span{flex-wrap:wrap;white-space:nowrap;border-radius:18px;row-gap:3px;padding:6px 14px 7px 6px}
+  .facts-row span small{white-space:normal}
+}
 /* partner details: long lines may wrap, so the chip grows with its text instead of a fixed height (2026-11-16 phone fix) */
 .sea-net span{height:auto;min-height:38px;padding:7px 16px;line-height:1.4;text-align:center;flex-wrap:wrap;justify-content:center}
 .sea-net span b{font-weight:800}
