@@ -1273,6 +1273,16 @@ html,body{overscroll-behavior-y:none}
 @media (max-width:900px){.rel-grid{grid-template-columns:1fr}.rel-card .specs div{grid-template-columns:1fr;gap:2px}}
 .faq details p a,.disclosure-card a{font-weight:800;color:var(--ink)}
 .buoys{max-width:900px;margin-left:auto;margin-right:auto}
+/* partner details: long lines may wrap, so the chip grows with its text instead of a fixed height (2026-11-16 phone fix) */
+.sea-net span{height:auto;min-height:38px;padding:7px 16px;line-height:1.4;text-align:center;flex-wrap:wrap;justify-content:center}
+.sea-net span b{font-weight:800}
+.sea-net span i{font-style:normal;margin:0 6px;color:var(--ink-3)}
+@media (max-width:700px){
+  .sea-net{flex-direction:column;align-items:stretch;gap:8px}
+  .sea-net span{flex-direction:column;align-items:center;border-radius:18px;padding:9px 16px 10px;gap:1px;font-size:13.5px}
+  .sea-net span i{display:none}
+  .sea-net span b{font-size:15px}
+}
 </style>
 </head>
 <body>
