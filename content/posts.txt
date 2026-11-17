@@ -18,15 +18,19 @@
 link: https://www.facebook.com/photo.php?fbid=122130156344322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz1.jpg
 title: ウズベキスタン政府と送出協定を締結！現地出張レポート
+title_en: We signed a sending agreement with the Government of Uzbekistan! Our trip report
 
 link: https://www.facebook.com/photo.php?fbid=122187462032322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz2.jpg
 title: ネパールから由布島へ！特定技能で新たな挑戦がスタート
+title_en: From Nepal to Yubu Island! A new start as a Specified Skilled Worker
 
 link: https://www.facebook.com/photo.php?fbid=122185860506322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz3.jpg
 title: ミナミホールディングスと連携！特定技能「自動車運送業」のドライバー育成・紹介体制を構築しました
+title_en: Partnering with Minami Holdings to train and place drivers in the "automobile transport" field
 
 link: https://www.facebook.com/photo.php?fbid=122211711410322283&set=pb.61559668501570.-2207520000&type=3
 image: nepal.jpg
 title: 留学時代の街・糸満におかえりなさい！インドネシア出身の介護人材が特定技能で再来日
+title_en: Welcome back to Itoman! A caregiver from Indonesia returns to the town where she studied
