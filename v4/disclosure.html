@@ -1273,6 +1273,12 @@ html,body{overscroll-behavior-y:none}
 @media (max-width:900px){.rel-grid{grid-template-columns:1fr}.rel-card .specs div{grid-template-columns:1fr;gap:2px}}
 .faq details p a,.disclosure-card a{font-weight:800;color:var(--ink)}
 .buoys{max-width:900px;margin-left:auto;margin-right:auto}
+/* 2026-11-17 sharp card edges: an animation that keeps running (the scroll-linked drift) makes the browser treat the
+   tilted cards as a flat picture, so their black outline looks stepped when zoomed. The cards now only pop in; once that
+   finishes the animation is removed (.settled) and the drift on computers is done by a tiny script instead. */
+.sc .hero-art .card{animation:ld-card .9s var(--pop) both;animation-timeline:auto;animation-range:normal}
+.sc.oki .hero-art .sticker{animation:mascot-float 4s ease-in-out infinite,ld-pop .7s var(--pop) calc(var(--go) + 1.3s) both;animation-timeline:auto,auto;animation-range:normal,normal}
+.hero-art .card.settled{animation:none!important}
 /* the For Employers card is white now. Every pill colour is already used nearby (white tags, black button,
    coloured support items), so 'Main fields' is plain heading text instead of a pill: it reads as a title for the tags */
 .feature > .tags-lbl{background:none;border:0;padding:0;height:auto;border-radius:0;color:var(--ink);font-size:13px;letter-spacing:.1em}
@@ -1282,9 +1288,6 @@ html,body{overscroll-behavior-y:none}
    (2) the licence chips stack, and the number and the label never break in the middle. */
 @media (max-width:700px){
   .hero-art .card,.hero-art .sticker{translate:none!important}
-  /* no scroll-linked animation left running on the cards: a running animation keeps the card as a flat picture,
-     which looks rough when you pinch-zoom; a finished one is redrawn sharp at any zoom */
-  .sc .hero-art .card{animation:ld-card .9s var(--pop) both;animation-timeline:auto;animation-range:normal}
   .hero-art .sticker{bottom:0!important}
   .facts-row{flex-direction:column;align-items:flex-start;gap:8px}
   .facts-row span{flex-wrap:wrap;white-space:nowrap;border-radius:18px;row-gap:3px;padding:6px 14px 7px 6px}
@@ -1608,6 +1611,30 @@ html,body{overscroll-behavior-y:none}
   }
   document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; if (!queued) { queued = true; requestAnimationFrame(look); } }, { passive: true });
   document.addEventListener('mouseleave', function () { m.style.setProperty('--ex', '0px'); m.style.setProperty('--ey', '0px'); });
+})();
+</script>
+<script>
+/* hero cards: drop the pop-in animation once it ends (keeps the tilted outlines sharp at any zoom),
+   and on computers move the cards a little as you scroll (same drift as before, without a running animation) */
+(function () {
+  var els = [].slice.call(document.querySelectorAll('.sc .hero-art .card, .sc .hero-art .sticker'));
+  if (!els.length) return;
+  els.forEach(function (e) {
+    e.addEventListener('animationend', function (ev) {
+      if (ev.target === e && (ev.animationName === 'ld-card' || ev.animationName === 'pop-in')) e.classList.add('settled');
+    });
+  });
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ps = els.map(function (e) { return parseFloat(getComputedStyle(e).getPropertyValue('--p')) || 0; });
+  var busy = false;
+  function upd() {
+    busy = false;
+    var k = window.innerWidth > 700 ? Math.min(1, Math.max(0, window.scrollY / 760)) : 0;
+    els.forEach(function (e, i) { e.style.translate = k ? '0 ' + (ps[i] * k).toFixed(1) + 'px' : ''; });
+  }
+  addEventListener('scroll', function () { if (!busy) { busy = true; requestAnimationFrame(upd); } }, { passive: true });
+  addEventListener('resize', upd);
+  upd();
 })();
 </script>
 </body>
