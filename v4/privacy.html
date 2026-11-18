@@ -1279,6 +1279,9 @@ html,body{overscroll-behavior-y:none}
 .sc .hero-art .card{animation:ld-card .9s var(--pop) both;animation-timeline:auto;animation-range:normal}
 .sc.oki .hero-art .sticker{animation:mascot-float 4s ease-in-out infinite,ld-pop .7s var(--pop) calc(var(--go) + 1.3s) both;animation-timeline:auto,auto;animation-range:normal,normal}
 .hero-art .card.settled{animation:none!important}
+/* and if a browser still draws a card as its own layer (phones often do), its top and left outline sit right on the
+   layer's edge, where the browser does not smooth them. A 1px see-through outline gives the edge room to be smoothed. */
+.hero-art .card,.hero-art .hello{outline:1px solid transparent;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 /* the For Employers card is white now. Every pill colour is already used nearby (white tags, black button,
    coloured support items), so 'Main fields' is plain heading text instead of a pill: it reads as a title for the tags */
 .feature > .tags-lbl{background:none;border:0;padding:0;height:auto;border-radius:0;color:var(--ink);font-size:13px;letter-spacing:.1em}
@@ -1303,6 +1306,15 @@ html,body{overscroll-behavior-y:none}
   .sea-net span i{display:none}
   .sea-net span b{font-size:15px}
 }
+/* 2026-11-18: company history in neat columns (year | month | event), so the months line up */
+.hist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:auto auto 1fr;column-gap:0;row-gap:4px}
+.hist li{display:contents}
+.hist .hy{white-space:nowrap}
+.hist .hm{white-space:nowrap;text-align:right;padding-right:1em;font-variant-numeric:tabular-nums}
+.hist .ht{min-width:0}
+.hist .hn{white-space:nowrap}
+.lang-en .hist .hm,.hist.en .hm{text-align:left;padding-right:.4em}
+.hist.en .hy{padding-right:1em}
 </style>
 </head>
 <body>
@@ -1366,7 +1378,7 @@ html,body{overscroll-behavior-y:none}
       <h3>7. 開示等のご請求</h3>
       <p>ご本人から、保有個人データの利用目的の通知、開示、訂正、追加、削除、利用停止等のご請求があった場合は、ご本人であることを確認のうえ、法令に従い速やかに対応します。</p>
       <h3>8. お問い合わせ窓口</h3>
-      <p>アジビズグループ　個人情報お問い合わせ窓口<br>〒901-2225 沖縄県宜野湾市大謝名2-1-7<br>TEL 098-890-7701 ／ メール info@japanasia.biz</p>
+      <p>アジビズグループ　個人情報お問い合わせ窓口<br>〒901-2225 沖縄県宜野湾市大謝名2-3-5 1A<br>TEL 098-890-7701 ／ メール info@japanasia.biz</p>
       <h3>9. 本ポリシーの改定</h3>
       <p>当社は、必要に応じて本ポリシーを改定することがあります。改定後の内容は、本サイトに掲載した時点から効力を生じます。</p>
       <p class="legal-date">制定日：[YYYY年MM月DD日]</p>
@@ -1399,7 +1411,7 @@ html,body{overscroll-behavior-y:none}
     <div class="f-base">
       <div class="f-brand">
         <img class="f-logo" src="assets/logo.png" alt="アジビズグループ" width="600" height="221" loading="lazy">
-        <address>〒901-2225 沖縄県宜野湾市大謝名2-1-7<br>TEL 098-890-7701 ／ FAX 098-993-5755 ／ info@japanasia.biz</address>
+        <address>〒901-2225 沖縄県宜野湾市大謝名2-3-5 1A<br>TEL 098-890-7701 ／ FAX 098-993-5755 ／ info@japanasia.biz</address>
       </div>
       <div class="f-side">
         <div class="sns-pills" role="group" aria-label="公式SNS"><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>

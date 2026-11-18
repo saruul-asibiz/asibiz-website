@@ -1279,6 +1279,9 @@ html,body{overscroll-behavior-y:none}
 .sc .hero-art .card{animation:ld-card .9s var(--pop) both;animation-timeline:auto;animation-range:normal}
 .sc.oki .hero-art .sticker{animation:mascot-float 4s ease-in-out infinite,ld-pop .7s var(--pop) calc(var(--go) + 1.3s) both;animation-timeline:auto,auto;animation-range:normal,normal}
 .hero-art .card.settled{animation:none!important}
+/* and if a browser still draws a card as its own layer (phones often do), its top and left outline sit right on the
+   layer's edge, where the browser does not smooth them. A 1px see-through outline gives the edge room to be smoothed. */
+.hero-art .card,.hero-art .hello{outline:1px solid transparent;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 /* the For Employers card is white now. Every pill colour is already used nearby (white tags, black button,
    coloured support items), so 'Main fields' is plain heading text instead of a pill: it reads as a title for the tags */
 .feature > .tags-lbl{background:none;border:0;padding:0;height:auto;border-radius:0;color:var(--ink);font-size:13px;letter-spacing:.1em}
@@ -1303,6 +1306,15 @@ html,body{overscroll-behavior-y:none}
   .sea-net span i{display:none}
   .sea-net span b{font-size:15px}
 }
+/* 2026-11-18: company history in neat columns (year | month | event), so the months line up */
+.hist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:auto auto 1fr;column-gap:0;row-gap:4px}
+.hist li{display:contents}
+.hist .hy{white-space:nowrap}
+.hist .hm{white-space:nowrap;text-align:right;padding-right:1em;font-variant-numeric:tabular-nums}
+.hist .ht{min-width:0}
+.hist .hn{white-space:nowrap}
+.lang-en .hist .hm,.hist.en .hm{text-align:left;padding-right:.4em}
+.hist.en .hy{padding-right:1em}
 </style>
 </head>
 <body>
@@ -1387,7 +1399,7 @@ html,body{overscroll-behavior-y:none}
     <div class="f-base">
       <div class="f-brand">
         <img class="f-logo" src="../assets/logo.png" alt="Asibiz Group (アジビズグループ)" width="600" height="221" loading="lazy">
-        <address>2-1-7 Ojana, Ginowan, Okinawa 901-2225, Japan<br>Phone +81 98-890-7701 / Fax +81 98-993-5755 / info@japanasia.biz</address>
+        <address>1A, 2-3-5 Ojana, Ginowan, Okinawa 901-2225, Japan<br>Phone +81 98-890-7701 / Fax +81 98-993-5755 / info@japanasia.biz</address>
       </div>
       <div class="f-side">
         <div class="sns-pills" role="group" aria-label="Follow us"><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
