@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;0,900;1,800;1,900&amp;family=Figtree:wght@400;500;700;800&amp;family=M+PLUS+Rounded+1c:wght@800;900&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@700&amp;family=Noto+Sans+Sinhala:wght@700&amp;family=Noto+Sans+Myanmar:wght@700&amp;text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%E0%B6%86%E0%B6%BA%E0%B7%94%E0%B6%B6%E0%B7%9D%E0%B7%80%E0%B6%B1%E0%B7%8A%E1%80%99%E1%80%84%E1%80%BA%E1%80%B9%E1%80%82%E1%80%9C%E1%80%AC%E1%80%95%E1%80%AB&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@700&amp;family=Noto+Sans+Sinhala:wght@700&amp;family=Noto+Sans+Myanmar:wght@700&amp;family=Noto+Sans+Khmer:wght@700&amp;family=Noto+Sans+Bengali:wght@700&amp;family=Noto+Sans+Thai:wght@700&amp;text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%E0%B6%86%E0%B6%BA%E0%B7%94%E0%B6%B6%E0%B7%9D%E0%B7%80%E0%B6%B1%E0%B7%8A%E1%80%99%E1%80%84%E1%80%BA%E1%80%B9%E1%80%82%E1%80%9C%E1%80%AC%E1%80%95%E1%80%AB%E1%9E%9F%E1%9E%BD%E1%9E%9F%E1%9F%92%E1%9E%8F%E1%9E%B8%E0%A6%A8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%B8%AA%E0%B8%A7%E0%B8%B1%E0%B8%AA%E0%B8%94%E0%B8%B5&amp;display=swap">
 <style>
 /* ===== Asibiz design system tokens (from Azibiz_Design_System/tokens) ===== */
 :root{
@@ -1138,6 +1138,182 @@ html,body{overscroll-behavior-y:none}
 @media (max-width:700px){.legal-card{padding:28px 24px}.legal-card h3{font-size:18px;margin-top:32px}}
 .feature > .tags-lbl{align-self:flex-start;margin-top:auto}
 .feature > .tags-lbl + .tags{margin-top:-8px}
+/* ===== v4 additions ===== */
+.topbar-in{gap:14px}
+.tb-workers{margin-right:auto;color:var(--paper);font-weight:800;font-size:12px;text-decoration:none;border-bottom:2px solid var(--sun-500);line-height:1.4}
+.tb-workers:hover{color:var(--sun-500)}
+.stats-sec{padding-top:72px;padding-bottom:0}
+.stats-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px}
+.stats-top b{font-family:var(--font-display-jp);font-weight:800;font-size:20px;color:var(--ink)}
+.stats-top small{font-size:13px;color:var(--ink-3)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.stat{padding:26px 28px;display:flex;flex-direction:column;gap:6px}
+.stat .num{font-family:var(--font-display);font-weight:900;font-style:italic;font-size:clamp(56px,6vw,84px);line-height:.9;color:var(--ink);letter-spacing:-.01em}
+.stat .num small{font-family:var(--font-display-jp);font-style:normal;font-weight:800;font-size:22px;margin-left:4px;letter-spacing:0}
+.stat .lbl{font-family:var(--font-display-jp);font-weight:800;font-size:16px;color:var(--ink)}
+.voices-title,.svc-more-lbl{margin:48px 0 16px;font-family:var(--font-display-jp);font-weight:800;font-size:22px;line-height:1.35;color:var(--ink)}
+.voices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.voice{margin:0;padding:30px 32px;display:flex;flex-direction:column;gap:16px}
+.voice blockquote{margin:0;font-family:var(--font-display-jp);font-weight:800;font-size:19px;line-height:1.7;color:var(--ink)}
+.voice figcaption{font-size:14px;font-weight:700;color:var(--ink-3)}
+.svc-grid.two-up{grid-template-columns:repeat(2,minmax(0,1fr))}
+.svc-more{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:18px 24px;border:var(--border);border-radius:var(--radius-pill);background:var(--paper-2)}
+.svc-more b{font-family:var(--font-display-jp);font-weight:800;font-size:16px;color:var(--ink);margin-right:8px}
+.note-badge{align-self:flex-start;margin-bottom:6px}
+#tokutei > .note{margin:0 0 20px}
+.sea-net{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:980px;margin-top:8px}
+.sea-net span{display:inline-flex;align-items:center;height:38px;padding:0 16px;border:var(--border);border-radius:var(--radius-pill);background:var(--paper);font-weight:700;font-size:14px;color:var(--ink)}
+.sea-langs{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin-top:6px}
+.sea-langs b{font-family:var(--font-display-jp);font-weight:800;font-size:15px;color:var(--ink);margin-right:4px}
+.sea-langs span{display:inline-flex;align-items:center;height:32px;padding:0 12px;border:var(--border);border-radius:var(--radius-pill);background:var(--sun-500);font-weight:800;font-size:13px;color:var(--ink)}
+.steps .st-txt{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.steps .st-txt h3{margin-top:0}
+.steps .dur{margin:0;display:inline-flex;align-self:flex-start;align-items:center;min-height:28px;padding:3px 12px;line-height:1.4;border:var(--border);border-radius:var(--radius-pill);background:var(--paper-2);font-weight:800;font-size:13px;color:var(--ink)}
+.flow-total{margin:24px 0 0;padding:18px 24px;border:var(--border);border-radius:var(--radius-m);background:var(--sun-100);font-size:16px;color:var(--ink)}
+.fees{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.fee{padding:30px 32px;display:flex;flex-direction:column;gap:8px}
+.fee .over{margin:0}
+.fee h3{margin:0;font-family:var(--font-display-jp);font-weight:800;font-size:20px;color:var(--ink)}
+.fee .price{font-family:var(--font-display);font-weight:900;font-style:italic;font-size:clamp(48px,4.6vw,68px);line-height:1;color:var(--ink);margin-top:10px}
+.fee .price small{font-family:var(--font-display-jp);font-style:normal;font-weight:800;font-size:20px;margin-left:4px}
+.fee .per{font-size:14px;font-weight:700;color:var(--ink-2)}
+.guarantee{margin-top:20px;display:flex;gap:24px;align-items:center;padding:28px 32px}
+.guarantee .disp{flex:none;font-size:clamp(30px,3vw,44px);color:var(--sun-500)}
+.guarantee p{margin:0;font-size:16px;line-height:1.8;color:var(--paper)}
+.fees-foot{margin:16px 0 0;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:14px;color:var(--ink-3)}
+.fees-foot a{font-weight:800;color:var(--ink)}
+.faq{display:flex;flex-direction:column;gap:12px;max-width:960px}
+.faq details{border:var(--border);border-radius:var(--radius-m);background:var(--paper);transition:box-shadow var(--dur) var(--ease-out),transform var(--dur) var(--ease-bounce)}
+.faq details[open]{background:var(--blue-50);box-shadow:var(--shadow-pop-s)}
+.faq details:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-pop-s)}
+.faq summary:hover::after{background:var(--paper)}
+.sub-steps li{transition:transform var(--dur-slow) var(--ease-bounce),box-shadow var(--dur) var(--ease-out)}
+.sub-steps li:hover{transform:translate(-4px,-4px) rotate(-.6deg);box-shadow:var(--shadow-pop)}
+.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;font-family:var(--font-display-jp);font-weight:800;font-size:18px;line-height:1.5;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:var(--border);border-radius:50%;background:var(--sun-500);font-family:var(--font-sans);font-size:22px;line-height:1;transition:transform var(--dur) var(--ease-bounce)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0;padding:0 24px 22px;font-size:16px;line-height:1.85;color:var(--ink-2)}
+.reach .hours{margin:0;font-size:14px;font-weight:700;color:var(--ink-2)}
+.msg-card{margin-bottom:24px;display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:start;padding:36px 40px}
+.msg-photo{aspect-ratio:4/5;border:var(--border);border-radius:var(--radius-l);overflow:hidden;background:var(--paper-2);box-shadow:var(--shadow-pop-s)}
+.msg-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.msg-card h3{margin:6px 0 14px;font-family:var(--font-display-jp);font-weight:800;font-size:24px;line-height:1.45;color:var(--ink)}
+.msg-card p{margin:0 0 12px;font-size:16px;line-height:1.9;color:var(--ink-2)}
+.msg-card .msg-name{margin:16px 0 0;font-weight:800;color:var(--ink)}
+/* sub pages */
+.sub-lead{max-width:760px;font-size:17px;line-height:1.85;color:var(--ink-2);margin:0 0 32px}
+.sub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-bottom:28px}
+.sub-card{padding:28px 30px;display:flex;flex-direction:column;gap:10px}
+.sub-card h3{margin:0;font-family:var(--font-display-jp);font-weight:800;font-size:20px;color:var(--ink)}
+.sub-card p{margin:0;font-size:15px;line-height:1.8;color:var(--ink)}
+.hello{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px}
+.hello span{display:inline-flex;align-items:center;height:44px;padding:0 18px;border:var(--border);border-radius:var(--radius-pill);background:var(--paper);font-weight:800;font-size:16px;color:var(--ink);box-shadow:var(--shadow-pop-s)}
+.sub-steps{margin:0 0 28px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.sub-steps li{border:var(--border);border-radius:var(--radius-m);background:var(--paper);padding:20px;display:flex;flex-direction:column;gap:8px}
+.sub-steps .n{font-family:var(--font-display);font-weight:900;font-style:italic;font-size:40px;line-height:1;color:var(--ink)}
+.sub-steps b{font-family:var(--font-display-jp);font-weight:800;font-size:17px;color:var(--ink)}
+.sub-steps small{font-size:14px;line-height:1.7;color:var(--ink-2)}
+.sub-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:8px}
+.sub-cta .sns-line{display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 26px;border:var(--border);border-radius:var(--radius-pill);background:#06C755;color:var(--ink);font-weight:800;text-decoration:none}
+.sub-note{margin:24px 0 0;padding:18px 24px;border:var(--border);border-radius:var(--radius-m);background:var(--sun-100);font-size:15px;line-height:1.8;color:var(--ink)}
+.disclosure-card{max-width:980px}
+@media (max-width:1100px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fees{grid-template-columns:1fr}
+  .sub-grid{grid-template-columns:1fr}
+  .sub-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:700px){
+  .tb-workers{font-size:11px}
+  .stats-sec{padding-top:48px}
+  .stats{gap:10px}
+  .stat{padding:18px}
+  .stat .num{font-size:48px}
+  .stat .num small{font-size:16px}
+  .stat .lbl{font-size:13px}
+  .voices{grid-template-columns:1fr}
+  .voice{padding:22px}
+  .voice blockquote{font-size:16px}
+  .svc-grid.two-up{grid-template-columns:1fr}
+  .svc-more{border-radius:var(--radius-m)}
+  .guarantee{flex-direction:column;align-items:flex-start;gap:10px;padding:24px}
+  .steps .st-txt{flex:1;min-width:0;margin-top:0;gap:6px}
+  .faq summary{font-size:16px;padding:16px 18px}
+  .faq details p{padding:0 18px 18px;font-size:15px}
+  .msg-card{grid-template-columns:1fr;gap:20px;padding:24px}
+  .msg-photo{width:160px}
+  .sub-steps{grid-template-columns:1fr}
+}
+/* ===== Hiyane-san feedback (2026-11-13) ===== */
+.facts-row span small{font-family:var(--font-sans-jp);font-weight:700;font-size:11.5px;color:var(--ink-3);margin-left:2px}
+.facts-row > :nth-child(3){animation-delay:calc(var(--go) + 1.55s)}
+.hi-cell.hi-x .hi-word{font-family:'Noto Sans Khmer','Noto Sans Bengali','Noto Sans Thai','Figtree',sans-serif;font-weight:700}
+/* fees: just a quote request now */
+.quote-card{position:relative;overflow:visible;display:flex;align-items:center;justify-content:space-between;gap:24px 40px;flex-wrap:wrap;padding:48px 44px 40px;background:var(--coral-500);box-shadow:var(--shadow-pop-l)}
+.quote-card .q-free{position:absolute;left:28px;top:-18px;transform:rotate(-5deg);display:inline-flex;align-items:center;height:36px;padding:0 16px;border:var(--border);border-radius:var(--radius-pill);background:var(--sun-500);font-family:var(--font-display-jp);font-weight:900;font-size:15px;color:var(--ink);box-shadow:var(--shadow-pop-s)}
+.quote-card .q-mz{position:absolute;right:26px;top:-58px;width:92px;transform:rotate(10deg);animation:mascot-float 4s ease-in-out infinite}
+.quote-card .q-mz svg{display:block;width:100%;height:auto;overflow:visible}
+.quote-card .btn.sun{box-shadow:var(--shadow-pop-s)}
+.quote-card .btn.sun:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-pop)}
+.quote-card p{margin:0;font-family:var(--font-display-jp);font-weight:800;font-size:20px;line-height:1.6;color:var(--ink);max-width:620px}
+.quote-card .btn{flex:none}
+.quote-note{margin:14px 0 0;font-size:14px;color:var(--ink-2)}
+.quote-note a{font-weight:800;color:var(--ink)}
+@media (max-width:700px){.quote-card{padding:36px 22px 24px}.quote-card p{font-size:17px}.quote-card .btn{width:100%}.quote-card .q-mz{width:64px;top:-44px;right:16px}}
+/* company: related companies under the main table */
+.rel-title{margin:36px 0 14px;font-family:var(--font-display-jp);font-weight:800;font-size:22px;color:var(--ink)}
+.rel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.rel-card{padding:24px 28px 26px}
+.rel-card h4{margin:0 0 4px;font-family:var(--font-display-jp);font-weight:800;font-size:19px;color:var(--ink)}
+.rel-card .specs div{grid-template-columns:110px 1fr;gap:14px;padding:14px 0}
+.rel-card .specs dt{font-size:15px}.rel-card .specs dd{font-size:15px}
+.rel-card .ghost{margin-top:12px}
+@media (max-width:900px){.rel-grid{grid-template-columns:1fr}.rel-card .specs div{grid-template-columns:1fr;gap:2px}}
+.faq details p a,.disclosure-card a{font-weight:800;color:var(--ink)}
+.buoys{max-width:900px;margin-left:auto;margin-right:auto}
+/* 2026-11-17 sharp card edges: an animation that keeps running (the scroll-linked drift) makes the browser treat the
+   tilted cards as a flat picture, so their black outline looks stepped when zoomed. The cards now only pop in; once that
+   finishes the animation is removed (.settled) and the drift on computers is done by a tiny script instead. */
+.sc .hero-art .card{animation:ld-card .9s var(--pop) both;animation-timeline:auto;animation-range:normal}
+.sc.oki .hero-art .sticker{animation:mascot-float 4s ease-in-out infinite,ld-pop .7s var(--pop) calc(var(--go) + 1.3s) both;animation-timeline:auto,auto;animation-range:normal,normal}
+.hero-art .card.settled{animation:none!important}
+/* and if a browser still draws a card as its own layer (phones often do), its top and left outline sit right on the
+   layer's edge, where the browser does not smooth them. A 1px see-through outline gives the edge room to be smoothed. */
+.hero-art .card,.hero-art .hello{outline:1px solid transparent;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+/* the For Employers card is white now. Every pill colour is already used nearby (white tags, black button,
+   coloured support items), so 'Main fields' is plain heading text instead of a pill: it reads as a title for the tags */
+.feature > .tags-lbl{background:none;border:0;padding:0;height:auto;border-radius:0;color:var(--ink);font-size:13px;letter-spacing:.1em}
+.feature > .tags-lbl + .tags{margin-top:-10px}
+/* 2026-11-16 phone fixes: (1) the hero cards no longer drift at different speeds while scrolling, so the
+   yellow 2017 card is never covered by the ようこそ pill or the mascot; the mascot sits beside the lilac card.
+   (2) the licence chips stack, and the number and the label never break in the middle. */
+@media (max-width:700px){
+  .hero-art .card,.hero-art .sticker{translate:none!important}
+  .hero-art .sticker{bottom:0!important}
+  .facts-row{flex-direction:column;align-items:flex-start;gap:8px}
+  .facts-row span{flex-wrap:wrap;white-space:nowrap;border-radius:18px;row-gap:3px;padding:6px 14px 7px 6px}
+  .facts-row span small{white-space:normal}
+}
+/* partner details: long lines may wrap, so the chip grows with its text instead of a fixed height (2026-11-16 phone fix) */
+.sea-net span{height:auto;min-height:38px;padding:7px 16px;line-height:1.4;text-align:center;flex-wrap:wrap;justify-content:center}
+.sea-net span b{font-weight:800}
+.sea-net span i{font-style:normal;margin:0 6px;color:var(--ink-3)}
+@media (max-width:700px){
+  .sea-net{flex-direction:column;align-items:stretch;gap:8px}
+  .sea-net span{flex-direction:column;align-items:center;border-radius:18px;padding:9px 16px 10px;gap:1px;font-size:13.5px}
+  .sea-net span i{display:none}
+  .sea-net span b{font-size:15px}
+}
+/* 2026-11-18: company history in neat columns (year | month | event), so the months line up */
+.hist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:auto auto 1fr;column-gap:0;row-gap:4px}
+.hist li{display:contents}
+.hist .hy{white-space:nowrap}
+.hist .hm{white-space:nowrap;text-align:right;padding-right:1em;font-variant-numeric:tabular-nums}
+.hist .ht{min-width:0}
+.hist .hn{white-space:nowrap}
+.lang-en .hist .hm,.hist.en .hm{text-align:left;padding-right:.4em}
+.hist.en .hy{padding-right:1em}
 </style>
 </head>
 <body>
@@ -1145,17 +1321,18 @@ html,body{overscroll-behavior-y:none}
 <div class="dc-root oki sc" lang="ja" style="width: 100%; display: flex; flex-direction: column; background: #FFFFFF; overflow-x: clip; --go: 0s">
 
 <header class="site-header"><div class="sc-progress" aria-hidden="true"><span class="rp-dest"></span><span class="rp-fill"><span class="rp-plane"><svg viewBox="0 0 24 24" aria-hidden="true"><path transform="rotate(90 12 12)" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z"/></svg></span></span></div>
-  <div class="topbar"><div class="topbar-in"><span class="sns-lbl">公式SNS</span><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></div>
+  <div class="topbar"><div class="topbar-in"><a class="tb-workers" href="workers.html">日本で働きたい方へ →</a><span class="sns-lbl">公式SNS</span><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></div>
   <div class="bar">
     <a class="brand" href="./" aria-label="アジビズグループ ホーム"><img src="assets/logo.png" alt="アジビズグループ" width="600" height="221"></a>
     <nav aria-label="メインメニュー">
       <a class="btn s paper" href="./#interviews">インタビュー</a>
-      <a class="btn s paper" href="./#services">サービス</a>
-      <a class="btn s paper" href="./#tokutei">特定技能</a>
-      <a class="btn s paper" href="./#careers">技人国・移住</a>
-      <a class="btn s paper" href="./#flow">ご依頼の流れ</a>
-      <a class="btn s paper" href="./#company">会社概要</a>
-      <a class="btn s cta" href="./#contact">無料相談 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        <a class="btn s paper" href="./#services">サービス</a>
+        <a class="btn s paper" href="./#tokutei">特定技能</a>
+        <a class="btn s paper" href="./#flow">ご依頼の流れ</a>
+        <a class="btn s paper" href="./#fees">料金</a>
+        <a class="btn s paper" href="./#faq">よくある質問</a>
+        <a class="btn s paper" href="./#company">会社概要</a>
+        <a class="btn s cta" href="./#contact">無料相談 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
     </nav>
     <div class="lang-switch" role="group" aria-label="言語 / Language"><a class="on" lang="ja" hreflang="ja" href="privacy.html" aria-current="page">日本語</a><a lang="en" hreflang="en" href="en/privacy.html">English</a></div>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel"><svg class="ic bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg><svg class="ic x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg><span class="t-open">メニュー</span><span class="t-close">閉じる</span></button>
@@ -1163,14 +1340,7 @@ html,body{overscroll-behavior-y:none}
   <div class="menu-panel" id="menu-panel">
     <div class="menu-in">
       <div class="menu-lang"><span>言語 / Language</span><div class="lang-switch" role="group" aria-label="言語 / Language"><a class="on" lang="ja" hreflang="ja" href="privacy.html" aria-current="page">日本語</a><a lang="en" hreflang="en" href="en/privacy.html">English</a></div></div>
-      <div class="menu-links" role="navigation" aria-label="メニュー">
-        <a href="./#interviews">インタビュー <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
-        <a href="./#services">サービス <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
-        <a href="./#tokutei">特定技能 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
-        <a href="./#careers">技人国・移住 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
-        <a href="./#flow">ご依頼の流れ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
-        <a href="./#company">会社概要 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
-      </div>
+      <div class="menu-links" role="navigation" aria-label="メニュー"><a href="./#interviews">インタビュー <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#services">サービス <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#tokutei">特定技能 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#flow">ご依頼の流れ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#fees">料金 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#faq">よくある質問 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="./#company">会社概要 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="workers.html">日本で働きたい方へ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><a href="disclosure.html">職業紹介事業の情報公開 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
       <div class="menu-foot">
         <div class="sns-pills" role="group" aria-label="公式SNS"><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
       </div>
@@ -1185,13 +1355,13 @@ html,body{overscroll-behavior-y:none}
     <h2>個人情報の取り扱いについて。</h2>
   </div>
   <div class="card legal-card">
-      <p>アジビズグループ（合同会社アジビズ および 株式会社アジビズインターナショナル。以下「当社」）は、外国人材の職業紹介、登録支援機関としての支援業務および日本移住コンサルティング業務で取り扱う個人情報の重要性を認識し、個人情報の保護に関する法律、職業安定法その他の関係法令を遵守して、以下のとおり適切に取り扱います。</p>
+      <p>アジビズグループ（合同会社アジビズ および 株式会社アジビズインターナショナル。以下「当社」）は、外国人材の職業紹介および登録支援機関としての支援業務で取り扱う個人情報の重要性を認識し、個人情報の保護に関する法律、職業安定法その他の関係法令を遵守して、以下のとおり適切に取り扱います。</p>
       <h3>1. 取得する個人情報</h3>
       <p>当社は、お問い合わせフォーム、電話、メール、面談等を通じて、氏名、会社名、メールアドレス、電話番号、ご相談内容のほか、職業紹介・支援業務に必要な範囲で、経歴、資格、在留資格に関する情報等を、適法かつ公正な手段により取得します。</p>
       <h3>2. 利用目的</h3>
       <ul>
         <li>お問い合わせ・ご相談への回答およびご連絡</li>
-        <li>職業紹介、登録支援機関としての支援、日本移住コンサルティング等のサービスの提供</li>
+        <li>職業紹介、登録支援機関としての支援等のサービスの提供</li>
         <li>求人企業と求職者とのマッチング、面接日程等の調整</li>
         <li>関係法令に基づく行政機関への届出・申請手続き</li>
         <li>当社サービスの改善およびご案内</li>
@@ -1202,11 +1372,13 @@ html,body{overscroll-behavior-y:none}
       <p>当社は、利用目的の達成に必要な範囲で、個人情報の取り扱いを外部に委託することがあります。その場合は、委託先を適切に選定し、必要な監督を行います。本サイトのお問い合わせフォームの送信には、Google LLC（米国）の Google Apps Script と、株式会社kubell の Chatwork を利用しています。</p>
       <h3>5. 安全管理措置</h3>
       <p>当社は、個人情報の漏えい、滅失またはき損を防止するため、必要かつ適切な安全管理措置を講じ、従業者への教育を行います。</p>
-      <h3>6. 開示等のご請求</h3>
+      <h3>6. Cookie等の外部サービスについて</h3>
+      <p>本サイトのお問い合わせ欄では、事務所の場所をご案内するため、Google LLC（米国）の Google マップを表示しています。地図を表示すると、Google がCookie等を使用して閲覧情報を取得する場合があります。当社がこれらの情報を取得・利用することはありません。取得される情報と利用目的は、<a href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener">Google のプライバシーポリシー</a>をご確認ください。</p>
+      <h3>7. 開示等のご請求</h3>
       <p>ご本人から、保有個人データの利用目的の通知、開示、訂正、追加、削除、利用停止等のご請求があった場合は、ご本人であることを確認のうえ、法令に従い速やかに対応します。</p>
-      <h3>7. お問い合わせ窓口</h3>
-      <p>アジビズグループ　個人情報お問い合わせ窓口<br>〒901-2225 沖縄県宜野湾市大謝名2-1-7<br>TEL 098-890-7701 ／ メール info@japanasia.biz</p>
-      <h3>8. 本ポリシーの改定</h3>
+      <h3>8. お問い合わせ窓口</h3>
+      <p>アジビズグループ　個人情報お問い合わせ窓口<br>〒901-2225 沖縄県宜野湾市大謝名2-3-5 1A<br>TEL 098-890-7701 ／ メール info@japanasia.biz</p>
+      <h3>9. 本ポリシーの改定</h3>
       <p>当社は、必要に応じて本ポリシーを改定することがあります。改定後の内容は、本サイトに掲載した時点から効力を生じます。</p>
       <p class="legal-date">制定日：[YYYY年MM月DD日]</p>
   </div>
@@ -1224,18 +1396,21 @@ html,body{overscroll-behavior-y:none}
       <div style="margin-top:28px"><a class="btn l" href="./#contact">無料相談・お問い合わせ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
     </div>
     <nav aria-label="フッターメニュー">
-      <a href="./#interviews">インタビュー</a>
-      <a href="./#services">サービス</a>
-      <a href="./#tokutei">特定技能</a>
-      <a href="./#careers">技人国・移住</a>
-      <a href="./#flow">ご依頼の流れ</a>
-      <a href="./#company">会社概要</a>
-      <a href="./#contact">無料相談</a>
-    </nav>
+          <a href="./#interviews">インタビュー</a>
+          <a href="./#services">サービス</a>
+          <a href="./#tokutei">特定技能</a>
+          <a href="./#flow">ご依頼の流れ</a>
+          <a href="./#fees">料金</a>
+          <a href="./#faq">よくある質問</a>
+          <a href="./#company">会社概要</a>
+          <a href="./#contact">無料相談</a>
+          <a href="workers.html">日本で働きたい方へ</a>
+          <a href="disclosure.html">職業紹介事業の情報公開</a>
+        </nav>
     <div class="f-base">
       <div class="f-brand">
         <img class="f-logo" src="assets/logo.png" alt="アジビズグループ" width="600" height="221" loading="lazy">
-        <address>〒901-2225 沖縄県宜野湾市大謝名2-1-7<br>TEL 098-890-7701 ／ FAX 098-993-5755 ／ info@japanasia.biz</address>
+        <address>〒901-2225 沖縄県宜野湾市大謝名2-3-5 1A<br>TEL 098-890-7701 ／ FAX 098-993-5755 ／ info@japanasia.biz</address>
       </div>
       <div class="f-side">
         <div class="sns-pills" role="group" aria-label="公式SNS"><a class="sns-instagram" href="https://www.instagram.com/asibiz_okinawa/" target="_blank" rel="noopener">Instagram <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-facebook" href="https://www.facebook.com/asibiz.okinawa/" target="_blank" rel="noopener">Facebook <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a class="sns-line" href="https://lin.ee/tkvFpP2" target="_blank" rel="noopener">LINE <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
@@ -1468,6 +1643,30 @@ html,body{overscroll-behavior-y:none}
   }
   document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; if (!queued) { queued = true; requestAnimationFrame(look); } }, { passive: true });
   document.addEventListener('mouseleave', function () { m.style.setProperty('--ex', '0px'); m.style.setProperty('--ey', '0px'); });
+})();
+</script>
+<script>
+/* hero cards: drop the pop-in animation once it ends (keeps the tilted outlines sharp at any zoom),
+   and on computers move the cards a little as you scroll (same drift as before, without a running animation) */
+(function () {
+  var els = [].slice.call(document.querySelectorAll('.sc .hero-art .card, .sc .hero-art .sticker'));
+  if (!els.length) return;
+  els.forEach(function (e) {
+    e.addEventListener('animationend', function (ev) {
+      if (ev.target === e && (ev.animationName === 'ld-card' || ev.animationName === 'pop-in')) e.classList.add('settled');
+    });
+  });
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ps = els.map(function (e) { return parseFloat(getComputedStyle(e).getPropertyValue('--p')) || 0; });
+  var busy = false;
+  function upd() {
+    busy = false;
+    var k = window.innerWidth > 700 ? Math.min(1, Math.max(0, window.scrollY / 760)) : 0;
+    els.forEach(function (e, i) { e.style.translate = k ? '0 ' + (ps[i] * k).toFixed(1) + 'px' : ''; });
+  }
+  addEventListener('scroll', function () { if (!busy) { busy = true; requestAnimationFrame(upd); } }, { passive: true });
+  addEventListener('resize', upd);
+  upd();
 })();
 </script>
 </body>
