@@ -21,13 +21,13 @@ title_en: From Sri Lanka to Japan: The Heart Behind My Work in Caregiving
 image: SriLanka_2people_thumbnail_sketchbook_bright_1080x1920.png
 
 link: https://www.instagram.com/p/DfWmE1NT8Lq/
-title: 富士建設（ビルクリーニング・ネパール5名）
-title_en: Fuji Construction (Building cleaning - 5 personnel from Nepal)
+title: ビルクリーニング（ネパール出身5名）
+title_en: Building cleaning (5 staff from Nepal)
 image: thumbnail_interview_group_daytime.png
 
 link: https://www.instagram.com/p/DfWmSGMT3fm/
-title: 富士建設（ビルクリーニング・空港インタビュー）
-title_en: Fuji Kensetsu (Building Cleaning – Airport Interview)
+title: ビルクリーニング（空港インタビュー）
+title_en: Building cleaning (airport interview)
 image: thumbnail_nepal_airport_interview.png
 
 link: https://www.instagram.com/reel/DfWOQwlziBC/
