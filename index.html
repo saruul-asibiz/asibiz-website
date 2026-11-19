@@ -1380,6 +1380,25 @@ html,body{overscroll-behavior-y:none}
 .hist .hn{white-space:nowrap}
 .lang-en .hist .hm,.hist.en .hm{text-align:left;padding-right:.4em}
 .hist.en .hy{padding-right:1em}
+
+/* 2026-11-19: interviews that are not out yet: photo + title, a film strip of pills, not clickable */
+.reel.soon{cursor:default}
+.reel.soon .reel-media img{filter:saturate(.9)}
+.soon-shade{position:absolute;inset:0;z-index:1;background:rgba(10,10,10,.38);transition:background-color var(--dur)}
+.reel.soon:hover .soon-shade{background:rgba(10,10,10,.5)}
+.soon-tape{position:absolute;left:-40%;right:-40%;top:calc(40% - 4px);z-index:2;height:66px;display:flex;align-items:center;overflow:hidden;background:var(--ink);transform:rotate(-14deg)}
+.soon-tape::before,.soon-tape::after{content:'';position:absolute;left:0;right:0;height:6px;z-index:1;background:repeating-linear-gradient(90deg,transparent 0 6px,#FFFFFF 6px 14px,transparent 14px 20px);animation:soon-holes 3s linear infinite}
+.soon-tape::before{top:5px}.soon-tape::after{bottom:5px}
+.soon-trk{display:flex;flex:0 0 auto;gap:8px;padding-left:8px;white-space:nowrap;animation:soon-tape 22s linear infinite}
+.reel.soon:hover .soon-trk{animation-duration:12s}
+.reel.soon:hover .soon-tape::before,.reel.soon:hover .soon-tape::after{animation-duration:1.6s}
+.soon-trk span{display:inline-flex;align-items:center;height:28px;padding:0 12px;border:var(--border);border-radius:var(--radius-pill);font-family:var(--font-sans),var(--font-sans-jp);font-weight:800;font-size:13px;color:var(--ink)}
+.soon-trk span:nth-child(4n+1){background:var(--lilac-300)}.soon-trk span:nth-child(4n+2){background:var(--mint-500)}
+.soon-trk span:nth-child(4n+3){background:var(--paper)}.soon-trk span:nth-child(4n){background:var(--sun-500)}
+@keyframes soon-tape{to{transform:translateX(-50%)}}
+@keyframes soon-holes{to{background-position:20px 0}}
+.reel.soon .reel-body small{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.soon-trk,.soon-tape::before,.soon-tape::after{animation:none!important}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.asibiz.co.jp/#org", "name": "アジビズグループ", "alternateName": ["アジビズ", "合同会社アジビズ", "株式会社アジビズインターナショナル", "アジビズ協同組合", "Asibiz", "Asibiz Group", "Asibiz LLC"], "url": "https://www.asibiz.co.jp/", "logo": "https://www.asibiz.co.jp/assets/logo.png", "foundingDate": "2017-12", "telephone": "+81-98-890-7701", "email": "info@japanasia.biz", "address": {"@type": "PostalAddress", "streetAddress": "大謝名2-3-5 1A", "addressLocality": "宜野湾市", "addressRegion": "沖縄県", "postalCode": "901-2225", "addressCountry": "JP"}, "sameAs": ["https://www.instagram.com/asibiz_okinawa/", "https://www.facebook.com/asibiz.okinawa/"]}, {"@type": "WebSite", "@id": "https://www.asibiz.co.jp/#site", "name": "アジビズグループ", "alternateName": ["アジビズ", "Asibiz"], "url": "https://www.asibiz.co.jp/", "publisher": {"@id": "https://www.asibiz.co.jp/#org"}, "inLanguage": ["ja", "en"]}]}</script>
 </head>
@@ -1780,19 +1799,36 @@ html,body{overscroll-behavior-y:none}
   function lines(p) { return String((!ja && p.captionEn) || p.prunedCaption || '').split('\n').map(function (s) { return s.trim(); }).filter(Boolean); }
   function render(data) {
     var iv = [], ps = [];
-    ((data && data.posts) || []).forEach(function (p) { if (insta(p.permalink)) (isInterview(p) ? iv : ps).push(p); });
+    ((data && data.posts) || []).forEach(function (p) { if (p.soon === true && isInterview(p)) iv.push(p); else if (insta(p.permalink)) (isInterview(p) ? iv : ps).push(p); });
     if (iv.length) {
       var f = document.createDocumentFragment();
       iv.slice(0, 30).forEach(function (p, i) {
-        var t = lines(p), a = el('a', 'card ' + COLORS[i % COLORS.length] + ' lift reel');
-        a.href = p.permalink; a.target = '_blank'; a.rel = 'noopener';
+        var t = lines(p), soon = p.soon === true, a;
+        if (soon) {
+          /* not out yet: photo + title only, not clickable */
+          a = el('div', 'card ' + COLORS[i % COLORS.length] + ' reel soon');
+          a.setAttribute('role', 'group');
+          a.setAttribute('aria-label', (t[0] || (ja ? 'インタビュー' : 'Interview')) + (ja ? '（近日公開）' : ' (coming soon)'));
+        } else {
+          a = el('a', 'card ' + COLORS[i % COLORS.length] + ' lift reel');
+          a.href = p.permalink; a.target = '_blank'; a.rel = 'noopener';
+        }
         var m = el('span', 'reel-media'), src = pic(p);
         if (src) { var im = el('img'); im.src = src; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; m.appendChild(im); }
-        m.appendChild(el('span', 'reel-chip', ja ? 'リール' : 'Reel'));
-        var pl = el('span', 'reel-play'); if (PLAY) pl.appendChild(PLAY.cloneNode(true)); m.appendChild(pl);
+        if (soon) {
+          m.appendChild(el('span', 'soon-shade'));
+          var tape = el('span', 'soon-tape'), trk = el('span', 'soon-trk');
+          tape.setAttribute('aria-hidden', 'true');
+          for (var k = 0; k < 8; k++) { trk.appendChild(el('span', null, 'COMING SOON')); trk.appendChild(el('span', null, '近日公開')); }
+          tape.appendChild(trk); m.appendChild(tape);
+        } else {
+          m.appendChild(el('span', 'reel-chip', ja ? 'リール' : 'Reel'));
+          var pl = el('span', 'reel-play'); if (PLAY) pl.appendChild(PLAY.cloneNode(true)); m.appendChild(pl);
+        }
         var b = el('span', 'reel-body');
         b.appendChild(el('b', null, t[0] || (ja ? 'インタビュー' : 'Interview')));
-        if (t[1]) b.appendChild(el('small', null, t[1]));
+        if (soon) b.appendChild(el('small', null, ja ? '近日公開 · Coming soon' : 'Coming soon'));
+        else if (t[1]) b.appendChild(el('small', null, t[1]));
         a.appendChild(m); a.appendChild(b); f.appendChild(a);
       });
       reels.textContent = ''; reels.appendChild(f);

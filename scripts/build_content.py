@@ -6,6 +6,8 @@ and copied to assets/ig/<number>.jpg (the number comes from the picture itself).
 a block with a problem is skipped and explained as a warning on the Actions run.
 English pages use title_en / subtitle_en / text_en when written, otherwise the Japanese text.
 Instagram links are shown newest first automatically. Posts with a Facebook link keep the order written in the file.
+Interviews without a link (or with the link line turned into a note with #) are shown as "coming soon" cards
+after the published ones, in the order written. Add the link when the video is out and it becomes a normal card.
 """
 import hashlib, json, os, re, shutil
 
@@ -95,9 +97,19 @@ def main():
     os.makedirs(OUT_IMG, exist_ok=True)
     os.makedirs(os.path.dirname(OUT_JSON), exist_ok=True)
     posts = []
+    soon = []
     for line, b in blocks('interviews.txt'):
         where = f'content/interviews.txt (block starting on line {line})'
         link = b.get('link', '')
+        if not link:
+            # no link yet: a "coming soon" card (picture and title, not clickable)
+            if not b.get('title'):
+                warn(f'{where}: add a "title:" line.')
+            text = '\n'.join(x for x in [b.get('title', ''), b.get('subtitle', '')] if x)
+            text_en = '\n'.join(x for x in [b.get('title_en', ''), b.get('subtitle_en', '')] if x)
+            soon.append({'permalink': '', 'soon': True, 'mediaType': 'VIDEO', 'isReel': True, 'hashtags': [TAG],
+                         'prunedCaption': text, 'captionEn': text_en, 'image': picture(b.get('image', ''), where, 900)})
+            continue
         if not LINK.match(link):
             warn(f'{where}: the link must be an Instagram or Facebook link (https://www.instagram.com/... or https://www.facebook.com/...). Block skipped.')
             continue
@@ -123,11 +135,11 @@ def main():
     iv.sort(key=lambda p: -age(p['permalink']))
     if all(CODE.search(p['permalink']) for p in ps):
         ps.sort(key=lambda p: -age(p['permalink']))
-    posts = iv + ps
+    posts = iv + soon + ps
     with open(OUT_JSON, 'w', encoding='utf-8') as f:
         json.dump({'posts': posts}, f, ensure_ascii=False, indent=1)
     n_iv = sum(1 for p in posts if p['mediaType'] == 'VIDEO')
-    print(f'Built {n_iv} interviews and {len(posts) - n_iv} posts.')
+    print(f'Built {n_iv - len(soon)} interviews, {len(soon)} coming soon, and {len(posts) - n_iv} posts.')
 
 
 if __name__ == '__main__':
