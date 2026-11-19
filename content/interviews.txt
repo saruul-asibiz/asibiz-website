@@ -20,27 +20,27 @@ title: スリランカから日本へ ― 介護の仕事に込める思い
 title_en: From Sri Lanka to Japan: The Heart Behind My Work in Caregiving
 image: thumbnail_srilanka_2people_notag.png
 
-link: https://www.instagram.com/p/DfWmE1NT8Lq/
+# link: https://www.instagram.com/p/DfWmE1NT8Lq/
 title: ビルクリーニング（ネパール出身5名）
 title_en: Building cleaning (5 staff from Nepal)
 image: thumbnail_interview_group_daytime.png
 
-link: https://www.instagram.com/p/DfWmSGMT3fm/
+# link: https://www.instagram.com/p/DfWmSGMT3fm/
 title: ビルクリーニング（空港インタビュー）
 title_en: Building cleaning (airport interview)
 image: thumbnail_nepal_airport_interview.png
 
-link: https://www.instagram.com/reel/DfWOQwlziBC/
+# link: https://www.instagram.com/reel/DfWOQwlziBC/
 title: ウズベキスタン2名
 title_en: 2 workers from Uzbekistan
 image: Thumbnail_v1.jpg
 
-link: https://www.instagram.com/reel/DfWNon_z70c/
+# link: https://www.instagram.com/reel/DfWNon_z70c/
 title: 薬正堂ヴィラ北谷（介護・スリランカ）
 title_en: Yakuseido Villa Chatan (Nursing Care / Sri Lanka)
 image: thumbnail_srilanka_caregiver_papercut.png
 
-link: https://www.instagram.com/reel/DfWNtx6T4o6/
+# link: https://www.instagram.com/reel/DfWNtx6T4o6/
 title: ネパール インタビュー フル版 v3 日字幕 修正済
 title_en: Interview with workers from Nepal
 subtitle: 建設業で働くスタッフ
