@@ -11,38 +11,36 @@
 # Keep one empty line between blocks. Lines starting with # are notes and are ignored.
 
 # link: https://www.instagram.com/p/DfWnEYaT4SM/
-title: ムスリムさんへのインタビュー
-title_en: A design staff member from Uzbekistan reviews Japanese-language technical drawings
+title: 図面は日本語。ウズベキスタン出身の設計スタッフが働く沖縄のオフィス
+title_en: Drawings in Japanese: An Uzbek Design Staffer in an Okinawa Office
 image: Muslim_thumbnail_C_skypop_1080x1920.png
 
 # link: https://www.instagram.com/p/DfWm01FzFrd/
-title: スリランカから日本へ ― 介護の仕事に込める思い
-title_en: From Sri Lanka to Japan: The Heart Behind My Work in Caregiving
+title: スリランカから沖縄へ。介護の現場で働く2人の想い
+title_en: From Sri Lanka to Okinawa: Two Caregivers and Why They Do This Work
 image: thumbnail_srilanka_2people_notag.png
 
 # link: https://www.instagram.com/p/DfWmE1NT8Lq/
-title: ビルクリーニング（ネパール出身5名）
-title_en: Building cleaning (5 staff from Nepal)
+title: ネパールから5人、沖縄へ。ビルクリーニングを始める2人の今
+title_en: Five from Nepal in Okinawa: Two Start Building Cleaning
 image: thumbnail_interview_group_daytime.png
 
 # link: https://www.instagram.com/p/DfWmSGMT3fm/
-title: ビルクリーニング（空港インタビュー）
-title_en: Building cleaning (airport interview)
+title: ネパールから4人、沖縄に到着。空港で聞いた今の気持ち
+title_en: Nepal Arrive in Okinawa: Their Feelings at the Airport
 image: thumbnail_nepal_airport_interview.png
 
 # link: https://www.instagram.com/reel/DfWOQwlziBC/
-title: ウズベキスタン2名
-title_en: 2 workers from Uzbekistan
+title: ウズベキスタンから来た2人。沖縄の設備会社で働く今
+title_en: Two from Uzbekistan: Working at an Okinawa Equipment Company
 image: Thumbnail_v1.jpg
 
 # link: https://www.instagram.com/reel/DfWNon_z70c/
-title: 薬正堂ヴィラ北谷（介護・スリランカ）
-title_en: Yakuseido Villa Chatan (Nursing Care / Sri Lanka)
+title: スリランカから沖縄へ。介護の現場で働く2人
+title_en: From Sri Lanka to Okinawa: Two Workers in Nursing Care
 image: thumbnail_srilanka_caregiver_papercut.png
 
 # link: https://www.instagram.com/reel/DfWNtx6T4o6/
-title: ネパール インタビュー フル版 v3 日字幕 修正済
-title_en: Interview with workers from Nepal
-subtitle: 建設業で働くスタッフ
-subtitle_en: Staff working in construction
+title: ネパールから沖縄へ。飲食店で働き始めた1人
+title_en: Nepal to Okinawa: Starting Work at a Restaurant
 image: Nepal_thumbnail_B_sunny_1080x1920.png
