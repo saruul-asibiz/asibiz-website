@@ -1314,6 +1314,41 @@ html,body{overscroll-behavior-y:none}
 .hist .hn{white-space:nowrap}
 .lang-en .hist .hm,.hist.en .hm{text-align:left;padding-right:.4em}
 .hist.en .hy{padding-right:1em}
+
+/* ===== 2026-11-24: footer map (partner countries -> Okinawa) ===== */
+.f-top{display:flex;gap:32px;align-items:flex-start}
+.f-top > div:first-child{flex:0 0 auto;max-width:420px}
+@media (min-width:821px){.f-top .f-sub{font-size:24px}}
+@media (max-width:400px){.f-top .f-sub{font-size:19px}}
+.f-map{flex:1 1 auto;min-width:0;max-width:600px;margin:0}
+.f-mapbox{position:relative;aspect-ratio:665/435;border:var(--border);border-radius:24px;overflow:hidden;background:#E3F6FD}
+.f-mapbox img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.mtag{position:absolute;z-index:1;transform:translate(0,-50%);display:inline-flex;align-items:center;gap:5px;white-space:nowrap;background:var(--paper);border-radius:6px;padding:4px 8px 4px 6px;box-shadow:0 1px 3px rgba(10,10,10,.25);font-family:var(--font-sans-jp);font-weight:700;font-size:12.5px;line-height:1;color:var(--ink);pointer-events:none}
+.mtag i{width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 0 1.5px var(--ink);flex:0 0 auto}
+.mtag.r{transform:translate(-100%,-50%)}.mtag.c{transform:translate(-50%,-50%)}
+.mtag.oki{background:var(--ink);color:var(--paper);border-radius:999px;padding:4px 7px;box-shadow:none;transform:translate(9px,-50%)}
+.f-map figcaption{margin:10px 0 0 4px;font-weight:700;font-size:13px;color:var(--ink-3)}
+@media (max-width:1100px){.f-map{max-width:none}}
+@media (max-width:820px){.f-top{flex-direction:column;gap:28px}.f-top > div:first-child{max-width:none}.f-map{width:100%}}
+@media (max-width:560px){.mtag{font-size:9.5px;padding:3px 5px 3px 4px;gap:3px;border-radius:4px}.mtag i{width:6px;height:6px;box-shadow:0 0 0 1px var(--ink)}.mtag.oki{padding:3px 6px;transform:translate(calc(-100% - 7px),-50%)}}
+/* ===== 2026-11-24: How it works, option 1 = white cards with a coloured picture panel ===== */
+.steps li{padding:0;gap:0;background:var(--paper);overflow:hidden}
+.steps .top{display:flex;flex-direction:column;gap:10px;padding:20px 22px 12px;background:var(--tint,var(--paper));border-bottom:var(--border);transition:background-color .3s}
+.steps .st-txt{padding:16px 22px 20px}
+.steps .dur{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pin-ready .steps li.on{background:var(--paper)}
+.pin-ready .steps li:not(.on) .top{background:var(--paper)}
+.pin-ready .steps li:not(.on) .dur{background:var(--paper-2);color:var(--ink-3);border-color:var(--ink-3)}
+#flow .pin-on .steps li{padding:0;gap:0}
+#flow .pin-on .steps .top{padding:14px 18px 8px;gap:6px}
+#flow .pin-on .steps .st-txt{padding:12px 18px 14px}
+.flow-total{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.flow-total b{color:var(--ink);background:var(--sun-500);border-radius:8px;padding:2px 8px;margin:0 2px;white-space:nowrap}
+@media (max-width:700px){
+  .steps li{flex-direction:row;align-items:stretch}
+  .steps .top{flex:0 0 auto;flex-direction:column;align-items:center;justify-content:center;padding:12px;border-bottom:0;border-right:var(--border)}
+  .steps .st-txt{display:flex;flex-direction:column;justify-content:center;padding:12px 16px}
+}
 </style>
 </head>
 <body>
@@ -1390,11 +1425,11 @@ html,body{overscroll-behavior-y:none}
   <div class="mq" aria-hidden="true"><div class="mq-track"><span class="jp" style="background:var(--blue-500)">無料相談</span><span class="jp" style="background:var(--sun-500)">日本で働く</span><span class="jp" style="background:var(--lilac-300)">アジビズ</span><span class="jp" style="background:var(--mint-500)">無料相談</span><span class="jp" style="background:var(--coral-500)">日本で働く</span><span class="jp" style="background:var(--blue-500)">アジビズ</span><span class="jp" style="background:var(--sun-500)">無料相談</span><span class="jp" style="background:var(--lilac-300)">日本で働く</span><span class="jp" style="background:var(--mint-500)">アジビズ</span><span class="jp" style="background:var(--coral-500)">無料相談</span><span class="jp" style="background:var(--blue-500)">日本で働く</span><span class="jp" style="background:var(--sun-500)">アジビズ</span><span class="jp" style="background:var(--blue-500)">無料相談</span><span class="jp" style="background:var(--sun-500)">日本で働く</span><span class="jp" style="background:var(--lilac-300)">アジビズ</span><span class="jp" style="background:var(--mint-500)">無料相談</span><span class="jp" style="background:var(--coral-500)">日本で働く</span><span class="jp" style="background:var(--blue-500)">アジビズ</span><span class="jp" style="background:var(--sun-500)">無料相談</span><span class="jp" style="background:var(--lilac-300)">日本で働く</span><span class="jp" style="background:var(--mint-500)">アジビズ</span><span class="jp" style="background:var(--coral-500)">無料相談</span><span class="jp" style="background:var(--blue-500)">日本で働く</span><span class="jp" style="background:var(--sun-500)">アジビズ</span></div></div>
   <div class="mq small" aria-hidden="true"><div class="mq-track"><span class="jp" style="background:var(--lilac-300)">台湾</span><span class="jp" style="background:var(--mint-500)">ネパール</span><span class="jp" style="background:var(--paper)">ベトナム</span><span class="jp" style="background:var(--sun-500)">インドネシア</span><span class="jp" style="background:var(--lilac-300)">ウズベキスタン</span><span class="jp" style="background:var(--mint-500)">スリランカ</span><span class="jp" style="background:var(--paper)">ミャンマー</span><span class="jp" style="background:var(--sun-500)">台湾</span><span class="jp" style="background:var(--lilac-300)">ネパール</span><span class="jp" style="background:var(--mint-500)">ベトナム</span><span class="jp" style="background:var(--paper)">インドネシア</span><span class="jp" style="background:var(--sun-500)">ウズベキスタン</span><span class="jp" style="background:var(--lilac-300)">スリランカ</span><span class="jp" style="background:var(--mint-500)">ミャンマー</span><span class="jp" style="background:var(--paper)">台湾</span><span class="jp" style="background:var(--sun-500)">ネパール</span><span class="jp" style="background:var(--lilac-300)">ベトナム</span><span class="jp" style="background:var(--mint-500)">インドネシア</span><span class="jp" style="background:var(--paper)">ウズベキスタン</span><span class="jp" style="background:var(--sun-500)">スリランカ</span><span class="jp" style="background:var(--lilac-300)">ミャンマー</span><span class="jp" style="background:var(--mint-500)">台湾</span><span class="jp" style="background:var(--paper)">ネパール</span><span class="jp" style="background:var(--sun-500)">ベトナム</span><span class="jp" style="background:var(--lilac-300)">インドネシア</span><span class="jp" style="background:var(--mint-500)">ウズベキスタン</span><span class="jp" style="background:var(--paper)">スリランカ</span><span class="jp" style="background:var(--sun-500)">ミャンマー</span><span class="jp" style="background:var(--lilac-300)">台湾</span><span class="jp" style="background:var(--mint-500)">ネパール</span><span class="jp" style="background:var(--paper)">ベトナム</span><span class="jp" style="background:var(--sun-500)">インドネシア</span><span class="jp" style="background:var(--lilac-300)">ウズベキスタン</span><span class="jp" style="background:var(--mint-500)">スリランカ</span><span class="jp" style="background:var(--paper)">ミャンマー</span><span class="jp" style="background:var(--sun-500)">台湾</span><span class="jp" style="background:var(--lilac-300)">ネパール</span><span class="jp" style="background:var(--mint-500)">ベトナム</span><span class="jp" style="background:var(--paper)">インドネシア</span><span class="jp" style="background:var(--sun-500)">ウズベキスタン</span><span class="jp" style="background:var(--lilac-300)">スリランカ</span><span class="jp" style="background:var(--mint-500)">ミャンマー</span><span class="jp" style="background:var(--paper)">台湾</span><span class="jp" style="background:var(--sun-500)">ネパール</span><span class="jp" style="background:var(--lilac-300)">ベトナム</span><span class="jp" style="background:var(--mint-500)">インドネシア</span><span class="jp" style="background:var(--paper)">ウズベキスタン</span><span class="jp" style="background:var(--sun-500)">スリランカ</span><span class="jp" style="background:var(--lilac-300)">ミャンマー</span><span class="jp" style="background:var(--mint-500)">台湾</span><span class="jp" style="background:var(--paper)">ネパール</span><span class="jp" style="background:var(--sun-500)">ベトナム</span><span class="jp" style="background:var(--lilac-300)">インドネシア</span><span class="jp" style="background:var(--mint-500)">ウズベキスタン</span><span class="jp" style="background:var(--paper)">スリランカ</span><span class="jp" style="background:var(--sun-500)">ミャンマー</span></div></div>
   <div class="f-card">
-    <div>
-      <div class="disp">まずは、ご相談を。</div>
+    <div class="f-top"><div>
+      <div class="disp">まずは、<br>ご相談を。</div>
       <div class="f-sub">無料相談・お見積もり受付中。</div>
       <div style="margin-top:28px"><a class="btn l" href="./#contact">無料相談・お問い合わせ <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
-    </div>
+    </div><figure class="f-map"><div class="f-mapbox"><img src="assets/asia-map.svg" alt="提携10か国（ウズベキスタン・ネパール・バングラデシュ・スリランカ・ミャンマー・タイ・カンボジア・ベトナム・インドネシア・台湾）から沖縄への地図" width="665" height="435" loading="lazy" decoding="async"><span aria-hidden="true"><span class="mtag l" style="left:15.04%;top:11.95%;--c:#4FD99A"><i></i>ウズベキスタン</span><span class="mtag r" style="left:35.49%;top:36.78%;--c:#E6CFFF"><i></i>ネパール</span><span class="mtag r" style="left:43.01%;top:50.57%;--c:#FFD52E"><i></i>バングラデシュ</span><span class="mtag l" style="left:41.65%;top:90.57%;--c:#FF6B3D"><i></i>スリランカ</span><span class="mtag r" style="left:50.23%;top:56.09%;--c:#FF6B3D"><i></i>ミャンマー</span><span class="mtag r" style="left:54.89%;top:68.51%;--c:#4FD99A"><i></i>タイ</span><span class="mtag c" style="left:62.86%;top:75.40%;--c:#FFD52E"><i></i>カンボジア</span><span class="mtag l" style="left:66.77%;top:58.39%;--c:#E6CFFF"><i></i>ベトナム</span><span class="mtag l" style="left:66.47%;top:94.25%;--c:#FFD52E"><i></i>インドネシア</span><span class="mtag r" style="left:75.79%;top:50.57%;--c:#FF6B3D"><i></i>台湾</span><span class="mtag oki" style="left:85.86%;top:42.76%">沖縄</span></span></div><figcaption>提携10か国から、沖縄へ。</figcaption></figure></div>
     <nav aria-label="フッターメニュー">
           <a href="./#interviews">インタビュー</a>
           <a href="./#services">サービス</a>
