@@ -15,6 +15,11 @@
 #
 # The label under each picture (Facebook or Instagram) is chosen automatically from the link.
 
+link: https://www.instagram.com/p/DgJ7Cvev17T/
+image: slide-1_asibiz_website.png
+title: 新しいホームページを公開しました🎉
+title_en: Our website is live
+
 link: https://www.facebook.com/photo.php?fbid=122130156344322283&set=pb.61559668501570.-2207520000&type=3
 image: asibiz1.jpg
 title: ウズベキスタン政府と送出協定を締結！現地出張レポート
