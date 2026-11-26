@@ -10,7 +10,7 @@
 #   image:        file name of the cover picture in content/images - optional
 # Keep one empty line between blocks. Lines starting with # are notes and are ignored.
 
-# link: https://www.instagram.com/p/DfWnEYaT4SM/
+link: https://www.instagram.com/p/DgMZMPuiKxI/
 title: ウズベキスタンから沖縄へ。建設現場を支える施工管理の仕事
 title_en: From Uzbekistan to Okinawa: Managing a Construction Site
 image: Uzbek_thumbnail_survey_blueprint_1080x1920.png
